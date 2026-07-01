@@ -145,7 +145,7 @@ const projectData = [
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "JWT"],
 
     link: "https://github.com/Amiya-Krishna/college-discovery",
-    live: "https://college-discovery-1vud.vercel.app/",
+    live: "https://amiya-krishna-portfolio.vercel.app",
 
     gallery: [
       { src: "assets/projects/college-discovery-list.jpg", alt: "College search & filter page" },
