@@ -75,6 +75,26 @@ window.addEventListener('scroll', () => {
 });
 
 /* ──────────────────────────────────────────
+   MOBILE NAV TOGGLE
+────────────────────────────────────────── */
+const navToggle = document.getElementById('nav-toggle');
+const navLinksList = document.querySelector('.nav-links');
+
+if (navToggle && navLinksList) {
+  navToggle.addEventListener('click', () => {
+    navToggle.classList.toggle('open');
+    navLinksList.classList.toggle('open');
+  });
+
+  navLinksList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navToggle.classList.remove('open');
+      navLinksList.classList.remove('open');
+    });
+  });
+}
+
+/* ──────────────────────────────────────────
    THEME TOGGLE
 ────────────────────────────────────────── */
 const themeBtn = document.getElementById('theme-toggle');
@@ -305,53 +325,159 @@ function openLightbox(src, alt) {
     lightboxImg.src = src;
     lightboxImg.alt = alt || "";
     lightboxOverlay.classList.add("open");
+    resetZoom();
 }
 
 function closeLightbox(e) {
     if (!e || e.target === lightboxOverlay || e.target.closest(".lightbox-close")) {
         lightboxOverlay.classList.remove("open");
         lightboxImg.src = "";
-
-        scale = 1;
-        translateX = 0;
-        translateY = 0;
-        updateTransform();
+        resetZoom();
     }
 }
 
 if (lightboxOverlay && lightboxImg) {
 
     let scale = 1;
+    let translateX = 0, translateY = 0;
     let isDragging = false;
-    let startX, startY, translateX = 0, translateY = 0;
+    let startX, startY;
+    let lastTapTime = 0;
+    let lastTouchDist = null;
+    let touchStartX, touchStartY;
 
+    const MIN_SCALE = 1;
+    const MAX_SCALE = 5;
+
+    function clampTranslate() {
+        const rect = lightboxImg.getBoundingClientRect();
+        const maxX = Math.max(0, (rect.width * scale - rect.width) / 2);
+        const maxY = Math.max(0, (rect.height * scale - rect.height) / 2);
+        translateX = Math.min(maxX, Math.max(-maxX, translateX));
+        translateY = Math.min(maxY, Math.max(-maxY, translateY));
+    }
+
+    function updateTransform(withTransition = false) {
+        lightboxImg.style.transition = withTransition ? "transform 0.25s ease" : "none";
+        lightboxImg.style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+        lightboxImg.style.cursor = scale > 1 ? (isDragging ? "grabbing" : "grab") : "zoom-in";
+    }
+
+    function resetZoom(withTransition = false) {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        isDragging = false;
+        updateTransform(withTransition);
+    }
+
+    // Scroll/trackpad zoom, centered on cursor position
     lightboxOverlay.addEventListener("wheel", (e) => {
         e.preventDefault();
-        scale += e.deltaY * -0.001;
-        scale = Math.min(Math.max(1, scale), 4);
+        const prevScale = scale;
+        const delta = -e.deltaY * 0.0015;
+        scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale + delta * scale));
+
+        if (scale === MIN_SCALE) {
+            translateX = 0;
+            translateY = 0;
+        } else {
+            const rect = lightboxImg.getBoundingClientRect();
+            const cx = e.clientX - rect.left - rect.width / 2;
+            const cy = e.clientY - rect.top - rect.height / 2;
+            const ratio = scale / prevScale - 1;
+            translateX -= cx * ratio;
+            translateY -= cy * ratio;
+            clampTranslate();
+        }
         updateTransform();
+    }, { passive: false });
+
+    // Double-click to toggle zoom
+    lightboxImg.addEventListener("dblclick", () => {
+        if (scale > 1) {
+            resetZoom(true);
+        } else {
+            scale = 2.5;
+            updateTransform(true);
+        }
     });
 
+    // Drag to pan — only active when zoomed in
     lightboxImg.addEventListener("mousedown", (e) => {
+        if (scale <= 1) return;
+        e.preventDefault();
         isDragging = true;
         startX = e.clientX - translateX;
         startY = e.clientY - translateY;
+        updateTransform();
     });
 
     document.addEventListener("mousemove", (e) => {
         if (!isDragging) return;
         translateX = e.clientX - startX;
         translateY = e.clientY - startY;
+        clampTranslate();
         updateTransform();
     });
 
     document.addEventListener("mouseup", () => {
-        isDragging = false;
+        if (isDragging) {
+            isDragging = false;
+            updateTransform();
+        }
     });
 
-    function updateTransform() {
-        lightboxImg.style.transform =
-            `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+    // Mobile: pinch-to-zoom, drag-to-pan, double-tap
+    lightboxOverlay.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 2) {
+            lastTouchDist = getTouchDist(e.touches);
+        } else if (e.touches.length === 1) {
+            const now = Date.now();
+            if (now - lastTapTime < 300) {
+                if (scale > 1) resetZoom(true);
+                else { scale = 2.5; updateTransform(true); }
+            }
+            lastTapTime = now;
+
+            if (scale > 1) {
+                isDragging = true;
+                touchStartX = e.touches[0].clientX - translateX;
+                touchStartY = e.touches[0].clientY - translateY;
+            }
+        }
+    }, { passive: true });
+
+    lightboxOverlay.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 2) {
+            e.preventDefault();
+            const dist = getTouchDist(e.touches);
+            if (lastTouchDist) {
+                const delta = (dist - lastTouchDist) * 0.01;
+                scale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale + delta));
+                if (scale === MIN_SCALE) { translateX = 0; translateY = 0; }
+                clampTranslate();
+                updateTransform();
+            }
+            lastTouchDist = dist;
+        } else if (e.touches.length === 1 && isDragging) {
+            e.preventDefault();
+            translateX = e.touches[0].clientX - touchStartX;
+            translateY = e.touches[0].clientY - touchStartY;
+            clampTranslate();
+            updateTransform();
+        }
+    }, { passive: false });
+
+    lightboxOverlay.addEventListener("touchend", (e) => {
+        if (e.touches.length < 2) lastTouchDist = null;
+        if (e.touches.length === 0) isDragging = false;
+    });
+
+    function getTouchDist(touches) {
+        const dx = touches[0].clientX - touches[1].clientX;
+        const dy = touches[0].clientY - touches[1].clientY;
+        return Math.sqrt(dx * dx + dy * dy);
     }
 }
 
