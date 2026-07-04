@@ -91,7 +91,7 @@ themeBtn.addEventListener('click', () => {
 const projectData = [
   {
     title: "Community Discussion Forum with Real-Time Chat",
-    isLive: false,
+    isLive: true,
 
     problem:
       "Online communities are usually forced to pick one: slow-paced threaded discussions, or fast real-time chat. Splitting the two across separate tools kills engagement and context.",
@@ -111,13 +111,15 @@ const projectData = [
     tags: ["React", "Node.js", "Express", "MongoDB", "Socket.IO", "JWT"],
 
     link: "https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat",
-    live: "#",
+    live: "https://community-discussion-forum-with-rea-roan.vercel.app",
 
     gallery: [
       { src: "assets/projects/forum-dashboard.jpg", alt: "Discussion feed dashboard" },
       { src: "assets/projects/forum-create-discussion.jpg", alt: "Create discussion thread" },
       { src: "assets/projects/forum-comments.jpg", alt: "Live comments & replies" }
     ],
+    diagram: "assets/projects/system_architecture.png",
+    demoVideo: "", // paste a .mp4/.webm or .gif URL here later
 
     status: "Built & feature-complete — live demo deploying"
   },
@@ -145,7 +147,7 @@ const projectData = [
     tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "JWT"],
 
     link: "https://github.com/Amiya-Krishna/college-discovery",
-    live: "https://amiya-krishna-portfolio.vercel.app",
+    live: "https://college-discovery-vert.vercel.app",
 
     gallery: [
       { src: "assets/projects/college-discovery-list.jpg", alt: "College search & filter page" },
@@ -153,13 +155,14 @@ const projectData = [
       { src: "assets/projects/college-discovery-compare.jpg", alt: "Side-by-side college comparison" }
     ],
     diagram: "assets/projects/college-discovery-architecture.svg",
+    demoVideo: "", // paste a .mp4/.webm or .gif URL here later
 
     status: "Live in production on Vercel"
   },
 
   {
     title: "Job Application Tracker Portal",
-    isLive: false,
+    isLive: true,
 
     problem:
       "Job seekers applying to dozens of roles quickly lose track of which stage each application is at — spreadsheets and email threads don't scale past a handful of applications.",
@@ -179,17 +182,20 @@ const projectData = [
     tags: ["React", "Node.js", "Express", "MongoDB", "JWT"],
 
     link: "https://github.com/Amiya-Krishna/Job-Application-Tracker-Portal",
-    live: "#",
+    live: "https://job-application-tracker-portal-ten.vercel.app",
 
     gallery: [
       { src: "assets/projects/tracker-dashboard.jpg", alt: "Job application dashboard" },
-      { src: "assets/projects/tracker-postman.jpg", alt: "API tested with Postman" },
-      { src: "assets/projects/tracker-login.jpg", alt: "Secure login screen" }
+      { src: "assets/projects/tracker-add-jobs.jpg", alt: "API tested with Postman" },
+      { src: "assets/projects/tracker-email-integration.jpg", alt: "Secure login screen" }
     ],
+    diagram: "assets/projects/Job_tracker_system_architecture.png",
+    demoVideo: "", // paste a .mp4/.webm or .gif URL here later
 
     status: "Built & feature-complete — live demo deploying"
   }
 ];
+
 
 const overlay = document.getElementById("modal-overlay");
 
@@ -215,11 +221,11 @@ function openModal(i) {
     document.getElementById("modal-tags").innerHTML =
         p.tags.map(tag => `<span class="tag">${tag}</span>`).join("");
 
-    // Proof gallery
+    // Proof gallery (each photo opens full-size in the lightbox on click)
     const galleryEl = document.getElementById("modal-gallery");
     if (p.gallery && p.gallery.length) {
         galleryEl.innerHTML = p.gallery.map(g =>
-            `<img src="${g.src}" alt="${g.alt}" loading="lazy">`
+            `<img src="${g.src}" alt="${g.alt}" loading="lazy" onclick="event.stopPropagation(); openLightbox('${g.src}', '${g.alt.replace(/'/g, "\\'")}')">`
         ).join("");
         galleryEl.style.display = "grid";
         galleryEl.classList.toggle("modal-gallery-single", p.gallery.length === 1);
@@ -228,15 +234,31 @@ function openModal(i) {
         galleryEl.style.display = "none";
     }
 
-    // System architecture diagram (optional, separate from screenshots)
+    // System architecture diagram (optional, separate from screenshots, also opens in lightbox)
     const diagramWrap = document.getElementById("modal-diagram-wrap");
     const diagramEl = document.getElementById("modal-diagram");
     if (p.diagram) {
-        diagramEl.innerHTML = `<img src="${p.diagram}" alt="${p.title} system architecture diagram" loading="lazy">`;
+        const diagramAlt = `${p.title} system architecture diagram`;
+        diagramEl.innerHTML = `<img src="${p.diagram}" alt="${diagramAlt}" loading="lazy" onclick="event.stopPropagation(); openLightbox('${p.diagram}', '${diagramAlt.replace(/'/g, "\\'")}')">`;
         diagramWrap.style.display = "block";
     } else {
         diagramEl.innerHTML = "";
         diagramWrap.style.display = "none";
+    }
+
+    // Demo video (GIF or MP4) — leave p.demoVideo blank until a link is ready
+    const videoBox = document.getElementById("modal-video-box");
+    if (p.demoVideo) {
+        const isGif = /\.gif$/i.test(p.demoVideo);
+        videoBox.innerHTML = isGif
+            ? `<img src="${p.demoVideo}" alt="${p.title} demo">`
+            : `<video src="${p.demoVideo}" controls playsinline preload="metadata"></video>`;
+    } else {
+        videoBox.innerHTML = `
+            <div class="modal-video-empty">
+              <span>🎬</span>
+              Demo video coming soon
+            </div>`;
     }
 
     // GitHub Link
@@ -272,6 +294,70 @@ function closeModal(e) {
 document.addEventListener("keydown", e => {
     if (e.key === "Escape") closeModal({ target: overlay });
 });
+
+/* ──────────────────────────────────────────
+   LIGHTBOX — full-size image viewer
+────────────────────────────────────────── */
+const lightboxOverlay = document.getElementById("lightbox-overlay");
+const lightboxImg = document.getElementById("lightbox-img");
+
+function openLightbox(src, alt) {
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || "";
+    lightboxOverlay.classList.add("open");
+}
+
+function closeLightbox(e) {
+    if (!e || e.target === lightboxOverlay || e.target.closest(".lightbox-close")) {
+        lightboxOverlay.classList.remove("open");
+        lightboxImg.src = "";
+
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        updateTransform();
+    }
+}
+
+if (lightboxOverlay && lightboxImg) {
+
+    let scale = 1;
+    let isDragging = false;
+    let startX, startY, translateX = 0, translateY = 0;
+
+    lightboxOverlay.addEventListener("wheel", (e) => {
+        e.preventDefault();
+        scale += e.deltaY * -0.001;
+        scale = Math.min(Math.max(1, scale), 4);
+        updateTransform();
+    });
+
+    lightboxImg.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+    });
+
+    document.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+        updateTransform();
+    });
+
+    document.addEventListener("mouseup", () => {
+        isDragging = false;
+    });
+
+    function updateTransform() {
+        lightboxImg.style.transform =
+            `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+    }
+}
+
+document.addEventListener("keydown", e => {
+    if (e.key === "Escape") closeLightbox({ target: lightboxOverlay });
+});
 /* ──────────────────────────────────────────
    EMAIL COPY
 ────────────────────────────────────────── */
@@ -287,5 +373,4 @@ function copyEmail() {
     }, 2000);
   });
 }
-
 

@@ -220,7 +220,8 @@
           <div class="proj-card reveal" onclick="openModal(0)">
             <div class="proj-thumb">
               <img src="assets/projects/forum-dashboard.jpg" alt="Community Discussion Forum dashboard" loading="lazy">
-              <span class="proj-status status-progress">🛠 Demo Deploying</span>
+              <span class="proj-status status-live"><span class="live-dot"></span>Live Demo</span>
+              <!-- <span class="proj-status status-progress">🛠 Demo Deploying</span> -->
             </div>
             <div class="proj-body">
               <div class="proj-header">
@@ -249,6 +250,8 @@
             <div class="proj-thumb">
               <img src="assets/projects/college-discovery-list.jpg" alt="College Discovery search & filter page" loading="lazy">
               <span class="proj-status status-live"><span class="live-dot"></span>Live Demo</span>
+               <!-- <span class="proj-status status-progress">🛠 Demo Deploying</span> -->
+              
             </div>
             <div class="proj-body">
               <div class="proj-header">
@@ -276,7 +279,8 @@
           <div class="proj-card reveal" onclick="openModal(2)">
             <div class="proj-thumb">
               <img src="assets/projects/tracker-dashboard.jpg" alt="Job Application Tracker dashboard" loading="lazy">
-              <span class="proj-status status-progress">🛠 Demo Deploying</span>
+              <span class="proj-status status-live"><span class="live-dot"></span>Live Demo</span>
+              <!-- <span class="proj-status status-progress">🛠 Demo Deploying</span> -->
             </div>
             <div class="proj-body">
               <div class="proj-header">
@@ -334,6 +338,12 @@
         <div class="modal-diagram-wrap" id="modal-diagram-wrap" style="display:none;">
           <div class="modal-section-label">System Architecture</div>
           <div class="modal-gallery modal-gallery-single" id="modal-diagram"></div>
+          <div class="modal-diagram-hint">Click the diagram to view it full size</div>
+        </div>
+
+        <div class="modal-video-wrap">
+          <div class="modal-section-label">Demo Video</div>
+          <div class="modal-video-box" id="modal-video-box"></div>
         </div>
 
         <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
@@ -352,9 +362,16 @@
   </div>
 </div>
 
+<!-- Lightbox: full-size image viewer for gallery/diagram photos -->
+<div class="lightbox-overlay" id="lightbox-overlay" onclick="closeLightbox(event)">
+  <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <div class="divider"></div>
 
 <!-- ── SKILLS ── -->
+
 <section id="skills">
   <div class="container">
     
