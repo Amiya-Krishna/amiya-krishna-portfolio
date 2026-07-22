@@ -110,35 +110,56 @@ themeBtn.addEventListener('click', () => {
 ────────────────────────────────────────── */
 const projectData = [
   {
-    title: "Community Discussion Forum with Real-Time Chat",
+    title: "Job Application Tracker + Intelligent Matching Engine",
     isLive: true,
 
     problem:
-      "Online communities are usually forced to pick one: slow-paced threaded discussions, or fast real-time chat. Splitting the two across separate tools kills engagement and context.",
+      "Job seekers applying to dozens of roles lose track of stages fast — spreadsheets don't scale. Worse, manually reading every new listing and judging fit against your own profile wastes hours that should go into actual applications.",
 
     solution:
-      "Built a MERN + Socket.IO platform that merges both worlds in one app — persistent discussion threads with comments live alongside real-time messaging, so a conversation can start async and move to live chat instantly.",
+      "A centralized React/Vite + Express + PostgreSQL tracker for the core CRUD workflow, extended with a second system: a BullMQ/Redis worker fleet that ingests listings (scraper + browser extension), deduplicates them, scores them against a stored profile with TF-IDF and optional embeddings, and can semi-automate the apply flow via Playwright — stopping before the final submit click.",
 
     desc: [
-      "15+ REST APIs across Auth, Posts & Notifications",
-      "JWT Authentication with bcrypt password hashing",
-      "Socket.IO — live chat, typing indicators & online presence",
-      "Real-time notifications for replies, mentions & messages",
-      "MongoDB + Mongoose schema design across 4 collections",
-      "Role-based authorization on protected routes"
+      "Full CRUD job tracker: company, role, status, interview date & notes",
+      "JWT Authentication (bcryptjs) with per-user data isolation",
+      "Ingestion pipeline: normalize → dedup → insert → enqueue match",
+      "TF-IDF + keyword matcher, plus a provider-agnostic embeddings scorer",
+      "Learning service nudges per-skill weights from interview/offer/rejection outcomes",
+      "Human-in-the-loop apply engine via Playwright (stops before final submit)"
     ],
 
-    tags: ["React", "Node.js", "Express", "MongoDB", "Socket.IO", "JWT"],
+    architecture: [
+      "API process (Express 5) stays thin — all heavy work (scraping, matching, applying, analytics) runs in a separate worker process via BullMQ, so a Playwright crash never takes the API down",
+      "Single hosted PostgreSQL instance shared by both the original tracker (users, tracked_jobs) and the new engine (jobs, companies, applications, match_scores, user_profile, job_sources, analytics_daily)",
+      "Matching is provider-agnostic: scoreEmbedding() takes an injected embedFn so it isn't locked to one AI vendor",
+      "Deduplication runs exact-hash first, then fuzzy (Jaro-Winkler title + TF-IDF description) before insert"
+    ],
 
-    link: "https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat",
-    live: "https://community-discussion-forum-with-rea-roan.vercel.app",
+    scaling: [
+      "Redis-backed token-bucket rate limiter, capped per target domain, with randomized human-like delays to avoid hammering source sites",
+      "Workers run as their own process (npm run worker) so ingestion/apply load never blocks user-facing API requests",
+      "ATS field selectors are adapter-based (adapters/) — extending to a new job board means adding an adapter, not rewriting the engine",
+      "Next step called out directly in the repo: swap in a headless-detection-resistant scraping layer and add integration tests around dedup thresholds"
+    ],
+
+    metrics: [
+      { num: "7", label: "New DB Tables" },
+      { num: "3", label: "Background Workers" },
+      { num: "2", label: "Matching Algorithms" },
+      { num: "5+", label: "New REST Route Groups" }
+    ],
+
+    tags: ["React 19 + Vite", "Express 5", "PostgreSQL", "BullMQ + Redis", "Playwright", "JWT"],
+
+    link: "https://github.com/Amiya-Krishna/Job-Application-Tracker-Portal",
+    live: "https://job-application-tracker-portal-ten.vercel.app",
 
     gallery: [
-      { src: "assets/projects/forum-dashboard.jpg", alt: "Discussion feed dashboard" },
-      { src: "assets/projects/forum-create-discussion.jpg", alt: "Create discussion thread" },
-      { src: "assets/projects/forum-comments.jpg", alt: "Live comments & replies" }
+      { src: "assets/projects/tracker-dashboard.jpg", alt: "Job application dashboard" },
+      { src: "assets/projects/tracker-add-jobs.jpg", alt: "API tested with Postman" },
+      { src: "assets/projects/tracker-email-integration.jpg", alt: "Secure login screen" }
     ],
-    diagram: "assets/projects/system_architecture.png",
+    diagram: "assets/projects/Job_tracker_system_architecture.png",
     demoVideo: "", // paste a .mp4/.webm or .gif URL here later
 
     status: "Built & feature-complete — live demo deploying"
@@ -164,7 +185,28 @@ const projectData = [
       "Email-based password reset flow (Resend) with expiring tokens"
     ],
 
-    tags: ["Next.js", "TypeScript", "Prisma", "PostgreSQL", "JWT"],
+    architecture: [
+      "Next.js App Router as the single composition layer — src/app/api holds route handlers colocated with the pages that call them",
+      "middleware.ts centralizes access control, checking the JWT cookie before requests reach any protected route handler",
+      "Relational schema (Prisma): User, College, Course, Review, SavedCollege (unique userId+collegeId), PasswordResetToken",
+      "Recommendation weights (rank/fees/placement) are environment-configurable, not hardcoded"
+    ],
+
+    scaling: [
+      "Indexed lookup fields on college name, location, rating, and user-saved records for fast filtered reads",
+      "Cascade-safe deletes on Course/Review so removing a college doesn't orphan child records",
+      "Global Prisma Client reuse in development prevents connection-pool churn on hot reload",
+      "Password reset tokens are single-use and expiring — no long-lived reset links"
+    ],
+
+    metrics: [
+      { num: "14", label: "API Routes" },
+      { num: "6", label: "Prisma Models" },
+      { num: "3", label: "Comparison Slots" },
+      { num: "1hr", label: "Reset Token TTL" }
+    ],
+
+    tags: ["Next.js 16", "TypeScript", "Prisma", "PostgreSQL", "Zod", "JWT"],
 
     link: "https://github.com/Amiya-Krishna/college-discovery",
     live: "https://college-discovery-vert.vercel.app",
@@ -174,42 +216,63 @@ const projectData = [
       { src: "assets/projects/college-discovery-predictor.jpg", alt: "Rank-based college predictor" },
       { src: "assets/projects/college-discovery-compare.jpg", alt: "Side-by-side college comparison" }
     ],
-    diagram: "assets/projects/college-discovery-architecture.svg",
+    diagram: "assets/projects/college-discovery-architecture.png",
     demoVideo: "", // paste a .mp4/.webm or .gif URL here later
 
     status: "Live in production on Vercel"
   },
 
   {
-    title: "Job Application Tracker Portal",
+    title: "Real-Time Discussion Platform (WebSocket Architecture)",
     isLive: true,
 
     problem:
-      "Job seekers applying to dozens of roles quickly lose track of which stage each application is at — spreadsheets and email threads don't scale past a handful of applications.",
+      "Online communities are usually forced to pick one: slow-paced threaded discussions, or fast real-time chat. Splitting the two across separate tools kills engagement and context.",
 
     solution:
-      "A centralized MERN dashboard where users log every application, move it through hiring stages (Applied → Interview → Offer), and search, filter & sort their pipeline — all scoped to a JWT-authenticated account so data stays private per user.",
+      "Built a MERN + Socket.IO platform that merges both worlds in one app — persistent discussion threads with comments live alongside real-time messaging, so a conversation can start async and move to live chat instantly.",
 
     desc: [
-      "Track applications through custom hiring stages",
-      "Full CRUD via RESTful API (create, update, delete jobs)",
-      "Search, filter & sort applications by company, role & status",
-      "JWT Authentication with per-user data isolation",
-      "MongoDB + Mongoose data modelling",
-      "Responsive dashboard built with React & Tailwind CSS"
+      "15+ REST APIs across Auth, Posts & Notifications",
+      "JWT Authentication with bcrypt password hashing",
+      "Socket.IO — live chat, typing indicators & online presence",
+      "Real-time notifications for replies, mentions & messages persisted to the DB",
+      "Multi-emoji reactions, rich text posts, image uploads (Multer), @mentions with autocomplete",
+      "Infinite scroll — feed loads in pages of 8 instead of fetching everything at once"
     ],
 
-    tags: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+    architecture: [
+      "Express REST API and a Socket.IO layer run side by side in the same Node process, sharing auth/session context",
+      "MongoDB + Mongoose schema design across Users, Posts, Comments & Notifications collections",
+      "Role-based authorization middleware guards protected routes on both REST and socket events",
+      "Uploaded images served from server/uploads via Multer in dev — repo explicitly flags this needs to move to S3/Cloudinary for production since free-tier hosts use ephemeral disks"
+    ],
 
-    link: "https://github.com/Amiya-Krishna/Job-Application-Tracker-Portal",
-    live: "https://job-application-tracker-portal-ten.vercel.app",
+    scaling: [
+      "Infinite scroll (paged fetch of 8) instead of loading the full feed, to keep initial payloads small as post volume grows",
+      "Socket.IO falls back to HTTP long-polling when WebSocket transport isn't available",
+      "Notification documents carry a type + link back to the source post, so read/unread state persists across sessions instead of living only in memory",
+      "Known scaling gap called out directly: local-disk image storage won't survive redeploys on ephemeral hosts — next step is swapping in object storage"
+    ],
+
+    metrics: [
+      { num: "15+", label: "REST Endpoints" },
+      { num: "4", label: "Mongo Collections" },
+      { num: "6", label: "Emoji Reactions" },
+      { num: "8", label: "Posts / Page" }
+    ],
+
+    tags: ["React 18", "Node.js", "Express", "MongoDB", "Socket.IO", "JWT"],
+
+    link: "https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat",
+    live: "https://community-discussion-forum-with-rea-roan.vercel.app",
 
     gallery: [
-      { src: "assets/projects/tracker-dashboard.jpg", alt: "Job application dashboard" },
-      { src: "assets/projects/tracker-add-jobs.jpg", alt: "API tested with Postman" },
-      { src: "assets/projects/tracker-email-integration.jpg", alt: "Secure login screen" }
+      { src: "assets/projects/forum-dashboard.jpg", alt: "Discussion feed dashboard" },
+      { src: "assets/projects/forum-create-discussion.jpg", alt: "Create discussion thread" },
+      { src: "assets/projects/forum-comments.jpg", alt: "Live comments & replies" }
     ],
-    diagram: "assets/projects/Job_tracker_system_architecture.png",
+    diagram: "assets/projects/system_architecture.png",
     demoVideo: "", // paste a .mp4/.webm or .gif URL here later
 
     status: "Built & feature-complete — live demo deploying"
@@ -236,6 +299,41 @@ function openModal(i) {
     // Features
     document.getElementById("modal-desc").innerHTML =
         p.desc.map(feature => `<li>${feature}</li>`).join("");
+
+    // Architecture & tech decisions
+    const archEl = document.getElementById("modal-architecture");
+    const archWrap = archEl.closest(".modal-section");
+    if (p.architecture && p.architecture.length) {
+        archEl.innerHTML = p.architecture.map(item => `<li>${item}</li>`).join("");
+        archWrap.style.display = "";
+    } else {
+        archEl.innerHTML = "";
+        archWrap.style.display = "none";
+    }
+
+    // Scaling considerations
+    const scaleEl = document.getElementById("modal-scaling");
+    const scaleWrap = scaleEl.closest(".modal-section");
+    if (p.scaling && p.scaling.length) {
+        scaleEl.innerHTML = p.scaling.map(item => `<li>${item}</li>`).join("");
+        scaleWrap.style.display = "";
+    } else {
+        scaleEl.innerHTML = "";
+        scaleWrap.style.display = "none";
+    }
+
+    // Metrics & scope
+    const metricsEl = document.getElementById("modal-metrics");
+    const metricsWrap = document.getElementById("modal-metrics-wrap");
+    if (p.metrics && p.metrics.length) {
+        metricsEl.innerHTML = p.metrics.map(m =>
+            `<div class="metric-box"><span class="metric-num">${m.num}</span><div class="metric-label">${m.label}</div></div>`
+        ).join("");
+        metricsWrap.style.display = "";
+    } else {
+        metricsEl.innerHTML = "";
+        metricsWrap.style.display = "none";
+    }
 
     // Tags
     document.getElementById("modal-tags").innerHTML =
@@ -500,3 +598,46 @@ function copyEmail() {
   });
 }
 
+
+/* ──────────────────────────────────────────
+   WHATSAPP DIRECT CONTACT
+────────────────────────────────────────── */
+(function setupWhatsApp() {
+  const PHONE = "919305559247"; // country code + number, no + or leading 0
+  const MESSAGE = "Hi Krishna, I saw your portfolio and wanted to connect regarding an opportunity.";
+  const waLink = `https://wa.me/${PHONE}?text=${encodeURIComponent(MESSAGE)}`;
+
+  ["hero-whatsapp", "contact-whatsapp", "whatsapp-float"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.href = waLink;
+  });
+})();
+
+/* ──────────────────────────────────────────
+   DSA STATS — live fetch (best effort)
+   Codeforces exposes a public, CORS-enabled API,
+   so its rating can be fetched directly from the browser.
+   LeetCode has no official public API and does not allow
+   cross-origin requests from a static site, so that card
+   stays a plain profile link rather than faking a number.
+────────────────────────────────────────── */
+(function loadCodeforcesStat() {
+  const handle = "krishna_dsa"; // update if the handle changes
+  const el = document.getElementById("codeforces-stat");
+  if (!el) return;
+
+  fetch(`https://codeforces.com/api/user.info?handles=${handle}`)
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === "OK" && data.result && data.result[0]) {
+        const user = data.result[0];
+        const rating = user.rating ?? "Unrated";
+        const rank = user.rank ? ` (${user.rank})` : "";
+        el.textContent = `Rating: ${rating}${rank}`;
+      }
+    })
+    .catch(() => {
+      // Silently keep the "Rating: —" placeholder if the API call fails
+      // (e.g. offline, handle not found, or Codeforces rate-limiting).
+    });
+})();
