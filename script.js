@@ -177,7 +177,7 @@ const projectData = [
     ],
 
     link: "https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline",
-    live: "https://job-application-tracker-portal-ten.vercel.app",
+    live: "https://Job Application Tracker — Ingestion, Matching & Analytics Engine-ten.vercel.app",
 
     gallery: [
       {
@@ -254,24 +254,25 @@ const projectData = [
 
     tags: ["Next.js 16", "TypeScript", "Prisma", "PostgreSQL", "Zod", "JWT"],
 
-    link: "https://github.com/Amiya-Krishna/college-discovery",
-    live: "https://college-discovery-vert.vercel.app",
+    link: "https://github.com/Amiya-Krishna/Collexa — College Decision Intelligence Platform",
+    live: "https://Collexa — College Decision Intelligence Platform-vert.vercel.app",
 
     gallery: [
       {
-        src: "assets/projects/college-discovery-list.jpg",
+        src: "assets/projects/Collexa — College Decision Intelligence Platform-list.jpg",
         alt: "College search & filter page",
       },
       {
-        src: "assets/projects/college-discovery-predictor.jpg",
+        src: "assets/projects/Collexa — College Decision Intelligence Platform-predictor.jpg",
         alt: "Rank-based college predictor",
       },
       {
-        src: "assets/projects/college-discovery-compare.jpg",
+        src: "assets/projects/Collexa — College Decision Intelligence Platform-compare.jpg",
         alt: "Side-by-side college comparison",
       },
     ],
-    diagram: "assets/projects/college-discovery-architecture.png",
+    diagram:
+      "assets/projects/Collexa — College Decision Intelligence Platform-architecture.png",
     demoVideo: "", // paste a .mp4/.webm or .gif URL here later
 
     status: "Live in production on Vercel",
