@@ -259,20 +259,20 @@ const projectData = [
 
     gallery: [
       {
-        src: "assets/projects/Collexa — College Decision Intelligence Platform-list.jpg",
+        src: "assets/projects/college-discovery-list.jpg",
         alt: "College search & filter page",
       },
       {
-        src: "assets/projects/Collexa — College Decision Intelligence Platform-predictor.jpg",
+        src: "assets/projects/college-discovery-predictor.jpg",
         alt: "Rank-based college predictor",
       },
       {
-        src: "assets/projects/Collexa — College Decision Intelligence Platform-compare.jpg",
+        src: "assets/projects/college-discovery-compare.jpg",
         alt: "Side-by-side college comparison",
       },
     ],
     diagram:
-      "assets/projects/Collexa — College Decision Intelligence Platform-architecture.png",
+      "assets/projects/college-discovery-architecture.png",
     demoVideo: "", // paste a .mp4/.webm or .gif URL here later
 
     status: "Live in production on Vercel",
