@@ -1,185 +1,254 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <meta name="google-site-verification" content="Irp1zFVMkrZQ9V3HDcxl_GsVJfaMDnd0MivtNvnyxok" />
-  <title>Amiya Krishna — Software Engineer</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  
-  <!-- Scroll bar -->
-  <div id="scroll-bar"></div>
-  
-  <!-- Canvas BG -->
-  <canvas id="bg-canvas"></canvas>
-  
-  <!-- ── NAV ── -->
-  <nav>
-    <div class="nav-logo">AK//DEV</div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#featured">Featured</a></li>
-      <li><a href="#engineering">Engineering</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-right">
-      <button class="theme-btn" id="theme-toggle" title="Toggle theme">☀️</button>
-      <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
-    </div>
-  </nav>
-  
-  <!-- ── HERO ── -->
-  <section class="hero" id="home">
-    <div class="container hero-inner">
-      <div class="hero-avatar reveal">
-        <img src="assets/projects/profile.jpg" alt="Amiya Krishna" loading="eager" decoding="async" onerror="this.closest('.hero-avatar').style.display='none'">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-site-verification"
+      content="Irp1zFVMkrZQ9V3HDcxl_GsVJfaMDnd0MivtNvnyxok"
+    />
+    <title>Amiya Krishna — Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@400;600;700;800;900&family=JetBrains+Mono:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Scroll bar -->
+    <div id="scroll-bar"></div>
+
+    <!-- Canvas BG -->
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- ── NAV ── -->
+    <nav>
+      <div class="nav-logo">AK//DEV</div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#featured">Featured</a></li>
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <button class="theme-btn" id="theme-toggle" title="Toggle theme">
+          ☀️
+        </button>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
       </div>
-      <div class="hero-left">
-        <div class="hero-tag reveal">Backend-Leaning Full Stack Engineer • REST APIs • System Design • PostgreSQL • MongoDB • Queues & Workers</div>
-        <h1 class="hero-name reveal">
-          <span class="line1">Amiya</span>
-          <span class="line2">Krishna</span>
-        </h1>
-        <div class="hero-info reveal">
-          
-          <span>🎓 B.Tech (3rd Year)</span>
-          
-          <span>💼 Open to Internship</span>
-          
-          <span>📍 Lucknow, India</span>
-          
+    </nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero" id="home">
+      <div class="container hero-inner">
+        <div class="hero-avatar reveal">
+          <img
+            src="assets/projects/profile.jpg"
+            alt="Amiya Krishna"
+            loading="eager"
+            decoding="async"
+            onerror="this.closest('.hero-avatar').style.display = 'none'"
+          />
         </div>
-        
-        <p class="hero-typed reveal"><span id="typed-text"></span><span class="cursor-blink">_</span></p>
-        <p class="hero-desc reveal">I design and ship backend systems, not just UIs — relational schemas with proper indexing and constraints, JWT/cookie-based auth, queue-driven background workers, rate limiters, and fuzzy-matching pipelines. Three production-grade full-stack builds later: a Next.js platform with a weighted recommendation engine, a Socket.IO real-time forum, and a job tracker with a BullMQ/Redis worker fleet doing scraping, deduplication, and TF-IDF matching. I build things that have to actually run under load, not just demo well.</p>
-        <div class="availability reveal">
-          🟢 Available for Software Engineering Internship (Immediate Joining)
-        </div>
-        <div class="hero-stats reveal">
-          <div class="stat">
-            <span class="stat-num">3</span>
-            <div class="stat-label">Full Stack Systems Shipped</div>
+        <div class="hero-left">
+          <div class="hero-tag reveal">
+            Backend-Leaning Full Stack Engineer • REST APIs • System Design •
+            PostgreSQL • MongoDB • Queues & Workers
           </div>
-          <div class="stat">
-            <span class="stat-num">30+</span>
-            <div class="stat-label">REST Endpoints Designed</div>
+          <h1 class="hero-name reveal">
+            <span class="line1">Amiya</span>
+            <span class="line2">Krishna</span>
+          </h1>
+          <div class="hero-info reveal">
+            <span>🎓 B.Tech (3rd Year)</span>
+
+            <span>💼 Open to Internship</span>
+
+            <span>📍 Lucknow, India</span>
           </div>
-          <div class="stat">
-            <span class="stat-num">2</span>
-            <div class="stat-label">Relational + NoSQL DB Schemas</div>
-          </div>
-          <div class="stat">
-            <span class="stat-num">1</span>
-            <div class="stat-label">Queue-Based Worker Fleet (BullMQ + Redis)</div>
-          </div>
-        </div>
-        <div class="hero-highlights reveal">
-          
-          <span>✓ JWT / Cookie Authentication</span>
-          
-          <span>✓ Relational Schema Design (Prisma + PostgreSQL)</span>
-          
-          <span>✓ NoSQL Modeling (MongoDB + Mongoose)</span>
-          
-          <span>✓ Background Workers & Job Queues (BullMQ, Redis)</span>
-          
-          <span>✓ Real-Time Systems (Socket.IO)</span>
-          
-          <span>✓ Rate Limiting & Fuzzy Deduplication</span>
-          
-        </div>
-        
-        
-        <div class="hero-cta reveal">
-          <a class="btn btn-primary" href="#projects">View Projects ↗</a>
-          <a class="btn btn-whatsapp" id="hero-whatsapp" href="#" target="_blank" rel="noopener">💬 WhatsApp Me</a>
-          <a class="btn btn-outline" href="https://github.com/Amiya-Krishna" target="_blank">GitHub</a>
-          <a class="btn btn-outline" href="https://www.linkedin.com/in/amiya-krishna" target="_blank">LinkedIn</a>
-          <a href="mailto:amiyakrishna04@gmail.com" class="btn btn-outline">📧 Email Me</a>
-        </div>
-      </div>
 
-      <div class="hero-terminal reveal">
-        <div class="hero-terminal-bar">
-          <span class="dot dot-r"></span><span class="dot dot-y"></span><span class="dot dot-g"></span>
-          <span class="hero-terminal-title">whoami.sh</span>
-        </div>
-        <div class="hero-terminal-body">
-          <p><span class="prompt">$</span> whoami</p>
-          <p class="out">Amiya Krishna — B.Tech CSE, 3rd Year</p>
-          <p><span class="prompt">$</span> stack --backend</p>
-          <p class="out">Node.js · Express · Next.js API routes</p>
-          <p class="out">PostgreSQL + Prisma · MongoDB + Mongoose</p>
-          <p class="out">BullMQ · Redis · Socket.IO</p>
-          <p><span class="prompt">$</span> systems --built</p>
-          <p class="out out-green">✓ Weighted recommendation engine</p>
-          <p class="out out-green">✓ Real-time WebSocket forum</p>
-          <p class="out out-green">✓ Queue-based job matching pipeline</p>
-          <p><span class="prompt">$</span> status</p>
-          <p class="out out-green">✓ Open to Backend / Full Stack Internships</p>
-          <p><span class="prompt">$</span> <span class="cursor-blink">_</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
-  
-  <div class="scroll-indicator">
-    <span></span>
-  </div>
-  
-  <div class="divider"></div>
-  
-  <!-- RESUME -->
- <section id="resume" class="resume-section">
-  <div class="container">
-    <div class="section-kicker reveal">Quick Overview</div>
-    <div class="section-title reveal" style="margin-bottom:32px;">My <em>Resume</em></div>
-
-    <div class="resume-card reveal">
-
-      <div class="resume-header">
-        <h3>Software Engineering Profile</h3>
-        <p>Backend-leaning Full Stack Developer focused on APIs, data modeling & systems that scale</p>
-      </div>
-
-      <div class="resume-highlights">
-        <p>✔ B.Tech Engineering Student</p>
-        <p>✔ Backend-Leaning Full Stack Developer</p>
-        <p>✔ Node.js • Express • Next.js Route Handlers</p>
-        <p>✔ PostgreSQL • Prisma ORM • MongoDB • Mongoose</p>
-        <p>✔ JWT/Cookie Auth • REST API Design • Zod Validation</p>
-        <p>✔ Background Workers • BullMQ + Redis • Socket.IO</p>
-        <p>✔ 3 Production-Level Full Stack Systems</p>
-        <p>✔ Actively seeking Backend / Full Stack Internship</p>
-      </div>
-
-      <a class="btn btn-primary" href="resume/Amiya_Krishna_Resume.pdf" download>
-        Download Resume
-      </a>
-
-    </div>
-  </div>
-</section>
-  
-  <div class="divider"></div>
-  
-  <!-- ── ABOUT ── -->
-  <section id="about">
-    <div class="container">
-      <div class="section-kicker reveal">Who I am</div>
-      <div class="about-grid">
-        <div>
-          <p class="about-headline reveal">
-            I design the parts of an app users never see — <em>schemas, queues, and APIs</em> — and make sure they hold up.
+          <p class="hero-typed reveal">
+            <span id="typed-text"></span><span class="cursor-blink">_</span>
           </p>
-          <p class="about-body reveal">
-            My three main projects each forced a different backend problem: <strong>college-discovery</strong> needed a relational schema with cascade-safe joins and a configurable scoring engine; the <strong>discussion forum</strong> needed real-time state synced across sockets and a REST API at the same time; and the <strong>job tracker</strong> needed a queue-based worker system — BullMQ jobs, Redis rate limiting, TF-IDF + fuzzy-match deduplication — running as a separate process from the API so a scraper crash can't take the whole app down. I'm currently deepening DSA and system design so the next thing I build scales further than the last.</p>
+          <p class="hero-desc reveal">
+            I design and ship backend systems, not just UIs — relational schemas
+            with proper indexing and constraints, JWT/cookie-based auth,
+            queue-driven background workers, rate limiters, and fuzzy-matching
+            pipelines. Three production-grade full-stack builds later: a Next.js
+            platform with a weighted recommendation engine, a Socket.IO
+            real-time forum, and a job tracker with a BullMQ/Redis worker fleet
+            doing scraping, deduplication, and TF-IDF matching. I build things
+            that have to actually run under load, not just demo well.
+          </p>
+          <div class="availability reveal">
+            🟢 Available for Software Engineering Internship (Immediate Joining)
+          </div>
+          <div class="hero-stats reveal">
+            <div class="stat">
+              <span class="stat-num">3</span>
+              <div class="stat-label">Full Stack Systems Shipped</div>
+            </div>
+            <div class="stat">
+              <span class="stat-num">30+</span>
+              <div class="stat-label">REST Endpoints Designed</div>
+            </div>
+            <div class="stat">
+              <span class="stat-num">2</span>
+              <div class="stat-label">Relational + NoSQL DB Schemas</div>
+            </div>
+            <div class="stat">
+              <span class="stat-num">1</span>
+              <div class="stat-label">
+                Queue-Based Worker Fleet (BullMQ + Redis)
+              </div>
+            </div>
+          </div>
+          <div class="hero-highlights reveal">
+            <span>✓ JWT / Cookie Authentication</span>
+
+            <span>✓ Relational Schema Design (Prisma + PostgreSQL)</span>
+
+            <span>✓ NoSQL Modeling (MongoDB + Mongoose)</span>
+
+            <span>✓ Background Workers & Job Queues (BullMQ, Redis)</span>
+
+            <span>✓ Real-Time Systems (Socket.IO)</span>
+
+            <span>✓ Rate Limiting & Fuzzy Deduplication</span>
+          </div>
+
+          <div class="hero-cta reveal">
+            <a class="btn btn-primary" href="#projects">View Projects ↗</a>
+            <a
+              class="btn btn-whatsapp"
+              id="hero-whatsapp"
+              href="#"
+              target="_blank"
+              rel="noopener"
+              >💬 WhatsApp Me</a
+            >
+            <a
+              class="btn btn-outline"
+              href="https://github.com/Amiya-Krishna"
+              target="_blank"
+              >GitHub</a
+            >
+            <a
+              class="btn btn-outline"
+              href="https://www.linkedin.com/in/amiya-krishna"
+              target="_blank"
+              >LinkedIn</a
+            >
+            <a href="mailto:amiyakrishna04@gmail.com" class="btn btn-outline"
+              >📧 Email Me</a
+            >
+          </div>
+        </div>
+
+        <div class="hero-terminal reveal">
+          <div class="hero-terminal-bar">
+            <span class="dot dot-r"></span><span class="dot dot-y"></span
+            ><span class="dot dot-g"></span>
+            <span class="hero-terminal-title">whoami.sh</span>
+          </div>
+          <div class="hero-terminal-body">
+            <p><span class="prompt">$</span> whoami</p>
+            <p class="out">Amiya Krishna — B.Tech CSE, 3rd Year</p>
+            <p><span class="prompt">$</span> stack --backend</p>
+            <p class="out">Node.js · Express · Next.js API routes</p>
+            <p class="out">PostgreSQL + Prisma · MongoDB + Mongoose</p>
+            <p class="out">BullMQ · Redis · Socket.IO</p>
+            <p><span class="prompt">$</span> systems --built</p>
+            <p class="out out-green">✓ Weighted recommendation engine</p>
+            <p class="out out-green">✓ Real-time WebSocket forum</p>
+            <p class="out out-green">✓ Queue-based job matching pipeline</p>
+            <p><span class="prompt">$</span> status</p>
+            <p class="out out-green">
+              ✓ Open to Backend / Full Stack Internships
+            </p>
+            <p>
+              <span class="prompt">$</span> <span class="cursor-blink">_</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="scroll-indicator">
+      <span></span>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- RESUME -->
+    <section id="resume" class="resume-section">
+      <div class="container">
+        <div class="section-kicker reveal">Quick Overview</div>
+        <div class="section-title reveal" style="margin-bottom: 32px">
+          My <em>Resume</em>
+        </div>
+
+        <div class="resume-card reveal">
+          <div class="resume-header">
+            <h3>Software Engineering Profile</h3>
+            <p>
+              Backend-leaning Full Stack Developer focused on APIs, data
+              modeling & systems that scale
+            </p>
+          </div>
+
+          <div class="resume-highlights">
+            <p>✔ B.Tech Engineering Student</p>
+            <p>✔ Backend-Leaning Full Stack Developer</p>
+            <p>✔ Node.js • Express • Next.js Route Handlers</p>
+            <p>✔ PostgreSQL • Prisma ORM • MongoDB • Mongoose</p>
+            <p>✔ JWT/Cookie Auth • REST API Design • Zod Validation</p>
+            <p>✔ Background Workers • BullMQ + Redis • Socket.IO</p>
+            <p>✔ 3 Production-Level Full Stack Systems</p>
+            <p>✔ Actively seeking Backend / Full Stack Internship</p>
+          </div>
+
+          <a
+            class="btn btn-primary"
+            href="resume/Amiya_Krishna_Resume.pdf"
+            download
+          >
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── ABOUT ── -->
+    <section id="about">
+      <div class="container">
+        <div class="section-kicker reveal">Who I am</div>
+        <div class="about-grid">
+          <div>
+            <p class="about-headline reveal">
+              I design the parts of an app users never see —
+              <em>schemas, queues, and APIs</em> — and make sure they hold up.
+            </p>
+            <p class="about-body reveal">
+              My three main projects each forced a different backend problem:
+              <strong>college-discovery</strong> needed a relational schema with
+              cascade-safe joins and a configurable scoring engine; the
+              <strong>discussion forum</strong> needed real-time state synced
+              across sockets and a REST API at the same time; and the
+              <strong>job tracker</strong> needed a queue-based worker system —
+              BullMQ jobs, Redis rate limiting, TF-IDF + fuzzy-match
+              deduplication — running as a separate process from the API so a
+              scraper crash can't take the whole app down. I'm currently
+              deepening DSA and system design so the next thing I build scales
+              further than the last.
+            </p>
           </div>
           <div class="about-cards">
             <div class="mini-card reveal">
@@ -195,64 +264,117 @@
             <div class="mini-card reveal">
               <div class="mini-card-icon">🚀</div>
               <h3>Goal</h3>
-              <p>Backend/full-stack roles building systems that run under real load</p>
+              <p>
+                Backend/full-stack roles building systems that run under real
+                load
+              </p>
             </div>
           </div>
         </div>
-        
+
         <!-- achievements -->
         <div class="achievements-grid">
           <div class="ach-card reveal">
             <span class="ach-icon">🧠</span>
             <div class="ach-title">Backend & APIs</div>
-            <div class="ach-sub">Node.js · Express · Next.js Route Handlers · REST design · Zod validation · JWT/cookie auth</div>
+            <div class="ach-sub">
+              Node.js · Express · Next.js Route Handlers · REST design · Zod
+              validation · JWT/cookie auth
+            </div>
           </div>
           <div class="ach-card reveal">
             <span class="ach-icon">🗄️</span>
             <div class="ach-title">Data & Persistence</div>
-            <div class="ach-sub">PostgreSQL · Prisma ORM · MongoDB · Mongoose · schema design & indexing</div>
+            <div class="ach-sub">
+              PostgreSQL · Prisma ORM · MongoDB · Mongoose · schema design &
+              indexing
+            </div>
           </div>
           <div class="ach-card reveal">
             <span class="ach-icon">⚙️</span>
             <div class="ach-title">Systems & Real-Time</div>
-            <div class="ach-sub">BullMQ · Redis (queues + rate limiting) · Socket.IO · worker processes</div>
+            <div class="ach-sub">
+              BullMQ · Redis (queues + rate limiting) · Socket.IO · worker
+              processes
+            </div>
           </div>
           <div class="ach-card reveal">
             <span class="ach-icon">📊</span>
             <div class="ach-title">Data Engineering</div>
-            <div class="ach-sub">Pandas · NumPy · TF-IDF & Jaro-Winkler matching</div>
+            <div class="ach-sub">
+              Pandas · NumPy · TF-IDF & Jaro-Winkler matching
+            </div>
           </div>
         </div>
       </div>
     </section>
-    
+
     <div class="divider"></div>
-    
+
     <!-- ── PROJECTS ── -->
     <section id="projects">
       <div class="container">
         <div class="section-kicker reveal">Portfolio</div>
         <div class="section-title reveal">Selected <em>Work</em></div>
-        
-        <p class="proj-hint reveal">Tap any project for the full case study — problem, solution, architecture, and proof. GitHub data pulled live via the GitHub API.</p>
+
+        <p class="proj-hint reveal">
+          Tap any project for the full case study — problem, solution,
+          architecture, and proof. GitHub data pulled live via the GitHub API.
+        </p>
 
         <div class="proj-grid">
-
           <div class="proj-card reveal" onclick="openModal(0)">
             <div class="proj-thumb">
-              <img src="assets/projects/tracker-dashboard.jpg" alt="Job Application Tracker dashboard" loading="lazy">
-              <span class="proj-status status-live"><span class="live-dot"></span>Featured · Live Demo</span>
+              <img
+                src="assets/projects/tracker-dashboard.jpg"
+                alt="Job Application Tracker dashboard"
+                loading="lazy"
+              />
+              <span class="proj-status status-live"
+                ><span class="live-dot"></span>Featured · Live Demo</span
+              >
             </div>
             <div class="proj-body">
               <div class="proj-header">
                 <div class="proj-num">01</div>
-                <a href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline" target="_blank" class="proj-link" onclick="event.stopPropagation()" title="View source on GitHub"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.77 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.73.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.16.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.47 3.14-1.16 3.14-1.16.62 1.56.23 2.72.11 3.01.73.79 1.17 1.81 1.17 3.05 0 4.37-2.66 5.33-5.19 5.61.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.02 11.52C23.02 5.24 18.27.5 12 .5Z"/></svg></a>
+                <a
+                  href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
+                  target="_blank"
+                  class="proj-link"
+                  onclick="event.stopPropagation()"
+                  title="View source on GitHub"
+                  ><svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.77 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.73.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.16.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.47 3.14-1.16 3.14-1.16.62 1.56.23 2.72.11 3.01.73.79 1.17 1.81 1.17 3.05 0 4.37-2.66 5.33-5.19 5.61.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.02 11.52C23.02 5.24 18.27.5 12 .5Z"
+                    /></svg
+                ></a>
               </div>
-              <h3>Job Application Tracker — Ingestion, Matching &amp; Analytics Engine</h3>
+              <h3>
+                Job Application Tracker — Ingestion, Matching &amp; Analytics
+                Engine
+              </h3>
 
               <div class="proj-pitch">
-                <p><span class="pitch-label">Problem</span>Spreadsheets don't scale past a handful of job applications, and manually matching listings to a profile wastes hours.</p>
-                <p><span class="pitch-label">Solution</span>React/Vite + Express + PostgreSQL (Prisma ORM) tracker extended with a BullMQ/Redis worker fleet: jobs arrive via manual entry, Gmail inbox scanning, a Manifest V3 browser extension, or a live discovery API, then get deduplicated (TF-IDF + Jaro-Winkler), scored by two matchers, and semi-automated through Playwright — feeding a live per-user analytics dashboard, all as a process fully separate from the API.</p>
+                <p>
+                  <span class="pitch-label">Problem</span>Spreadsheets don't
+                  scale past a handful of job applications, and manually
+                  matching listings to a profile wastes hours.
+                </p>
+                <p>
+                  <span class="pitch-label">Solution</span>React/Vite + Express
+                  + PostgreSQL (Prisma ORM) tracker extended with a BullMQ/Redis
+                  worker fleet: jobs arrive via manual entry, Gmail inbox
+                  scanning, a Manifest V3 browser extension, or a live discovery
+                  API, then get deduplicated (TF-IDF + Jaro-Winkler), scored by
+                  two matchers, and semi-automated through Playwright — feeding
+                  a live per-user analytics dashboard, all as a process fully
+                  separate from the API.
+                </p>
               </div>
 
               <div class="tags">
@@ -268,19 +390,49 @@
 
           <div class="proj-card reveal" onclick="openModal(1)">
             <div class="proj-thumb">
-              <img src="assets/projects/college-discovery-list.jpg" alt="College Discovery search & filter page" loading="lazy">
-              <span class="proj-status status-live"><span class="live-dot"></span>Live Demo</span>
+              <img
+                src="assets/projects/college-discovery-list.jpg"
+                alt="College Discovery search & filter page"
+                loading="lazy"
+              />
+              <span class="proj-status status-live"
+                ><span class="live-dot"></span>Live Demo</span
+              >
             </div>
             <div class="proj-body">
               <div class="proj-header">
                 <div class="proj-num">02</div>
-                <a href="https://github.com/Amiya-Krishna/college-discovery" target="_blank" class="proj-link" onclick="event.stopPropagation()" title="View source on GitHub"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.77 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.73.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.16.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.47 3.14-1.16 3.14-1.16.62 1.56.23 2.72.11 3.01.73.79 1.17 1.81 1.17 3.05 0 4.37-2.66 5.33-5.19 5.61.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.02 11.52C23.02 5.24 18.27.5 12 .5Z"/></svg></a>
+                <a
+                  href="https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform"
+                  target="_blank"
+                  class="proj-link"
+                  onclick="event.stopPropagation()"
+                  title="View source on GitHub"
+                  ><svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.77 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.73.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.16.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.47 3.14-1.16 3.14-1.16.62 1.56.23 2.72.11 3.01.73.79 1.17 1.81 1.17 3.05 0 4.37-2.66 5.33-5.19 5.61.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.02 11.52C23.02 5.24 18.27.5 12 .5Z"
+                    /></svg
+                ></a>
               </div>
-              <h3>College Discovery Platform</h3>
+              <h3>Collexa — College Decision Intelligence Platform</h3>
 
               <div class="proj-pitch">
-                <p><span class="pitch-label">Problem</span>Comparing colleges and predicting admission rank means digging through scattered PDFs and outdated sites.</p>
-                <p><span class="pitch-label">Solution</span>Next.js 16 + Prisma/PostgreSQL platform with a weighted rank-prediction engine, filters, side-by-side comparison, and Zod-validated APIs behind HTTP-only JWT cookie auth.</p>
+                <p>
+                  <span class="pitch-label">Problem</span>Comparing colleges and
+                  predicting admission rank means digging through scattered PDFs
+                  and outdated sites.
+                </p>
+                <p>
+                  <span class="pitch-label">Solution</span>Next.js 16 +
+                  Prisma/PostgreSQL platform with a weighted rank-prediction
+                  engine, filters, side-by-side comparison, and Zod-validated
+                  APIs behind HTTP-only JWT cookie auth.
+                </p>
               </div>
 
               <div class="tags">
@@ -296,19 +448,49 @@
 
           <div class="proj-card reveal" onclick="openModal(2)">
             <div class="proj-thumb">
-              <img src="assets/projects/forum-dashboard.jpg" alt="Community Discussion Forum dashboard" loading="lazy">
-              <span class="proj-status status-live"><span class="live-dot"></span>Live Demo</span>
+              <img
+                src="assets/projects/forum-dashboard.jpg"
+                alt="Community Discussion Forum dashboard"
+                loading="lazy"
+              />
+              <span class="proj-status status-live"
+                ><span class="live-dot"></span>Live Demo</span
+              >
             </div>
             <div class="proj-body">
               <div class="proj-header">
                 <div class="proj-num">03</div>
-                <a href="https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat" target="_blank" class="proj-link" onclick="event.stopPropagation()" title="View source on GitHub"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.77 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.73.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.16.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.47 3.14-1.16 3.14-1.16.62 1.56.23 2.72.11 3.01.73.79 1.17 1.81 1.17 3.05 0 4.37-2.66 5.33-5.19 5.61.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.02 11.52C23.02 5.24 18.27.5 12 .5Z"/></svg></a>
+                <a
+                  href="https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat"
+                  target="_blank"
+                  class="proj-link"
+                  onclick="event.stopPropagation()"
+                  title="View source on GitHub"
+                  ><svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path
+                      d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.77 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.73.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.16.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.47 3.14-1.16 3.14-1.16.62 1.56.23 2.72.11 3.01.73.79 1.17 1.81 1.17 3.05 0 4.37-2.66 5.33-5.19 5.61.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.02 11.52C23.02 5.24 18.27.5 12 .5Z"
+                    /></svg
+                ></a>
               </div>
               <h3>Real-Time Discussion Platform (WebSocket Architecture)</h3>
 
               <div class="proj-pitch">
-                <p><span class="pitch-label">Problem</span>Communities are usually forced to choose between async threaded discussion and live chat — splitting the two kills context.</p>
-                <p><span class="pitch-label">Solution</span>MERN + Socket.IO platform merging both: persistent threads, live messaging with presence/typing indicators, @mentions, and DB-persisted notifications.</p>
+                <p>
+                  <span class="pitch-label">Problem</span>Communities are
+                  usually forced to choose between async threaded discussion and
+                  live chat — splitting the two kills context.
+                </p>
+                <p>
+                  <span class="pitch-label">Solution</span>MERN + Socket.IO
+                  platform merging both: persistent threads, live messaging with
+                  presence/typing indicators, @mentions, and DB-persisted
+                  notifications.
+                </p>
               </div>
 
               <div class="tags">
@@ -321,7 +503,6 @@
               <div class="proj-cta">View Case Study →</div>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -332,39 +513,106 @@
     <section id="featured">
       <div class="container">
         <div class="section-kicker reveal">Deepest technical build</div>
-        <div class="section-title reveal">Featured: <em>Job Application Tracker — Ingestion, Matching &amp; Analytics</em></div>
-        <p class="proj-hint reveal">This is the project I'd walk an interviewer through first — it's the one where the backend does real decision-making, not just CRUD.</p>
+        <div class="section-title reveal">
+          Featured:
+          <em>Job Application Tracker — Ingestion, Matching &amp; Analytics</em>
+        </div>
+        <p class="proj-hint reveal">
+          This is the project I'd walk an interviewer through first — it's the
+          one where the backend does real decision-making, not just CRUD.
+        </p>
 
         <div class="featured-grid">
           <div class="featured-card reveal">
             <h3>Why this one</h3>
-            <p>The original app was a straightforward MERN-style CRUD tracker. I extended it into a full pipeline: jobs now arrive through manual entry, Gmail inbox scanning, a Manifest V3 browser extension, or a live discovery API, get deduplicated and scored against a stored profile, and feed a per-user analytics dashboard — all sharing the same PostgreSQL database (via Prisma) and Express app as the original tracker.</p>
+            <p>
+              The original app was a straightforward MERN-style CRUD tracker. I
+              extended it into a full pipeline: jobs now arrive through manual
+              entry, Gmail inbox scanning, a Manifest V3 browser extension, or a
+              live discovery API, get deduplicated and scored against a stored
+              profile, and feed a per-user analytics dashboard — all sharing the
+              same PostgreSQL database (via Prisma) and Express app as the
+              original tracker.
+            </p>
           </div>
           <div class="featured-card reveal">
             <h3>Architecture</h3>
-            <p><strong>API process</strong> (Express 5) stays thin and fast. <strong>Worker process</strong> (<code>npm run worker</code>) runs five separate BullMQ workers — ingest, match, apply, analytics, and scrape — as their own Node process, so a Playwright crash can never take the REST API down. Data access is Prisma-first, with a thin <code>$queryRawUnsafe</code> wrapper for the SQL-heavy analytics and dedup queries. Redis backs the queues and a per-domain token-bucket rate limiter with randomized human-like delays.</p>
+            <p>
+              <strong>API process</strong> (Express 5) stays thin and fast.
+              <strong>Worker process</strong> (<code>npm run worker</code>) runs
+              five separate BullMQ workers — ingest, match, apply, analytics,
+              and scrape — as their own Node process, so a Playwright crash can
+              never take the REST API down. Data access is Prisma-first, with a
+              thin <code>$queryRawUnsafe</code> wrapper for the SQL-heavy
+              analytics and dedup queries. Redis backs the queues and a
+              per-domain token-bucket rate limiter with randomized human-like
+              delays.
+            </p>
           </div>
           <div class="featured-card reveal">
             <h3>Matching logic</h3>
-            <p>Two scorers: a free-tier <strong>TF-IDF + keyword matcher</strong> (<code>scoreTfIdf</code>) that needs no external API, and an <strong>embeddings-based scorer</strong> (<code>scoreEmbedding</code>) that takes an injected <code>embedFn</code> so it isn't locked to one provider. A learning service nudges per-skill weights up or down based on real interview/offer/rejection outcomes.</p>
+            <p>
+              Two scorers: a free-tier
+              <strong>TF-IDF + keyword matcher</strong>
+              (<code>scoreTfIdf</code>) that needs no external API, and an
+              <strong>embeddings-based scorer</strong>
+              (<code>scoreEmbedding</code>) that takes an injected
+              <code>embedFn</code> so it isn't locked to one provider. A
+              learning service nudges per-skill weights up or down based on real
+              interview/offer/rejection outcomes.
+            </p>
           </div>
           <div class="featured-card reveal">
             <h3>Deduplication</h3>
-            <p>Incoming listings are deduplicated with exact hashing first, then fuzzy matching — Jaro-Winkler similarity on the title plus TF-IDF similarity on the description — before they're inserted and enqueued for scoring.</p>
+            <p>
+              Incoming listings are deduplicated with exact hashing first, then
+              fuzzy matching — Jaro-Winkler similarity on the title plus TF-IDF
+              similarity on the description — before they're inserted and
+              enqueued for scoring.
+            </p>
           </div>
           <div class="featured-card reveal">
             <h3>Data model</h3>
-            <p>A single hosted PostgreSQL instance, accessed through Prisma, backs both systems: <code>jobs</code>, <code>companies</code>, <code>applications</code>, <code>match_scores</code>, <code>user_profile</code>, <code>job_sources</code>, <code>analytics_daily</code>, and <code>scrape_runs</code>, alongside the original tracker's <code>users</code>/<code>tracked_jobs</code> tables — one schema, no data duplication between the two systems.</p>
+            <p>
+              A single hosted PostgreSQL instance, accessed through Prisma,
+              backs both systems: <code>jobs</code>, <code>companies</code>,
+              <code>applications</code>, <code>match_scores</code>,
+              <code>user_profile</code>, <code>job_sources</code>,
+              <code>analytics_daily</code>, and <code>scrape_runs</code>,
+              alongside the original tracker's <code>users</code>/<code
+                >tracked_jobs</code
+              >
+              tables — one schema, no data duplication between the two systems.
+            </p>
           </div>
           <div class="featured-card reveal">
             <h3>What I'd improve next</h3>
-            <p>LinkedIn/Indeed discovery is intentionally stubbed as "unavailable" — neither offers a public, credential-free search API, and the project deliberately avoids scraping or anti-bot bypasses to fake it. Real next steps called out in the repo: add a stage-history table so analytics can measure "ever reached Interview/Offer" instead of only current status, and move matching to <code>pgvector</code>-backed embeddings once the corpus outgrows TF-IDF.</p>
+            <p>
+              LinkedIn/Indeed discovery is intentionally stubbed as
+              "unavailable" — neither offers a public, credential-free search
+              API, and the project deliberately avoids scraping or anti-bot
+              bypasses to fake it. Real next steps called out in the repo: add a
+              stage-history table so analytics can measure "ever reached
+              Interview/Offer" instead of only current status, and move matching
+              to <code>pgvector</code>-backed embeddings once the corpus
+              outgrows TF-IDF.
+            </p>
           </div>
         </div>
 
         <div class="featured-cta reveal">
-          <a class="btn btn-primary" href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline" target="_blank">Read the Code ↗</a>
-          <a class="btn btn-outline" href="https://job-application-tracker-portal-ten.vercel.app" target="_blank">Live Demo ↗</a>
+          <a
+            class="btn btn-primary"
+            href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
+            target="_blank"
+            >Read the Code ↗</a
+          >
+          <a
+            class="btn btn-outline"
+            href="https://job-application-tracker-portal-ten.vercel.app"
+            target="_blank"
+            >Live Demo ↗</a
+          >
         </div>
       </div>
     </section>
@@ -412,10 +660,19 @@
 
         <div class="modal-gallery" id="modal-gallery"></div>
 
-        <div class="modal-diagram-wrap" id="modal-diagram-wrap" style="display:none;">
+        <div
+          class="modal-diagram-wrap"
+          id="modal-diagram-wrap"
+          style="display: none"
+        >
           <div class="modal-section-label">System Architecture</div>
-          <div class="modal-gallery modal-gallery-single" id="modal-diagram"></div>
-          <div class="modal-diagram-hint">Click the diagram to view it full size</div>
+          <div
+            class="modal-gallery modal-gallery-single"
+            id="modal-diagram"
+          ></div>
+          <div class="modal-diagram-hint">
+            Click the diagram to view it full size
+          </div>
         </div>
 
         <div class="modal-video-wrap">
@@ -423,448 +680,651 @@
           <div class="modal-video-box" id="modal-video-box"></div>
         </div>
 
-        <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap;">
-          <a id="modal-live" href="#" target="_blank"
-          class="btn btn-primary"
-          style="font-size:.8rem;padding:11px 20px;">
-          Live Demo ↗
-        </a>
-        
-        <a id="modal-link" href="#" target="_blank"
-        class="btn btn-outline"
-        style="font-size:.8rem;padding:11px 20px;">
-        View Code ↗
-      </a>
-    </div>
-  </div>
-</div>
-
-<!-- Lightbox: full-size image viewer for gallery/diagram photos -->
-<div class="lightbox-overlay" id="lightbox-overlay" onclick="closeLightbox(event)">
-  <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
-  <img id="lightbox-img" src="" alt="">
-</div>
-
-<div class="divider"></div>
-
-<!-- ── SKILLS ── -->
-
-<section id="skills">
-  <div class="container">
-    
-    <div class="section-kicker reveal">Capabilities</div>
-    <div class="section-title reveal">Tech <em>Stack</em></div>
-    
-    <div class="skills-layout skills-layout-single">
-      <div class="skills-grid">
-        
-        <!-- Frontend -->
-        <div class="skill-category reveal">
-          <div class="skill-cat-title">Frontend</div>
-          <div class="skill-tags">
-            <span class="skill-tag primary">React.js</span>
-            <span class="skill-tag primary">Next.js</span>
-            <span class="skill-tag primary">TypeScript</span>
-            <span class="skill-tag">JavaScript</span>
-            <span class="skill-tag">HTML5</span>
-            <span class="skill-tag">CSS3</span>
-            <span class="skill-tag">Tailwind CSS</span>
-          </div>
-        </div>
-        
-        <!-- Backend -->
-        <div class="skill-category reveal">
-          <div class="skill-cat-title">Backend</div>
-          <div class="skill-tags">
-            <span class="skill-tag primary">Node.js</span>
-            <span class="skill-tag primary">Express.js</span>
-            <span class="skill-tag primary">REST APIs</span>
-            <span class="skill-tag">JWT Authentication</span>
-            <span class="skill-tag">Socket.IO</span>
-            <span class="skill-tag">Rate Limiting</span>
-            <span class="skill-tag">Queues & Workers</span>
-          </div>
-        </div>
-        
-        <!-- Database -->
-        <div class="skill-category reveal">
-          <div class="skill-cat-title">Database & Data</div>
-          <div class="skill-tags">
-            <span class="skill-tag primary">PostgreSQL</span>
-            <span class="skill-tag primary">MongoDB</span>
-            <span class="skill-tag primary">Prisma ORM</span>
-            <span class="skill-tag">Schema Design</span>
-            <span class="skill-tag">Indexing</span>
-            <span class="skill-tag">Deduplication</span>
-            <span class="skill-tag">TF-IDF Matching</span>
-          </div>
-        </div>
-        
-        <!-- Tools -->
-        <div class="skill-category reveal">
-          <div class="skill-cat-title">Tools & Deployment</div>
-          <div class="skill-tags">
-            <span class="skill-tag primary">Git</span>
-            <span class="skill-tag primary">GitHub</span>
-            <span class="skill-tag primary">Docker</span>
-            <span class="skill-tag">Postman</span>
-            <span class="skill-tag">VS Code</span>
-            <span class="skill-tag">Vercel</span>
-            <span class="skill-tag">Render</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── ENGINEERING DEPTH ── -->
-<section id="engineering">
-  <div class="container">
-    <div class="section-kicker reveal">Under the hood</div>
-    <div class="section-title reveal">Engineering <em>Depth</em></div>
-    <p class="proj-hint reveal">The backend decisions behind the three projects above — APIs, data modeling, and systems, not just UI.</p>
-
-    <div class="depth-grid">
-      <div class="depth-card reveal">
-        <h3>🔌 APIs</h3>
-        <ul>
-          <li>30+ REST endpoints across auth, resource CRUD, search, comparison, recommendation, and analytics</li>
-          <li>Zod-validated request bodies on College Discovery's route handlers</li>
-          <li>Consistent auth pattern: JWT in HTTP-only cookies (College Discovery) vs. bearer-style token header (Forum, Tracker)</li>
-          <li>Server-side AI proxy route (Groq) so API keys never reach the client</li>
-        </ul>
-      </div>
-      <div class="depth-card reveal">
-        <h3>🗄️ Database Design</h3>
-        <ul>
-          <li>Relational schema (PostgreSQL + Prisma) with indexed lookup fields, cascade-safe deletes on Course/Review, and a unique <code>(userId, collegeId)</code> constraint on saved colleges</li>
-          <li>NoSQL schema (MongoDB + Mongoose) for the forum's Users/Posts/Comments/Notifications with reference-based relations</li>
-          <li>Single shared Postgres instance in the Job Tracker, accessed through Prisma, serving both the CRUD tracker and the matching engine's 8-table schema</li>
-        </ul>
-      </div>
-      <div class="depth-card reveal">
-        <h3>🏗️ System Architecture</h3>
-        <ul>
-          <li>API and background-worker processes fully decoupled (BullMQ + Redis) so a scraper crash can't take down the REST API</li>
-          <li>WebSocket layer (Socket.IO) running alongside a REST API for hybrid real-time + persistent state</li>
-          <li>Middleware-centralized access control (Next.js middleware checks the JWT cookie before requests reach route handlers)</li>
-        </ul>
-      </div>
-      <div class="depth-card reveal">
-        <h3>⚡ Performance & Reliability</h3>
-        <ul>
-          <li>Redis token-bucket rate limiting per target domain plus randomized delays to avoid hammering third-party sites</li>
-          <li>Exact-hash + fuzzy (Jaro-Winkler / TF-IDF) deduplication to avoid reprocessing duplicate listings</li>
-          <li>Global Prisma Client reuse in development to prevent connection churn on hot reload</li>
-          <li>Single-use, expiring password-reset tokens instead of long-lived links</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── DSA / PROBLEM SOLVING ── -->
-<section id="dsa">
-  <div class="container">
-    <div class="section-kicker reveal">Problem solving</div>
-    <div class="section-title reveal">DSA & <em>Competitive Programming</em></div>
-    <p class="proj-hint reveal">Actively building this up alongside project work. Numbers below are placeholders until profiles are linked.</p>
-
-    <div class="dsa-grid">
-      <a class="dsa-card reveal" href="https://leetcode.com/u/AmiyaKrishna/" target="_blank" rel="noopener">
-        <div class="dsa-icon">🟧</div>
-        <h3>LeetCode</h3>
-        <p class="dsa-stat" id="leetcode-stat">— problems solved</p>
-        <span class="tag">View Profile ↗</span>
-      </a>
-      <a class="dsa-card reveal" href="https://codeforces.com/profile/krishna_dsa" target="_blank" rel="noopener">
-        <div class="dsa-icon">🟦</div>
-        <h3>Codeforces</h3>
-        <p class="dsa-stat" id="codeforces-stat">Rating: —</p>
-        <span class="tag">View Profile ↗</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── TECHNICAL BLOGS ── -->
-<section id="blogs">
-  <div class="container">
-    <div class="section-kicker reveal">Writing</div>
-    <div class="section-title reveal">Technical <em>Blogs</em></div>
-    <p class="proj-hint reveal">Planned write-ups on the systems behind the projects above — placeholders until published.</p>
-
-    <div class="blog-grid">
-      <a class="blog-card reveal" href="#" target="_blank" rel="noopener">
-        <span class="proj-status status-progress">🛠 Coming Soon</span>
-        <h3>Building a Queue-Based Job Matching Engine with BullMQ & Redis</h3>
-        <p>How the Job Tracker's worker fleet decouples scraping, deduplication, and scoring from the API — and why that matters when a Playwright scraper crashes.</p>
-        <span class="proj-cta">Read Post →</span>
-      </a>
-      <a class="blog-card reveal" href="#" target="_blank" rel="noopener">
-        <span class="proj-status status-progress">🛠 Coming Soon</span>
-        <h3>Fuzzy Deduplication: Jaro-Winkler + TF-IDF in Practice</h3>
-        <p>Why exact-hash deduplication isn't enough for scraped job listings, and how combining title similarity with description similarity cuts down false positives.</p>
-        <span class="proj-cta">Read Post →</span>
-      </a>
-      <a class="blog-card reveal" href="#" target="_blank" rel="noopener">
-        <span class="proj-status status-progress">🛠 Coming Soon</span>
-        <h3>JWT in HTTP-Only Cookies vs. Bearer Tokens: What I'd Pick Now</h3>
-        <p>Comparing the auth pattern I used in College Discovery against the header-token pattern in my other two projects, and the tradeoffs I'd reconsider.</p>
-        <span class="proj-cta">Read Post →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── GITHUB HIGHLIGHTS ── -->
-<section id="github-highlights">
-  <div class="container">
-    <div class="section-kicker reveal">Open source footprint</div>
-    <div class="section-title reveal">GitHub <em>Highlights</em></div>
-    <p class="proj-hint reveal">Live data pulled from the GitHub API for my top repositories.</p>
-
-    <div class="gh-grid">
-      <a class="gh-card reveal" href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline" target="_blank">
-        <div class="gh-card-head">
-          <h3>Job-Application-Tracker-Portal</h3>
-          <span class="gh-lang"><span class="gh-dot" style="background:#f1e05a"></span>JavaScript</span>
-        </div>
-        <p>Full-stack job tracker extended with Gmail ingestion, a browser extension, a BullMQ/Redis worker fleet for deduplication and TF-IDF/embedding matching, a semi-automated apply engine, and a per-user analytics dashboard.</p>
-        <div class="tags">
-          <span class="tag">React</span>
-          <span class="tag">Express 5</span>
-          <span class="tag">PostgreSQL + Prisma</span>
-          <span class="tag">BullMQ</span>
-        </div>
-      </a>
-      <a class="gh-card reveal" href="https://github.com/Amiya-Krishna/college-discovery" target="_blank">
-        <div class="gh-card-head">
-          <h3>college-discovery</h3>
-          <span class="gh-lang"><span class="gh-dot" style="background:#3178c6"></span>TypeScript</span>
-        </div>
-        <p>Full-stack college discovery platform with search, comparison, a weighted recommendation engine, and Groq-backed AI guidance behind validated APIs.</p>
-        <div class="tags">
-          <span class="tag">Next.js 16</span>
-          <span class="tag">Prisma</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">Zod</span>
-        </div>
-      </a>
-      <a class="gh-card reveal" href="https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat" target="_blank">
-        <div class="gh-card-head">
-          <h3>Community-Discussion-Forum</h3>
-          <span class="gh-lang"><span class="gh-dot" style="background:#f1e05a"></span>JavaScript</span>
-        </div>
-        <p>MERN + Socket.IO discussion platform merging async threads with real-time chat — presence, typing indicators, mentions, and persisted notifications.</p>
-        <div class="tags">
-          <span class="tag">React 18</span>
-          <span class="tag">Express</span>
-          <span class="tag">MongoDB</span>
-          <span class="tag">Socket.IO</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="gh-cta reveal">
-      <a class="btn btn-outline" href="https://github.com/Amiya-Krishna" target="_blank">See all repositories on GitHub ↗</a>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- WHAT I'M LOOKING FOR -->
-<section id="opportunities">
-  
-  <h2>What I'm Looking For</h2>
-  
-  <p class="section-subtitle">
-    Currently seeking internship opportunities where I can contribute, learn, and grow as a Software Engineer.
-  </p>
-  
-  <div class="opportunity-container">
-    
-    <div class="opportunity-card">
-      <div class="icon">🌐</div>
-      <h3>Backend / Full Stack</h3>
-      <p>Node.js, Express, Next.js, PostgreSQL & MongoDB — designing APIs, data models, and background systems.</p>
-    </div>
-    
-    <div class="opportunity-card">
-      <div class="icon">📍</div>
-      <h3>Work Preference</h3>
-      <p>Open to Remote, Hybrid, and On-site internships across India.</p>
-    </div>
-    
-    <div class="opportunity-card">
-      <div class="icon">🚀</div>
-      <h3>Availability</h3>
-      <p>Available to join immediately, based in Lucknow, India.</p>
-    </div>
-    
-  </div>
-  
-</section>
-
-<!-- ── TIMELINE ── -->
-<section id="experience">
-  <div class="container">
-    <div class="section-kicker reveal">Journey</div>
-    <div class="section-title reveal">My <em>Timeline</em></div>
-    
-    <div class="timeline-wrap">
-      <div class="timeline">
-        <div class="t-item reveal">
-          <div class="t-dot"></div>
-          <div class="t-year">2024</div>
-          <div class="t-title">Started Web Development</div>
-          <div class="t-body"></div>
-        </div>
-        <div class="t-item reveal">
-          <div class="t-dot"></div>
-          <div class="t-year">2025</div>
-          <div class="t-title">Built 3 Full Stack Applications</div>
-          <div class="t-body"></div>
-        </div>
-        <div class="t-item reveal">
-          <div class="t-dot"></div>
-          <div class="t-year">2026</div>
-          <div class="t-title">Preparing for Software Engineering Internships</div>
-          <div class="t-body"></div>
-        </div>
-      </div>
-      
-      <div class="learning-card reveal">
-        <div class="mini-card-icon" style="font-size:1.8rem;margin-bottom:16px;">📚</div>
-        <h3>Currently Learning</h3>
-        <p>
-          Currently improving my backend development skills with Docker, Redis,
-          System Design, authentication, API optimization, and scalable application
-          architecture to prepare for Software Engineering internships.
-        </p>
-        
-        <div class="tags">
-          <span class="tag">Docker</span>
-          <span class="tag">Redis</span>
-          <span class="tag">System Design</span>
-          <span class="tag">JWT Auth</span>
-          <span class="tag">REST APIs</span>
-          <span class="tag">AWS Basics</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ── CONTACT ── -->
-<section id="contact">
-  <div class="container">
-    <div class="section-kicker reveal">Let's connect</div>
-    <div class="contact-layout">
-      <div>
-        <div class="avail-banner reveal">
-          <span style="width:8px;height:8px;border-radius:50%;background:#00ff88;animation:pulse 2s infinite;display:inline-block;"></span>
-          Open to Software Engineering & Full Stack Internships
-        </div>
-        
-        <h2 class="reveal">
-          Let's Build Something <em style="font-style:normal;background:linear-gradient(90deg,var(--cyan),var(--violet2));-webkit-background-clip:text;color:transparent;">Together</em>
-        </h2>
-        
-        <p class="reveal contact-intro" style="margin-top:16px;">
-          I am actively seeking Software Engineering and Full Stack Development internship opportunities. Feel free to reach out for internships, collaborations, or technical discussions.
-        </p>
-        
-        <div class="email-copy reveal" style="margin-top:28px;">
-          <span class="email-addr">
-            <a href="mailto:amiyakrishna04@gmail.com"
-            style="color:inherit;text-decoration:none;">
-            amiyakrishna04@gmail.com
+        <div
+          style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap"
+        >
+          <a
+            id="modal-live"
+            href="#"
+            target="_blank"
+            class="btn btn-primary"
+            style="font-size: 0.8rem; padding: 11px 20px"
+          >
+            Live Demo ↗
           </a>
-        </span>
-        
-        <button class="copy-btn"
-        id="copy-btn"
-        onclick="copyEmail()">
-        COPY
-      </button>
-    </div>
-  </div>
-  
-  <div class="contact-cards">
-    
-    <!-- WhatsApp -->
-    <a class="contact-card reveal contact-card-whatsapp" id="contact-whatsapp" href="#" target="_blank" rel="noopener">
-      <div>
-        <h3>WhatsApp</h3>
-        <p>Chat directly — fastest way to reach me</p>
-      </div>
-    </a>
 
-    <!-- Phone -->
-    <a class="contact-card reveal" href="tel:+919305559247">
-      <div>
-        <h3>Phone</h3>
-        <p>+91 9305559247</p>
-      </div>
-    </a>
-    
-    <!-- Location -->
-    <div class="contact-card reveal">
-      <div>
-        <h3>Location</h3>
-        <p>Lucknow, Uttar Pradesh, India</p>
+          <a
+            id="modal-link"
+            href="#"
+            target="_blank"
+            class="btn btn-outline"
+            style="font-size: 0.8rem; padding: 11px 20px"
+          >
+            View Code ↗
+          </a>
+        </div>
       </div>
     </div>
-    
-    <!-- GitHub -->
-    <a class="contact-card reveal" href="https://github.com/Amiya-Krishna" target="_blank">
-      <div>
-        <h3>GitHub</h3>
-        <p>Amiya-Krishna</p>
-      </div>
-    </a>
-    
-    <!-- LinkedIn -->
-    <a class="contact-card reveal" href="https://www.linkedin.com/in/amiya-krishna" target="_blank">
-      <div>
-        <h3>LinkedIn</h3>
-        <p>amiya-krishna</p>
-      </div>
-    </a>
-    
-  </div>
-</div>
-</div>
-</section>
 
-<!-- Floating WhatsApp button -->
-<a id="whatsapp-float" class="whatsapp-float" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp" title="Chat on WhatsApp">
-  <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor"><path d="M16.004 3C9.376 3 4 8.373 4 15c0 2.35.687 4.54 1.872 6.383L4 29l7.812-1.84A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3Zm7.03 16.94c-.298.836-1.474 1.532-2.407 1.73-.64.135-1.475.243-4.29-.92-3.6-1.487-5.92-5.13-6.1-5.37-.178-.24-1.46-1.943-1.46-3.706 0-1.763.926-2.63 1.254-2.99.328-.36.716-.45.955-.45.238 0 .478.002.686.012.22.01.516-.083.807.615.298.716 1.014 2.478 1.103 2.658.09.18.15.39.03.63-.12.24-.18.39-.358.6-.18.21-.376.47-.537.63-.18.18-.367.375-.157.735.208.36.925 1.526 1.986 2.472 1.365 1.217 2.516 1.594 2.877 1.774.36.18.567.15.777-.09.208-.24.895-1.044 1.133-1.404.238-.36.478-.3.807-.18.328.12 2.083.982 2.44 1.162.358.18.596.27.685.42.09.15.09.87-.208 1.705Z"/></svg>
-</a>
+    <!-- Lightbox: full-size image viewer for gallery/diagram photos -->
+    <div
+      class="lightbox-overlay"
+      id="lightbox-overlay"
+      onclick="closeLightbox(event)"
+    >
+      <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+      <img id="lightbox-img" src="" alt="" />
+    </div>
 
-<!-- ── FOOTER ── -->
-<footer>
-  <div class="footer-left">Crafted with intent by <strong>Amiya Krishna</strong> · Software Engineer · © 2026</div>
-  <div class="footer-right">
-    <a class="footer-link" href="https://github.com/Amiya-Krishna" target="_blank">GITHUB</a>
-    <a class="footer-link" href="https://www.linkedin.com/in/amiya-krishna" target="_blank">LINKEDIN</a>
-    <a class="footer-link" href="#home">TOP ↑</a>
-  </div>
-</footer>
-<script src="script.js"></script>
-</body>
+    <div class="divider"></div>
+
+    <!-- ── SKILLS ── -->
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-kicker reveal">Capabilities</div>
+        <div class="section-title reveal">Tech <em>Stack</em></div>
+
+        <div class="skills-layout skills-layout-single">
+          <div class="skills-grid">
+            <!-- Frontend -->
+            <div class="skill-category reveal">
+              <div class="skill-cat-title">Frontend</div>
+              <div class="skill-tags">
+                <span class="skill-tag primary">React.js</span>
+                <span class="skill-tag primary">Next.js</span>
+                <span class="skill-tag primary">TypeScript</span>
+                <span class="skill-tag">JavaScript</span>
+                <span class="skill-tag">HTML5</span>
+                <span class="skill-tag">CSS3</span>
+                <span class="skill-tag">Tailwind CSS</span>
+              </div>
+            </div>
+
+            <!-- Backend -->
+            <div class="skill-category reveal">
+              <div class="skill-cat-title">Backend</div>
+              <div class="skill-tags">
+                <span class="skill-tag primary">Node.js</span>
+                <span class="skill-tag primary">Express.js</span>
+                <span class="skill-tag primary">REST APIs</span>
+                <span class="skill-tag">JWT Authentication</span>
+                <span class="skill-tag">Socket.IO</span>
+                <span class="skill-tag">Rate Limiting</span>
+                <span class="skill-tag">Queues & Workers</span>
+              </div>
+            </div>
+
+            <!-- Database -->
+            <div class="skill-category reveal">
+              <div class="skill-cat-title">Database & Data</div>
+              <div class="skill-tags">
+                <span class="skill-tag primary">PostgreSQL</span>
+                <span class="skill-tag primary">MongoDB</span>
+                <span class="skill-tag primary">Prisma ORM</span>
+                <span class="skill-tag">Schema Design</span>
+                <span class="skill-tag">Indexing</span>
+                <span class="skill-tag">Deduplication</span>
+                <span class="skill-tag">TF-IDF Matching</span>
+              </div>
+            </div>
+
+            <!-- Tools -->
+            <div class="skill-category reveal">
+              <div class="skill-cat-title">Tools & Deployment</div>
+              <div class="skill-tags">
+                <span class="skill-tag primary">Git</span>
+                <span class="skill-tag primary">GitHub</span>
+                <span class="skill-tag primary">Docker</span>
+                <span class="skill-tag">Postman</span>
+                <span class="skill-tag">VS Code</span>
+                <span class="skill-tag">Vercel</span>
+                <span class="skill-tag">Render</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── ENGINEERING DEPTH ── -->
+    <section id="engineering">
+      <div class="container">
+        <div class="section-kicker reveal">Under the hood</div>
+        <div class="section-title reveal">Engineering <em>Depth</em></div>
+        <p class="proj-hint reveal">
+          The backend decisions behind the three projects above — APIs, data
+          modeling, and systems, not just UI.
+        </p>
+
+        <div class="depth-grid">
+          <div class="depth-card reveal">
+            <h3>🔌 APIs</h3>
+            <ul>
+              <li>
+                30+ REST endpoints across auth, resource CRUD, search,
+                comparison, recommendation, and analytics
+              </li>
+              <li>
+                Zod-validated request bodies on College Discovery's route
+                handlers
+              </li>
+              <li>
+                Consistent auth pattern: JWT in HTTP-only cookies (College
+                Discovery) vs. bearer-style token header (Forum, Tracker)
+              </li>
+              <li>
+                Server-side AI proxy route (Groq) so API keys never reach the
+                client
+              </li>
+            </ul>
+          </div>
+          <div class="depth-card reveal">
+            <h3>🗄️ Database Design</h3>
+            <ul>
+              <li>
+                Relational schema (PostgreSQL + Prisma) with indexed lookup
+                fields, cascade-safe deletes on Course/Review, and a unique
+                <code>(userId, collegeId)</code> constraint on saved colleges
+              </li>
+              <li>
+                NoSQL schema (MongoDB + Mongoose) for the forum's
+                Users/Posts/Comments/Notifications with reference-based
+                relations
+              </li>
+              <li>
+                Single shared Postgres instance in the Job Tracker, accessed
+                through Prisma, serving both the CRUD tracker and the matching
+                engine's 8-table schema
+              </li>
+            </ul>
+          </div>
+          <div class="depth-card reveal">
+            <h3>🏗️ System Architecture</h3>
+            <ul>
+              <li>
+                API and background-worker processes fully decoupled (BullMQ +
+                Redis) so a scraper crash can't take down the REST API
+              </li>
+              <li>
+                WebSocket layer (Socket.IO) running alongside a REST API for
+                hybrid real-time + persistent state
+              </li>
+              <li>
+                Middleware-centralized access control (Next.js middleware checks
+                the JWT cookie before requests reach route handlers)
+              </li>
+            </ul>
+          </div>
+          <div class="depth-card reveal">
+            <h3>⚡ Performance & Reliability</h3>
+            <ul>
+              <li>
+                Redis token-bucket rate limiting per target domain plus
+                randomized delays to avoid hammering third-party sites
+              </li>
+              <li>
+                Exact-hash + fuzzy (Jaro-Winkler / TF-IDF) deduplication to
+                avoid reprocessing duplicate listings
+              </li>
+              <li>
+                Global Prisma Client reuse in development to prevent connection
+                churn on hot reload
+              </li>
+              <li>
+                Single-use, expiring password-reset tokens instead of long-lived
+                links
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── DSA / PROBLEM SOLVING ── -->
+    <section id="dsa">
+      <div class="container">
+        <div class="section-kicker reveal">Problem solving</div>
+        <div class="section-title reveal">
+          DSA & <em>Competitive Programming</em>
+        </div>
+        <p class="proj-hint reveal">
+          Actively building this up alongside project work. Numbers below are
+          placeholders until profiles are linked.
+        </p>
+
+        <div class="dsa-grid">
+          <a
+            class="dsa-card reveal"
+            href="https://leetcode.com/u/AmiyaKrishna/"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="dsa-icon">🟧</div>
+            <h3>LeetCode</h3>
+            <p class="dsa-stat" id="leetcode-stat">— problems solved</p>
+            <span class="tag">View Profile ↗</span>
+          </a>
+          <a
+            class="dsa-card reveal"
+            href="https://codeforces.com/profile/krishna_dsa"
+            target="_blank"
+            rel="noopener"
+          >
+            <div class="dsa-icon">🟦</div>
+            <h3>Codeforces</h3>
+            <p class="dsa-stat" id="codeforces-stat">Rating: —</p>
+            <span class="tag">View Profile ↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── TECHNICAL BLOGS ── -->
+    <section id="blogs">
+      <div class="container">
+        <div class="section-kicker reveal">Writing</div>
+        <div class="section-title reveal">Technical <em>Blogs</em></div>
+        <p class="proj-hint reveal">
+          Planned write-ups on the systems behind the projects above —
+          placeholders until published.
+        </p>
+
+        <div class="blog-grid">
+          <a class="blog-card reveal" href="#" target="_blank" rel="noopener">
+            <span class="proj-status status-progress">🛠 Coming Soon</span>
+            <h3>
+              Building a Queue-Based Job Matching Engine with BullMQ & Redis
+            </h3>
+            <p>
+              How the Job Tracker's worker fleet decouples scraping,
+              deduplication, and scoring from the API — and why that matters
+              when a Playwright scraper crashes.
+            </p>
+            <span class="proj-cta">Read Post →</span>
+          </a>
+          <a class="blog-card reveal" href="#" target="_blank" rel="noopener">
+            <span class="proj-status status-progress">🛠 Coming Soon</span>
+            <h3>Fuzzy Deduplication: Jaro-Winkler + TF-IDF in Practice</h3>
+            <p>
+              Why exact-hash deduplication isn't enough for scraped job
+              listings, and how combining title similarity with description
+              similarity cuts down false positives.
+            </p>
+            <span class="proj-cta">Read Post →</span>
+          </a>
+          <a class="blog-card reveal" href="#" target="_blank" rel="noopener">
+            <span class="proj-status status-progress">🛠 Coming Soon</span>
+            <h3>
+              JWT in HTTP-Only Cookies vs. Bearer Tokens: What I'd Pick Now
+            </h3>
+            <p>
+              Comparing the auth pattern I used in College Discovery against the
+              header-token pattern in my other two projects, and the tradeoffs
+              I'd reconsider.
+            </p>
+            <span class="proj-cta">Read Post →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── GITHUB HIGHLIGHTS ── -->
+    <section id="github-highlights">
+      <div class="container">
+        <div class="section-kicker reveal">Open source footprint</div>
+        <div class="section-title reveal">GitHub <em>Highlights</em></div>
+        <p class="proj-hint reveal">
+          Live data pulled from the GitHub API for my top repositories.
+        </p>
+
+        <div class="gh-grid">
+          <a
+            class="gh-card reveal"
+            href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
+            target="_blank"
+          >
+            <div class="gh-card-head">
+              <h3>Job-Application-Tracker-Portal</h3>
+              <span class="gh-lang"
+                ><span class="gh-dot" style="background: #f1e05a"></span
+                >JavaScript</span
+              >
+            </div>
+            <p>
+              Full-stack job tracker extended with Gmail ingestion, a browser
+              extension, a BullMQ/Redis worker fleet for deduplication and
+              TF-IDF/embedding matching, a semi-automated apply engine, and a
+              per-user analytics dashboard.
+            </p>
+            <div class="tags">
+              <span class="tag">React</span>
+              <span class="tag">Express 5</span>
+              <span class="tag">PostgreSQL + Prisma</span>
+              <span class="tag">BullMQ</span>
+            </div>
+          </a>
+          <a
+            class="gh-card reveal"
+            href="https://github.com/Amiya-Krishna/college-discovery"
+            target="_blank"
+          >
+            <div class="gh-card-head">
+              <h3>college-discovery</h3>
+              <span class="gh-lang"
+                ><span class="gh-dot" style="background: #3178c6"></span
+                >TypeScript</span
+              >
+            </div>
+            <p>
+              Full-stack Collexa — College Decision Intelligence Platform with
+              search, comparison, a weighted recommendation engine, and
+              Groq-backed AI guidance behind validated APIs.
+            </p>
+            <div class="tags">
+              <span class="tag">Next.js 16</span>
+              <span class="tag">Prisma</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Zod</span>
+            </div>
+          </a>
+          <a
+            class="gh-card reveal"
+            href="https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat"
+            target="_blank"
+          >
+            <div class="gh-card-head">
+              <h3>Community-Discussion-Forum</h3>
+              <span class="gh-lang"
+                ><span class="gh-dot" style="background: #f1e05a"></span
+                >JavaScript</span
+              >
+            </div>
+            <p>
+              MERN + Socket.IO discussion platform merging async threads with
+              real-time chat — presence, typing indicators, mentions, and
+              persisted notifications.
+            </p>
+            <div class="tags">
+              <span class="tag">React 18</span>
+              <span class="tag">Express</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Socket.IO</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="gh-cta reveal">
+          <a
+            class="btn btn-outline"
+            href="https://github.com/Amiya-Krishna"
+            target="_blank"
+            >See all repositories on GitHub ↗</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- WHAT I'M LOOKING FOR -->
+    <section id="opportunities">
+      <h2>What I'm Looking For</h2>
+
+      <p class="section-subtitle">
+        Currently seeking internship opportunities where I can contribute,
+        learn, and grow as a Software Engineer.
+      </p>
+
+      <div class="opportunity-container">
+        <div class="opportunity-card">
+          <div class="icon">🌐</div>
+          <h3>Backend / Full Stack</h3>
+          <p>
+            Node.js, Express, Next.js, PostgreSQL & MongoDB — designing APIs,
+            data models, and background systems.
+          </p>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="icon">📍</div>
+          <h3>Work Preference</h3>
+          <p>Open to Remote, Hybrid, and On-site internships across India.</p>
+        </div>
+
+        <div class="opportunity-card">
+          <div class="icon">🚀</div>
+          <h3>Availability</h3>
+          <p>Available to join immediately, based in Lucknow, India.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── TIMELINE ── -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-kicker reveal">Journey</div>
+        <div class="section-title reveal">My <em>Timeline</em></div>
+
+        <div class="timeline-wrap">
+          <div class="timeline">
+            <div class="t-item reveal">
+              <div class="t-dot"></div>
+              <div class="t-year">2024</div>
+              <div class="t-title">Started Web Development</div>
+              <div class="t-body"></div>
+            </div>
+            <div class="t-item reveal">
+              <div class="t-dot"></div>
+              <div class="t-year">2025</div>
+              <div class="t-title">Built 3 Full Stack Applications</div>
+              <div class="t-body"></div>
+            </div>
+            <div class="t-item reveal">
+              <div class="t-dot"></div>
+              <div class="t-year">2026</div>
+              <div class="t-title">
+                Preparing for Software Engineering Internships
+              </div>
+              <div class="t-body"></div>
+            </div>
+          </div>
+
+          <div class="learning-card reveal">
+            <div
+              class="mini-card-icon"
+              style="font-size: 1.8rem; margin-bottom: 16px"
+            >
+              📚
+            </div>
+            <h3>Currently Learning</h3>
+            <p>
+              Currently improving my backend development skills with Docker,
+              Redis, System Design, authentication, API optimization, and
+              scalable application architecture to prepare for Software
+              Engineering internships.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Docker</span>
+              <span class="tag">Redis</span>
+              <span class="tag">System Design</span>
+              <span class="tag">JWT Auth</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">AWS Basics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ── CONTACT ── -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-kicker reveal">Let's connect</div>
+        <div class="contact-layout">
+          <div>
+            <div class="avail-banner reveal">
+              <span
+                style="
+                  width: 8px;
+                  height: 8px;
+                  border-radius: 50%;
+                  background: #00ff88;
+                  animation: pulse 2s infinite;
+                  display: inline-block;
+                "
+              ></span>
+              Open to Software Engineering & Full Stack Internships
+            </div>
+
+            <h2 class="reveal">
+              Let's Build Something
+              <em
+                style="
+                  font-style: normal;
+                  background: linear-gradient(
+                    90deg,
+                    var(--cyan),
+                    var(--violet2)
+                  );
+                  -webkit-background-clip: text;
+                  color: transparent;
+                "
+                >Together</em
+              >
+            </h2>
+
+            <p class="reveal contact-intro" style="margin-top: 16px">
+              I am actively seeking Software Engineering and Full Stack
+              Development internship opportunities. Feel free to reach out for
+              internships, collaborations, or technical discussions.
+            </p>
+
+            <div class="email-copy reveal" style="margin-top: 28px">
+              <span class="email-addr">
+                <a
+                  href="mailto:amiyakrishna04@gmail.com"
+                  style="color: inherit; text-decoration: none"
+                >
+                  amiyakrishna04@gmail.com
+                </a>
+              </span>
+
+              <button class="copy-btn" id="copy-btn" onclick="copyEmail()">
+                COPY
+              </button>
+            </div>
+          </div>
+
+          <div class="contact-cards">
+            <!-- WhatsApp -->
+            <a
+              class="contact-card reveal contact-card-whatsapp"
+              id="contact-whatsapp"
+              href="#"
+              target="_blank"
+              rel="noopener"
+            >
+              <div>
+                <h3>WhatsApp</h3>
+                <p>Chat directly — fastest way to reach me</p>
+              </div>
+            </a>
+
+            <!-- Phone -->
+            <a class="contact-card reveal" href="tel:+919305559247">
+              <div>
+                <h3>Phone</h3>
+                <p>+91 9305559247</p>
+              </div>
+            </a>
+
+            <!-- Location -->
+            <div class="contact-card reveal">
+              <div>
+                <h3>Location</h3>
+                <p>Lucknow, Uttar Pradesh, India</p>
+              </div>
+            </div>
+
+            <!-- GitHub -->
+            <a
+              class="contact-card reveal"
+              href="https://github.com/Amiya-Krishna"
+              target="_blank"
+            >
+              <div>
+                <h3>GitHub</h3>
+                <p>Amiya-Krishna</p>
+              </div>
+            </a>
+
+            <!-- LinkedIn -->
+            <a
+              class="contact-card reveal"
+              href="https://www.linkedin.com/in/amiya-krishna"
+              target="_blank"
+            >
+              <div>
+                <h3>LinkedIn</h3>
+                <p>amiya-krishna</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Floating WhatsApp button -->
+    <a
+      id="whatsapp-float"
+      class="whatsapp-float"
+      href="#"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chat on WhatsApp"
+      title="Chat on WhatsApp"
+    >
+      <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor">
+        <path
+          d="M16.004 3C9.376 3 4 8.373 4 15c0 2.35.687 4.54 1.872 6.383L4 29l7.812-1.84A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3Zm7.03 16.94c-.298.836-1.474 1.532-2.407 1.73-.64.135-1.475.243-4.29-.92-3.6-1.487-5.92-5.13-6.1-5.37-.178-.24-1.46-1.943-1.46-3.706 0-1.763.926-2.63 1.254-2.99.328-.36.716-.45.955-.45.238 0 .478.002.686.012.22.01.516-.083.807.615.298.716 1.014 2.478 1.103 2.658.09.18.15.39.03.63-.12.24-.18.39-.358.6-.18.21-.376.47-.537.63-.18.18-.367.375-.157.735.208.36.925 1.526 1.986 2.472 1.365 1.217 2.516 1.594 2.877 1.774.36.18.567.15.777-.09.208-.24.895-1.044 1.133-1.404.238-.36.478-.3.807-.18.328.12 2.083.982 2.44 1.162.358.18.596.27.685.42.09.15.09.87-.208 1.705Z"
+        />
+      </svg>
+    </a>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+      <div class="footer-left">
+        Crafted with intent by <strong>Amiya Krishna</strong> · Software
+        Engineer · © 2026
+      </div>
+      <div class="footer-right">
+        <a
+          class="footer-link"
+          href="https://github.com/Amiya-Krishna"
+          target="_blank"
+          >GITHUB</a
+        >
+        <a
+          class="footer-link"
+          href="https://www.linkedin.com/in/amiya-krishna"
+          target="_blank"
+          >LINKEDIN</a
+        >
+        <a class="footer-link" href="#home">TOP ↑</a>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+  </body>
 </html>
