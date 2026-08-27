@@ -139,7 +139,17 @@ section { position:relative; z-index:1; padding:120px 6%; }
 
 /* ── HERO ── */
 .hero { min-height:calc(100vh - 80px); display:flex; align-items:center; padding:100px 0;}
-.hero-inner { width:100%; display:grid; grid-template-columns:1fr 380px; gap:60px; align-items:center; }
+.hero-inner {
+  width:100%; display:grid;
+  grid-template-columns:1fr 380px;
+  grid-template-rows:auto auto;
+  column-gap:60px; row-gap:28px;
+}
+/* left content column spans both right-column rows, vertically centered
+   against the combined height of the avatar + terminal stack */
+.hero-left { grid-column:1; grid-row:1 / span 2; align-self:center; }
+.hero-avatar { grid-column:2; grid-row:1; align-self:end; }
+.hero-terminal { grid-column:2; grid-row:2; align-self:start; }
 
 .hero-tag {
   display:inline-flex; align-items:center; gap:8px;
@@ -154,6 +164,21 @@ section { position:relative; z-index:1; padding:120px 6%; }
 }
 .hero-tag::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--cyan); animation:blink 1.5s infinite; }
 @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+/* profile avatar — right column, above the terminal on desktop */
+.hero-avatar {
+  width:208px; height:208px;
+  border-radius:50%; padding:5px;
+  background:linear-gradient(135deg, var(--cyan) 0%, var(--violet2) 60%, var(--green) 100%);
+  box-shadow:0 16px 40px rgba(0,212,255,.22);
+  flex-shrink:0;
+  margin:0 auto;
+}
+.hero-avatar img {
+  width:100%; height:100%; display:block;
+  border-radius:50%; object-fit:cover; object-position:center;
+  background:var(--bg3); border:3px solid var(--bg);
+}
 
 .hero-name {
   font-family:var(--font-head);
@@ -186,7 +211,7 @@ section { position:relative; z-index:1; padding:120px 6%; }
 .hero-typed .cursor-blink { animation:cursor-b .75s step-end infinite; }
 @keyframes cursor-b { 0%,100%{opacity:1} 50%{opacity:0} }
 
-.hero-desc { color:var(--text2); font-size:1.05rem; line-height:1.9; max-width:700px; margin-bottom:20px; font-weight:300; }
+.hero-desc { color:var(--text2); font-size:1.05rem; line-height:1.9; max-width:700px; margin-bottom:20px; font-weight:300; text-align:justify; text-align-last:left; }
 
 .hero-stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:20px; margin:35px 0;}
 
@@ -272,14 +297,44 @@ section { position:relative; z-index:1; padding:120px 6%; }
 .hero-terminal-body p { margin:0; }
 .hero-terminal-body .cursor-blink { color:var(--cyan); }
 
+/* hero-only: reset explicit grid placement in the narrow gap between
+   the global 1050px collapse and the hero's own 992px breakpoint,
+   without touching the original @media(max-width:1050px) block below
+   (which controls unrelated sections and must keep its original
+   cascade position) */
+@media (min-width:993px) and (max-width:1050px) {
+  .hero-inner { grid-template-rows:none; }
+  .hero-left, .hero-avatar, .hero-terminal { grid-column:auto; grid-row:auto; align-self:auto; }
+  .hero-avatar { width:176px; height:176px; margin:0 auto; }
+}
+
 @media (max-width:992px){
 
 .hero-inner{
     grid-template-columns:1fr;
+    grid-template-rows:none;
+    row-gap:32px;
+}
+
+/* single column: reset explicit placement so items stack in DOM
+   order — avatar, then hero content, then terminal */
+.hero-left,
+.hero-avatar,
+.hero-terminal{
+    grid-column:auto;
+    grid-row:auto;
+    align-self:auto;
 }
 
 .hero{
     text-align:center;
+}
+
+.hero-avatar{
+    width:176px;
+    height:176px;
+    margin-left:auto;
+    margin-right:auto;
 }
 
 .hero-desc{
@@ -311,6 +366,12 @@ section { position:relative; z-index:1; padding:120px 6%; }
 }
 
 @media (max-width:576px){
+
+.hero-avatar{
+    width:136px;
+    height:136px;
+    margin-bottom:18px;
+}
 
 .hero-name{
     font-size:52px;
@@ -415,7 +476,7 @@ section { position:relative; z-index:1; padding:120px 6%; }
   color:var(--text); margin-bottom:20px;
 }
 .about-headline em { font-style:normal; color:var(--cyan); }
-.about-body { color:var(--text2); font-size:.95rem; line-height:1.85; font-weight:300; }
+.about-body { color:var(--text2); font-size:.95rem; line-height:1.85; font-weight:300; text-align:justify; text-align-last:left; }
 
 .about-cards { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
 .mini-card {
@@ -489,7 +550,7 @@ section { position:relative; z-index:1; padding:120px 6%; }
 .proj-card h3 { font-family:var(--font-head); font-size:.98rem; font-weight:700; margin-bottom:14px; letter-spacing:-.01em; color:var(--text); line-height:1.35; }
 
 .proj-pitch { display:flex; flex-direction:column; gap:10px; margin-bottom:18px; flex:1; }
-.proj-pitch p { color:var(--text2); font-size:.83rem; line-height:1.6; font-weight:300; margin:0; }
+.proj-pitch p { color:var(--text2); font-size:.83rem; line-height:1.6; font-weight:300; margin:0; text-align:justify; text-align-last:left; }
 .pitch-label {
   display:inline-block; font-family:var(--font-mono); font-size:.62rem;
   letter-spacing:.1em; text-transform:uppercase; color:var(--cyan);
@@ -537,7 +598,7 @@ section { position:relative; z-index:1; padding:120px 6%; }
   font-family:var(--font-mono); font-size:.68rem; letter-spacing:.15em;
   text-transform:uppercase; color:var(--cyan); margin-bottom:8px;
 }
-.modal-section p { color:var(--text2); font-size:.9rem; line-height:1.75; margin:0; font-weight:300; }
+.modal-section p { color:var(--text2); font-size:.9rem; line-height:1.75; margin:0; font-weight:300; text-align:justify; text-align-last:left; }
 
 #modal-desc{
     padding-left: 20px;
@@ -830,7 +891,7 @@ section { position:relative; z-index:1; padding:120px 6%; }
   position:sticky; top:90px;
 }
 .learning-card h3 { font-family:var(--font-head); font-size:.95rem; font-weight:700; margin-bottom:14px; color:var(--text); }
-.learning-card p { color:var(--text2); font-size:.88rem; line-height:1.8; margin-bottom:20px; font-weight:300; }
+.learning-card p { color:var(--text2); font-size:.88rem; line-height:1.8; margin-bottom:20px; font-weight:300; text-align:justify; text-align-last:left; }
 
 /* ── CERTIFICATIONS / ACHIEVEMENTS ── */
 .achievements-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:60px; }
@@ -846,7 +907,7 @@ section { position:relative; z-index:1; padding:120px 6%; }
 /* ── CONTACT ── */
 .contact-layout { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
 .contact-left h2 { font-family:var(--font-head); font-size:clamp(24px,3vw,38px); font-weight:900; letter-spacing:-.02em; margin-bottom:16px; line-height:1.15; }
-.contact-left p { color:var(--text2); font-size:.95rem; line-height:1.8; font-weight:300; }
+.contact-left p, .contact-intro { color:var(--text2); font-size:.95rem; line-height:1.8; font-weight:300; text-align:justify; text-align-last:left; }
 
 .contact-cards{
     display:grid;
@@ -1018,6 +1079,14 @@ body::after {
 
   footer { text-align:center; justify-content:center; }
   .footer-right { justify-content:center; width:100%; }
+
+  /* On very narrow screens, justified text creates uneven word
+     spacing — left-align these paragraphs for better mobile readability */
+  .hero-desc, .about-body, .proj-pitch p, .featured-card p,
+  .modal-section p, .gh-card p, .blog-card p, .learning-card p,
+  .contact-left p, .contact-intro {
+    text-align:left;
+  }
 }
 
 /* ── VERY SMALL PHONE (360px and below) ── */
@@ -1046,7 +1115,7 @@ body::after {
   font-family:var(--font-head); font-size:.85rem; font-weight:700;
   letter-spacing:.04em; color:var(--cyan); margin-bottom:10px;
 }
-.featured-card p { color:var(--text2); font-size:.86rem; line-height:1.7; font-weight:300; }
+.featured-card p { color:var(--text2); font-size:.86rem; line-height:1.7; font-weight:300; text-align:justify; text-align-last:left; }
 .featured-card code {
   font-family:var(--font-mono); background:var(--surface2); padding:1px 6px;
   border-radius:4px; font-size:.82em; color:var(--text);
@@ -1096,7 +1165,7 @@ body::after {
 .blog-card:hover { border-color:var(--border-h); transform:translateY(-4px); }
 .blog-card .proj-status { position:static; align-self:flex-start; backdrop-filter:none; }
 .blog-card h3 { font-family:var(--font-head); font-size:.88rem; color:var(--text); line-height:1.4; margin-top:6px; }
-.blog-card p { color:var(--text2); font-size:.82rem; line-height:1.6; font-weight:300; flex:1; }
+.blog-card p { color:var(--text2); font-size:.82rem; line-height:1.6; font-weight:300; flex:1; text-align:justify; text-align-last:left; }
 .blog-card .proj-cta { font-size:.78rem; }
 
 /* GitHub highlights */
@@ -1110,7 +1179,7 @@ body::after {
 .gh-card-head h3 { font-family:var(--font-mono); font-size:.85rem; color:var(--cyan); word-break:break-word; }
 .gh-lang { display:flex; align-items:center; gap:6px; font-size:.75rem; color:var(--text3); white-space:nowrap; }
 .gh-dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
-.gh-card p { color:var(--text2); font-size:.83rem; line-height:1.6; font-weight:300; margin-bottom:14px; }
+.gh-card p { color:var(--text2); font-size:.83rem; line-height:1.6; font-weight:300; margin-bottom:14px; text-align:justify; text-align-last:left; }
 .gh-cta { margin-top:32px; text-align:center; }
 
 /* WhatsApp button + floating CTA */
