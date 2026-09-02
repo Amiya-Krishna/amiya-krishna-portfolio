@@ -177,7 +177,7 @@ const projectData = [
     ],
 
     link: "https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline",
-    live: "https://Job Application Tracker — Ingestion, Matching & Analytics Engine-ten.vercel.app",
+    live: "https://job-application-tracker-portal-ten.vercel.app",
 
     gallery: [
       {
@@ -254,8 +254,8 @@ const projectData = [
 
     tags: ["Next.js 16", "TypeScript", "Prisma", "PostgreSQL", "Zod", "JWT"],
 
-    link: "https://github.com/Amiya-Krishna/Collexa — College Decision Intelligence Platform",
-    live: "https://Collexa — College Decision Intelligence Platform-vert.vercel.app",
+    link: "https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform",
+    live: "https://college-discovery-vert.vercel.app",
 
     gallery: [
       {
