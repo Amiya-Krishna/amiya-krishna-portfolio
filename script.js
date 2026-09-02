@@ -206,7 +206,7 @@ const projectData = [
       },
     ],
     diagram: "assets/projects/Job_tracker_system_architecture.png",
-    demoVideo: "", // paste a .mp4/.webm or .gif URL here later
+    demoVideo: "assets/projects/tracker-demo.mp4", 
 
     status: "Built & feature-complete — live demo deploying",
   },
@@ -273,7 +273,7 @@ const projectData = [
     ],
     diagram:
       "assets/projects/college-discovery-architecture.png",
-    demoVideo: "", // paste a .mp4/.webm or .gif URL here later
+    demoVideo: "assets/projects/college-discovery-demo.mp4",
 
     status: "Live in production on Vercel",
   },
@@ -338,7 +338,7 @@ const projectData = [
       },
     ],
     diagram: "assets/projects/system_architecture.png",
-    demoVideo: "", // paste a .mp4/.webm or .gif URL here later
+    demoVideo: "assets/projects/forum-demo.mp4", 
 
     status: "Built & feature-complete — live demo deploying",
   },
