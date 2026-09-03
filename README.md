@@ -1,4 +1,4 @@
-# Amiya Krishna — Backend-Leaning Full Stack Developer Portfolio
+# Amiya Krishna Chaurasiya — Backend-Leaning Full Stack Developer Portfolio
 
 Personal portfolio website of **Amiya Krishna**, a B.Tech CSE student building backend-heavy full-stack systems (queues, workers, relational + NoSQL data modeling, real-time architecture), targeting Backend/Full Stack Software Engineering internships.
 
