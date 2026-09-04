@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Real-Time Discussion Platform — Community Forum with Live Chat | Amiya Krishna Chaurasiya</title>
+
+  <meta name="description" content="Case study of a MERN + Socket.IO community discussion platform built by Amiya Krishna Chaurasiya, merging persistent threaded discussions with real-time chat, presence, notifications and JWT authentication." />
+
+  <link rel="canonical" href="https://amiya-krishna-portfolio.vercel.app/projects/community-discussion-forum.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Real-Time Discussion Platform (WebSocket Architecture) | Amiya Krishna Chaurasiya" />
+  <meta property="og:description" content="Case study of a MERN + Socket.IO community discussion platform built by Amiya Krishna Chaurasiya, merging persistent threaded discussions with real-time chat, presence, notifications and JWT authentication." />
+  <meta property="og:url" content="https://amiya-krishna-portfolio.vercel.app/projects/community-discussion-forum.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://amiya-krishna-portfolio.vercel.app/assets/projects/forum-dashboard.jpg" />
+  <meta property="og:site_name" content="Amiya Krishna Chaurasiya" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Real-Time Discussion Platform (WebSocket Architecture) | Amiya Krishna Chaurasiya" />
+  <meta name="twitter:description" content="Case study of a MERN + Socket.IO community discussion platform built by Amiya Krishna Chaurasiya, merging persistent threaded discussions with real-time chat, presence, notifications and JWT authentication." />
+  <meta name="twitter:image" content="https://amiya-krishna-portfolio.vercel.app/assets/projects/forum-dashboard.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="alternate icon" href="../assets/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+
+  <!-- SoftwareApplication structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Real-Time Discussion Platform (WebSocket Architecture)",
+    "description": "Case study of a MERN + Socket.IO community discussion platform built by Amiya Krishna Chaurasiya, merging persistent threaded discussions with real-time chat, presence, notifications and JWT authentication.",
+    "url": "https://amiya-krishna-portfolio.vercel.app/projects/community-discussion-forum.html",
+    "image": "https://amiya-krishna-portfolio.vercel.app/assets/projects/forum-dashboard.jpg",
+    "applicationCategory": "WebApplication",
+    "operatingSystem": "Web",
+    "codeRepository": "https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat",
+    "author": {
+      "@type": "Person",
+      "@id": "https://amiya-krishna-portfolio.vercel.app/#person",
+      "name": "Amiya Krishna Chaurasiya"
+    },
+    "creator": {
+      "@type": "Person",
+      "@id": "https://amiya-krishna-portfolio.vercel.app/#person",
+      "name": "Amiya Krishna Chaurasiya"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <nav>
+    <a href="../index.html" class="nav-logo" style="text-decoration:none">AK//DEV</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="theme-toggle" title="Toggle theme" aria-label="Toggle light and dark theme">☀️</button>
+    </div>
+  </nav>
+
+  <main class="case-main">
+    <div class="case-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>→</span>
+        <a href="../index.html#projects">Projects</a>
+        <span>→</span>
+        <span aria-current="page">Real-Time Discussion Platform</span>
+      </nav>
+
+      <div class="case-status">
+        <span class="proj-status status-live">🟢 Built &amp; feature-complete — live demo deploying</span>
+      </div>
+
+      <h1 class="case-title">Real-Time Discussion Platform (WebSocket Architecture)</h1>
+      <p class="case-subtitle">A MERN + Socket.IO platform merging persistent threaded discussions with real-time chat — presence, typing indicators, mentions, and DB-persisted notifications.</p>
+
+      <div class="case-tags">
+            <span class="tag">React 18</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Socket.IO</span>
+            <span class="tag">JWT</span>
+      </div>
+
+      <div class="case-links">
+        <a class="btn btn-primary" href="https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat" target="_blank" rel="noopener" aria-label="View Real-Time Discussion Platform source code on GitHub"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.77 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.73.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.16.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.47 3.14-1.16 3.14-1.16.62 1.56.23 2.72.11 3.01.73.79 1.17 1.81 1.17 3.05 0 4.37-2.66 5.33-5.19 5.61.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.02 11.52C23.02 5.24 18.27.5 12 .5Z"/></svg> View Source on GitHub</a>
+        <a class="btn btn-outline" href="https://community-discussion-forum-with-rea-roan.vercel.app" target="_blank" rel="noopener" aria-label="Open Real-Time Discussion Platform live demo">Live Demo ↗</a>
+      </div>
+
+      <div class="case-hero-img">
+        <img src="../assets/projects/forum-dashboard.jpg" alt="Real-Time Discussion Platform feed dashboard" loading="eager" />
+      </div>
+
+      <section class="case-section">
+        <h2>Problem</h2>
+        <p>Online communities are usually forced to pick one: slow-paced threaded discussions, or fast real-time chat. Splitting the two across separate tools kills engagement and context.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Solution</h2>
+        <p>Built a MERN + Socket.IO platform that merges both worlds in one app — persistent discussion threads with comments live alongside real-time messaging, so a conversation can start async and move to live chat instantly.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Features</h2>
+        <ul>
+              <li>15+ REST APIs across Auth, Posts &amp; Notifications</li>
+              <li>JWT authentication with bcrypt password hashing</li>
+              <li>Socket.IO — live chat, typing indicators &amp; online presence</li>
+              <li>Real-time notifications for replies, mentions &amp; messages persisted to the DB</li>
+              <li>Multi-emoji reactions, rich text posts, image uploads (Multer), @mentions with autocomplete</li>
+              <li>Infinite scroll — feed loads in pages of 8 instead of fetching everything at once</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Architecture</h2>
+        <ul>
+              <li>Express REST API and a Socket.IO layer run side by side in the same Node process, sharing auth/session context</li>
+              <li>MongoDB + Mongoose schema design across Users, Posts, Comments &amp; Notifications collections</li>
+              <li>Role-based authorization middleware guards protected routes on both REST and socket events</li>
+              <li>Uploaded images served from <code>server/uploads</code> via Multer in dev — repo explicitly flags this needs to move to S3/Cloudinary for production since free-tier hosts use ephemeral disks</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Technology Stack</h2>
+        <div class="tags">
+            <span class="tag">React 18</span>
+            <span class="tag">Node.js</span>
+            <span class="tag">Express</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">Socket.IO</span>
+            <span class="tag">JWT</span>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Challenges</h2>
+        <ul>
+              <li>Infinite scroll (paged fetch of 8) instead of loading the full feed, to keep initial payloads small as post volume grows</li>
+              <li>Socket.IO falls back to HTTP long-polling when WebSocket transport isn't available</li>
+              <li>Notification documents carry a type + link back to the source post, so read/unread state persists across sessions instead of living only in memory</li>
+              <li>Known scaling gap called out directly: local-disk image storage won't survive redeploys on ephemeral hosts — next step is swapping in object storage</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Results / Impact</h2>
+        <div class="metrics-grid">
+            <div class="metric-box"><span class="metric-num">15+</span><div class="metric-label">REST Endpoints</div></div>
+            <div class="metric-box"><span class="metric-num">4</span><div class="metric-label">Mongo Collections</div></div>
+            <div class="metric-box"><span class="metric-num">6</span><div class="metric-label">Emoji Reactions</div></div>
+            <div class="metric-box"><span class="metric-num">8</span><div class="metric-label">Posts / Page</div></div>
+        </div>
+      </section>
+
+          <div class="case-gallery">
+            <img src="../assets/projects/forum-create-discussion.jpg" alt="Real-Time Discussion Platform — create discussion thread" loading="lazy" />
+            <img src="../assets/projects/forum-comments.jpg" alt="Real-Time Discussion Platform — live comments &amp; replies" loading="lazy" />
+          </div>
+
+      <section class="case-section">
+        <h2>Links</h2>
+        <ul>
+          <li><a href="https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat" target="_blank" rel="noopener">View Real-Time Discussion Platform source code on GitHub</a></li>
+          <li><a href="https://community-discussion-forum-with-rea-roan.vercel.app" target="_blank" rel="noopener">Open the Real-Time Discussion Platform live demo</a></li>
+        </ul>
+      </section>
+
+      <div class="case-back">
+        <a class="btn btn-outline" href="../index.html#projects">← Back to all projects</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      Crafted with intent by <strong>Amiya Krishna Chaurasiya</strong> · Software Engineer · © 2026
+    </div>
+    <div class="footer-right">
+      <a class="footer-link" href="https://github.com/Amiya-Krishna" target="_blank" rel="noopener" aria-label="Amiya Krishna Chaurasiya on GitHub">GITHUB</a>
+      <a class="footer-link" href="https://www.linkedin.com/in/amiya-krishna" target="_blank" rel="noopener" aria-label="Amiya Krishna Chaurasiya on LinkedIn">LINKEDIN</a>
+      <a class="footer-link" href="../index.html">HOME</a>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal theme toggle so the control isn't dead on this page
+    (function () {
+      const btn = document.getElementById("theme-toggle");
+      let isDark = true;
+      btn.addEventListener("click", function () {
+        isDark = !isDark;
+        document.body.setAttribute("data-theme", isDark ? "dark" : "light");
+        btn.textContent = isDark ? "☀️" : "🌙";
+      });
+    })();
+  </script>
+</body>
+</html>

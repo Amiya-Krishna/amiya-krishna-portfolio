@@ -46,6 +46,24 @@
   <meta property="profile:first_name" content="Amiya" />
   <meta property="profile:last_name" content="Chaurasiya" />
 
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Amiya Krishna Chaurasiya — Software Engineer" />
+  <meta
+    name="twitter:description"
+    content="Backend-leaning full-stack software engineer building production-oriented applications."
+  />
+  <meta
+    name="twitter:image"
+    content="https://amiya-krishna-portfolio.vercel.app/assets/projects/amiya-krishna-chaurasiya.jpg"
+  />
+  <meta name="twitter:image:alt" content="Amiya Krishna Chaurasiya — Software Developer" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="alternate icon" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+
   <!-- Person / ProfilePage -->
   <script type="application/ld+json">
   {
@@ -65,7 +83,8 @@
       "url": "https://amiya-krishna-portfolio.vercel.app/",
       "sameAs": [
         "https://www.linkedin.com/in/amiya-krishna",
-        "https://github.com/Amiya-Krishna"
+        "https://github.com/Amiya-Krishna",
+        "https://www.instagram.com/er.amiyakrishna/"
       ]
     }
   }
@@ -94,7 +113,12 @@
         <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="nav-right">
-        <button class="theme-btn" id="theme-toggle" title="Toggle theme">
+        <button
+          class="theme-btn"
+          id="theme-toggle"
+          title="Toggle theme"
+          aria-label="Toggle light and dark theme"
+        >
           ☀️
         </button>
         <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
@@ -186,22 +210,35 @@
             <a
               class="btn btn-whatsapp"
               id="hero-whatsapp"
-              href="#"
+              href="https://wa.me/919305559247?text=Hi%20Krishna%2C%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect%20regarding%20an%20opportunity."
               target="_blank"
               rel="noopener"
+              aria-label="Message Amiya Krishna Chaurasiya on WhatsApp"
               >💬 WhatsApp Me</a
             >
             <a
               class="btn btn-outline"
               href="https://github.com/Amiya-Krishna"
               target="_blank"
+              rel="noopener"
+              aria-label="Amiya Krishna Chaurasiya on GitHub"
               >GitHub</a
             >
             <a
               class="btn btn-outline"
               href="https://www.linkedin.com/in/amiya-krishna"
               target="_blank"
+              rel="noopener"
+              aria-label="Amiya Krishna Chaurasiya on LinkedIn"
               >LinkedIn</a
+            >
+            <a
+              class="btn btn-outline"
+              href="https://www.instagram.com/er.amiyakrishna/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Amiya Krishna Chaurasiya on Instagram"
+              >Instagram</a
             >
             <a href="mailto:amiyakrishna04@gmail.com" class="btn btn-outline"
               >📧 Email Me</a
@@ -400,10 +437,13 @@
                 <a
                   href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
                   target="_blank"
+                  rel="noopener"
                   class="proj-link"
                   onclick="event.stopPropagation()"
                   title="View source on GitHub"
+                  aria-label="View Job Application Tracker source code on GitHub"
                   ><svg
+                    aria-hidden="true"
                     width="15"
                     height="15"
                     viewBox="0 0 24 24"
@@ -444,7 +484,12 @@
                 <span class="tag">BullMQ + Redis</span>
                 <span class="tag">Playwright</span>
               </div>
-              <div class="proj-cta">View Case Study →</div>
+              <a
+                class="proj-cta"
+                href="/projects/job-application-tracker.html"
+                onclick="event.stopPropagation()"
+                >View full Job Application Tracker case study →</a
+              >
             </div>
           </div>
 
@@ -465,10 +510,13 @@
                 <a
                   href="https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform"
                   target="_blank"
+                  rel="noopener"
                   class="proj-link"
                   onclick="event.stopPropagation()"
                   title="View source on GitHub"
+                  aria-label="View Collexa source code on GitHub"
                   ><svg
+                    aria-hidden="true"
                     width="15"
                     height="15"
                     viewBox="0 0 24 24"
@@ -502,7 +550,12 @@
                 <span class="tag">PostgreSQL</span>
                 <span class="tag">Zod</span>
               </div>
-              <div class="proj-cta">View Case Study →</div>
+              <a
+                class="proj-cta"
+                href="/projects/collexa.html"
+                onclick="event.stopPropagation()"
+                >View full Collexa case study →</a
+              >
             </div>
           </div>
 
@@ -523,10 +576,13 @@
                 <a
                   href="https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat"
                   target="_blank"
+                  rel="noopener"
                   class="proj-link"
                   onclick="event.stopPropagation()"
                   title="View source on GitHub"
+                  aria-label="View Real-Time Discussion Platform source code on GitHub"
                   ><svg
+                    aria-hidden="true"
                     width="15"
                     height="15"
                     viewBox="0 0 24 24"
@@ -560,7 +616,12 @@
                 <span class="tag">Socket.IO</span>
                 <span class="tag">JWT</span>
               </div>
-              <div class="proj-cta">View Case Study →</div>
+              <a
+                class="proj-cta"
+                href="/projects/community-discussion-forum.html"
+                onclick="event.stopPropagation()"
+                >View full Discussion Platform case study →</a
+              >
             </div>
           </div>
         </div>
@@ -682,7 +743,7 @@
     <!-- Modal -->
     <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
       <div class="modal" id="modal-box">
-        <button class="modal-close" onclick="closeModal()">✕</button>
+        <button class="modal-close" onclick="closeModal()" aria-label="Close project details">✕</button>
         <h2 id="modal-title"></h2>
         <span class="modal-status" id="modal-status"></span>
 
@@ -745,8 +806,8 @@
         >
           <a
             id="modal-live"
-            href="#"
             target="_blank"
+            rel="noopener"
             class="btn btn-primary"
             style="font-size: 0.8rem; padding: 11px 20px"
           >
@@ -755,8 +816,8 @@
 
           <a
             id="modal-link"
-            href="#"
             target="_blank"
+            rel="noopener"
             class="btn btn-outline"
             style="font-size: 0.8rem; padding: 11px 20px"
           >
@@ -772,7 +833,7 @@
       id="lightbox-overlay"
       onclick="closeLightbox(event)"
     >
-      <button class="lightbox-close" onclick="closeLightbox(event)">✕</button>
+      <button class="lightbox-close" onclick="closeLightbox(event)" aria-label="Close image viewer">✕</button>
       <img id="lightbox-img" src="" alt="" />
     </div>
 
@@ -997,7 +1058,7 @@
         </p>
 
         <div class="blog-grid">
-          <a class="blog-card reveal" href="#" target="_blank" rel="noopener">
+          <div class="blog-card blog-card-disabled reveal" role="group" aria-label="Planned blog post, not yet published">
             <span class="proj-status status-progress">🛠 Coming Soon</span>
             <h3>
               Building a Queue-Based Job Matching Engine with BullMQ & Redis
@@ -1007,9 +1068,9 @@
               deduplication, and scoring from the API — and why that matters
               when a Playwright scraper crashes.
             </p>
-            <span class="proj-cta">Read Post →</span>
-          </a>
-          <a class="blog-card reveal" href="#" target="_blank" rel="noopener">
+            <span class="proj-cta proj-cta-disabled">Draft in progress</span>
+          </div>
+          <div class="blog-card blog-card-disabled reveal" role="group" aria-label="Planned blog post, not yet published">
             <span class="proj-status status-progress">🛠 Coming Soon</span>
             <h3>Fuzzy Deduplication: Jaro-Winkler + TF-IDF in Practice</h3>
             <p>
@@ -1017,9 +1078,9 @@
               listings, and how combining title similarity with description
               similarity cuts down false positives.
             </p>
-            <span class="proj-cta">Read Post →</span>
-          </a>
-          <a class="blog-card reveal" href="#" target="_blank" rel="noopener">
+            <span class="proj-cta proj-cta-disabled">Draft in progress</span>
+          </div>
+          <div class="blog-card blog-card-disabled reveal" role="group" aria-label="Planned blog post, not yet published">
             <span class="proj-status status-progress">🛠 Coming Soon</span>
             <h3>
               JWT in HTTP-Only Cookies vs. Bearer Tokens: What I'd Pick Now
@@ -1029,8 +1090,8 @@
               header-token pattern in my other two projects, and the tradeoffs
               I'd reconsider.
             </p>
-            <span class="proj-cta">Read Post →</span>
-          </a>
+            <span class="proj-cta proj-cta-disabled">Draft in progress</span>
+          </div>
         </div>
       </div>
     </section>
@@ -1294,7 +1355,7 @@
             <a
               class="contact-card reveal contact-card-whatsapp"
               id="contact-whatsapp"
-              href="#"
+              href="https://wa.me/919305559247?text=Hi%20Krishna%2C%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect%20regarding%20an%20opportunity."
               target="_blank"
               rel="noopener"
             >
@@ -1325,6 +1386,8 @@
               class="contact-card reveal"
               href="https://github.com/Amiya-Krishna"
               target="_blank"
+              rel="noopener"
+              aria-label="Amiya Krishna Chaurasiya on GitHub"
             >
               <div>
                 <h3>GitHub</h3>
@@ -1337,10 +1400,26 @@
               class="contact-card reveal"
               href="https://www.linkedin.com/in/amiya-krishna"
               target="_blank"
+              rel="noopener"
+              aria-label="Amiya Krishna Chaurasiya on LinkedIn"
             >
               <div>
                 <h3>LinkedIn</h3>
                 <p>amiya-krishna</p>
+              </div>
+            </a>
+
+            <!-- Instagram -->
+            <a
+              class="contact-card reveal"
+              href="https://www.instagram.com/er.amiyakrishna/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Amiya Krishna Chaurasiya on Instagram"
+            >
+              <div>
+                <h3>Instagram</h3>
+                <p>@er.amiyakrishna</p>
               </div>
             </a>
           </div>
@@ -1352,13 +1431,13 @@
     <a
       id="whatsapp-float"
       class="whatsapp-float"
-      href="#"
+      href="https://wa.me/919305559247?text=Hi%20Krishna%2C%20I%20saw%20your%20portfolio%20and%20wanted%20to%20connect%20regarding%20an%20opportunity."
       target="_blank"
       rel="noopener"
       aria-label="Chat on WhatsApp"
       title="Chat on WhatsApp"
     >
-      <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor">
+      <svg viewBox="0 0 32 32" width="26" height="26" fill="currentColor" aria-hidden="true">
         <path
           d="M16.004 3C9.376 3 4 8.373 4 15c0 2.35.687 4.54 1.872 6.383L4 29l7.812-1.84A11.94 11.94 0 0 0 16.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3Zm7.03 16.94c-.298.836-1.474 1.532-2.407 1.73-.64.135-1.475.243-4.29-.92-3.6-1.487-5.92-5.13-6.1-5.37-.178-.24-1.46-1.943-1.46-3.706 0-1.763.926-2.63 1.254-2.99.328-.36.716-.45.955-.45.238 0 .478.002.686.012.22.01.516-.083.807.615.298.716 1.014 2.478 1.103 2.658.09.18.15.39.03.63-.12.24-.18.39-.358.6-.18.21-.376.47-.537.63-.18.18-.367.375-.157.735.208.36.925 1.526 1.986 2.472 1.365 1.217 2.516 1.594 2.877 1.774.36.18.567.15.777-.09.208-.24.895-1.044 1.133-1.404.238-.36.478-.3.807-.18.328.12 2.083.982 2.44 1.162.358.18.596.27.685.42.09.15.09.87-.208 1.705Z"
         />
@@ -1376,13 +1455,25 @@
           class="footer-link"
           href="https://github.com/Amiya-Krishna"
           target="_blank"
+          rel="noopener"
+          aria-label="Amiya Krishna Chaurasiya on GitHub"
           >GITHUB</a
         >
         <a
           class="footer-link"
           href="https://www.linkedin.com/in/amiya-krishna"
           target="_blank"
+          rel="noopener"
+          aria-label="Amiya Krishna Chaurasiya on LinkedIn"
           >LINKEDIN</a
+        >
+        <a
+          class="footer-link"
+          href="https://www.instagram.com/er.amiyakrishna/"
+          target="_blank"
+          rel="noopener"
+          aria-label="Amiya Krishna Chaurasiya on Instagram"
+          >INSTAGRAM</a
         >
         <a class="footer-link" href="#home">TOP ↑</a>
       </div>

@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Collexa — College Decision Intelligence Platform | Amiya Krishna Chaurasiya</title>
+
+  <meta name="description" content="Case study of Collexa, a Next.js 16 + TypeScript + Prisma + PostgreSQL platform built by Amiya Krishna Chaurasiya for college search, a weighted rank-prediction engine, side-by-side comparison, and Zod-validated APIs behind HTTP-only JWT cookie auth." />
+
+  <link rel="canonical" href="https://amiya-krishna-portfolio.vercel.app/projects/collexa.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Collexa — College Decision Intelligence Platform | Amiya Krishna Chaurasiya" />
+  <meta property="og:description" content="Case study of Collexa, a Next.js 16 + TypeScript + Prisma + PostgreSQL platform built by Amiya Krishna Chaurasiya for college search, a weighted rank-prediction engine, side-by-side comparison, and Zod-validated APIs behind HTTP-only JWT cookie auth." />
+  <meta property="og:url" content="https://amiya-krishna-portfolio.vercel.app/projects/collexa.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://amiya-krishna-portfolio.vercel.app/assets/projects/college-discovery-list.jpg" />
+  <meta property="og:site_name" content="Amiya Krishna Chaurasiya" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Collexa — College Decision Intelligence Platform | Amiya Krishna Chaurasiya" />
+  <meta name="twitter:description" content="Case study of Collexa, a Next.js 16 + TypeScript + Prisma + PostgreSQL platform built by Amiya Krishna Chaurasiya for college search, a weighted rank-prediction engine, side-by-side comparison, and Zod-validated APIs behind HTTP-only JWT cookie auth." />
+  <meta name="twitter:image" content="https://amiya-krishna-portfolio.vercel.app/assets/projects/college-discovery-list.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="alternate icon" href="../assets/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+
+  <!-- SoftwareApplication structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Collexa — College Decision Intelligence Platform",
+    "description": "Case study of Collexa, a Next.js 16 + TypeScript + Prisma + PostgreSQL platform built by Amiya Krishna Chaurasiya for college search, a weighted rank-prediction engine, side-by-side comparison, and Zod-validated APIs behind HTTP-only JWT cookie auth.",
+    "url": "https://amiya-krishna-portfolio.vercel.app/projects/collexa.html",
+    "image": "https://amiya-krishna-portfolio.vercel.app/assets/projects/college-discovery-list.jpg",
+    "applicationCategory": "WebApplication",
+    "operatingSystem": "Web",
+    "codeRepository": "https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform",
+    "author": {
+      "@type": "Person",
+      "@id": "https://amiya-krishna-portfolio.vercel.app/#person",
+      "name": "Amiya Krishna Chaurasiya"
+    },
+    "creator": {
+      "@type": "Person",
+      "@id": "https://amiya-krishna-portfolio.vercel.app/#person",
+      "name": "Amiya Krishna Chaurasiya"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <nav>
+    <a href="../index.html" class="nav-logo" style="text-decoration:none">AK//DEV</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="theme-toggle" title="Toggle theme" aria-label="Toggle light and dark theme">☀️</button>
+    </div>
+  </nav>
+
+  <main class="case-main">
+    <div class="case-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>→</span>
+        <a href="../index.html#projects">Projects</a>
+        <span>→</span>
+        <span aria-current="page">Collexa</span>
+      </nav>
+
+      <div class="case-status">
+        <span class="proj-status status-live">🟢 Live in production on Vercel</span>
+      </div>
+
+      <h1 class="case-title">Collexa — College Decision Intelligence Platform</h1>
+      <p class="case-subtitle">A Next.js App Router platform for searching, comparing and predicting college admission rank, backed by a Zod-validated API layer and HTTP-only JWT cookie authentication.</p>
+
+      <div class="case-tags">
+            <span class="tag">Next.js 16</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Prisma</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Zod</span>
+            <span class="tag">JWT</span>
+      </div>
+
+      <div class="case-links">
+        <a class="btn btn-primary" href="https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform" target="_blank" rel="noopener" aria-label="View Collexa source code on GitHub"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.77 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.73.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.16.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.47 3.14-1.16 3.14-1.16.62 1.56.23 2.72.11 3.01.73.79 1.17 1.81 1.17 3.05 0 4.37-2.66 5.33-5.19 5.61.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.02 11.52C23.02 5.24 18.27.5 12 .5Z"/></svg> View Source on GitHub</a>
+        <a class="btn btn-outline" href="https://college-discovery-vert.vercel.app" target="_blank" rel="noopener" aria-label="Open Collexa live demo">Live Demo ↗</a>
+      </div>
+
+      <div class="case-hero-img">
+        <img src="../assets/projects/college-discovery-list.jpg" alt="Collexa college search &amp; filter page" loading="eager" />
+      </div>
+
+      <section class="case-section">
+        <h2>Problem</h2>
+        <p>With thousands of colleges, shifting fees, and confusing rank cutoffs, students end up piecing together decisions from scattered PDFs, forums, and outdated rank-predictor sites.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Solution</h2>
+        <p>A Next.js App Router monolith (TypeScript, Prisma, PostgreSQL) that lets students search &amp; filter colleges, run a weighted rank-based admission predictor, compare shortlists side by side, and get AI-assisted guidance — all behind Zod-validated APIs and HTTP-only JWT cookie auth.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Features</h2>
+        <ul>
+              <li>Search &amp; filter across colleges by state, type &amp; fees</li>
+              <li>Weighted rank-prediction engine (rank, budget &amp; placement scoring)</li>
+              <li>Side-by-side college comparison tool</li>
+              <li>AI guidance chat via a server-side Groq API proxy</li>
+              <li>JWT auth in HTTP-only cookies + middleware-enforced access control</li>
+              <li>Zod-validated API routes with Prisma ORM over PostgreSQL</li>
+              <li>Email-based password reset flow (Resend) with expiring tokens</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Architecture</h2>
+        <ul>
+              <li>Next.js App Router as the single composition layer — <code>src/app/api</code> holds route handlers colocated with the pages that call them</li>
+              <li><code>middleware.ts</code> centralizes access control, checking the JWT cookie before requests reach any protected route handler</li>
+              <li>Relational schema (Prisma): <code>User</code>, <code>College</code>, <code>Course</code>, <code>Review</code>, <code>SavedCollege</code> (unique <code>userId</code>+<code>collegeId</code>), <code>PasswordResetToken</code></li>
+              <li>Recommendation weights (rank/fees/placement) are environment-configurable, not hardcoded</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Technology Stack</h2>
+        <div class="tags">
+            <span class="tag">Next.js 16</span>
+            <span class="tag">TypeScript</span>
+            <span class="tag">Prisma</span>
+            <span class="tag">PostgreSQL</span>
+            <span class="tag">Zod</span>
+            <span class="tag">JWT</span>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Challenges</h2>
+        <ul>
+              <li>Indexed lookup fields on college name, location, rating, and user-saved records for fast filtered reads</li>
+              <li>Cascade-safe deletes on <code>Course</code>/<code>Review</code> so removing a college doesn't orphan child records</li>
+              <li>Global Prisma Client reuse in development prevents connection-pool churn on hot reload</li>
+              <li>Password reset tokens are single-use and expiring — no long-lived reset links</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Results / Impact</h2>
+        <div class="metrics-grid">
+            <div class="metric-box"><span class="metric-num">14</span><div class="metric-label">API Routes</div></div>
+            <div class="metric-box"><span class="metric-num">6</span><div class="metric-label">Prisma Models</div></div>
+            <div class="metric-box"><span class="metric-num">3</span><div class="metric-label">Comparison Slots</div></div>
+            <div class="metric-box"><span class="metric-num">1hr</span><div class="metric-label">Reset Token TTL</div></div>
+        </div>
+      </section>
+
+          <div class="case-gallery">
+            <img src="../assets/projects/college-discovery-predictor.jpg" alt="Collexa — rank-based college predictor" loading="lazy" />
+            <img src="../assets/projects/college-discovery-compare.jpg" alt="Collexa — side-by-side college comparison" loading="lazy" />
+          </div>
+
+      <section class="case-section">
+        <h2>Links</h2>
+        <ul>
+          <li><a href="https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform" target="_blank" rel="noopener">View Collexa source code on GitHub</a></li>
+          <li><a href="https://college-discovery-vert.vercel.app" target="_blank" rel="noopener">Open the Collexa live demo</a></li>
+        </ul>
+      </section>
+
+      <div class="case-back">
+        <a class="btn btn-outline" href="../index.html#projects">← Back to all projects</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      Crafted with intent by <strong>Amiya Krishna Chaurasiya</strong> · Software Engineer · © 2026
+    </div>
+    <div class="footer-right">
+      <a class="footer-link" href="https://github.com/Amiya-Krishna" target="_blank" rel="noopener" aria-label="Amiya Krishna Chaurasiya on GitHub">GITHUB</a>
+      <a class="footer-link" href="https://www.linkedin.com/in/amiya-krishna" target="_blank" rel="noopener" aria-label="Amiya Krishna Chaurasiya on LinkedIn">LINKEDIN</a>
+      <a class="footer-link" href="../index.html">HOME</a>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal theme toggle so the control isn't dead on this page
+    (function () {
+      const btn = document.getElementById("theme-toggle");
+      let isDark = true;
+      btn.addEventListener("click", function () {
+        isDark = !isDark;
+        document.body.setAttribute("data-theme", isDark ? "dark" : "light");
+        btn.textContent = isDark ? "☀️" : "🌙";
+      });
+    })();
+  </script>
+</body>
+</html>

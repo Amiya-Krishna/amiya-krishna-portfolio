@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Job Application Tracker — Automated Ingestion, Matching &amp; Analytics Engine | Amiya Krishna Chaurasiya</title>
+
+  <meta name="description" content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Gmail ingestion, TF-IDF and embedding-based matching, fuzzy deduplication, and a semi-automated Playwright apply flow." />
+
+  <link rel="canonical" href="https://amiya-krishna-portfolio.vercel.app/projects/job-application-tracker.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Job Application Tracker — Ingestion, Matching &amp; Analytics Engine | Amiya Krishna Chaurasiya" />
+  <meta property="og:description" content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Gmail ingestion, TF-IDF and embedding-based matching, fuzzy deduplication, and a semi-automated Playwright apply flow." />
+  <meta property="og:url" content="https://amiya-krishna-portfolio.vercel.app/projects/job-application-tracker.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="https://amiya-krishna-portfolio.vercel.app/assets/projects/tracker-dashboard.jpg" />
+  <meta property="og:site_name" content="Amiya Krishna Chaurasiya" />
+
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Job Application Tracker — Ingestion, Matching &amp; Analytics Engine | Amiya Krishna Chaurasiya" />
+  <meta name="twitter:description" content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Gmail ingestion, TF-IDF and embedding-based matching, fuzzy deduplication, and a semi-automated Playwright apply flow." />
+  <meta name="twitter:image" content="https://amiya-krishna-portfolio.vercel.app/assets/projects/tracker-dashboard.jpg" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+  <link rel="alternate icon" href="../assets/favicon.svg" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+
+  <!-- SoftwareApplication structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Job Application Tracker — Ingestion, Matching & Analytics Engine",
+    "description": "Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Gmail ingestion, TF-IDF and embedding-based matching, fuzzy deduplication, and a semi-automated Playwright apply flow.",
+    "url": "https://amiya-krishna-portfolio.vercel.app/projects/job-application-tracker.html",
+    "image": "https://amiya-krishna-portfolio.vercel.app/assets/projects/tracker-dashboard.jpg",
+    "applicationCategory": "WebApplication",
+    "operatingSystem": "Web",
+    "codeRepository": "https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline",
+    "author": {
+      "@type": "Person",
+      "@id": "https://amiya-krishna-portfolio.vercel.app/#person",
+      "name": "Amiya Krishna Chaurasiya"
+    },
+    "creator": {
+      "@type": "Person",
+      "@id": "https://amiya-krishna-portfolio.vercel.app/#person",
+      "name": "Amiya Krishna Chaurasiya"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="../style.css" />
+</head>
+
+<body>
+  <canvas id="bg-canvas"></canvas>
+
+  <nav>
+    <a href="../index.html" class="nav-logo" style="text-decoration:none">AK//DEV</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#projects">Projects</a></li>
+      <li><a href="../index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button class="theme-btn" id="theme-toggle" title="Toggle theme" aria-label="Toggle light and dark theme">☀️</button>
+    </div>
+  </nav>
+
+  <main class="case-main">
+    <div class="case-container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="../index.html">Home</a>
+        <span>→</span>
+        <a href="../index.html#projects">Projects</a>
+        <span>→</span>
+        <span aria-current="page">Job Application Tracker</span>
+      </nav>
+
+      <div class="case-status">
+        <span class="proj-status status-live">🟢 Built &amp; feature-complete — live demo deploying</span>
+      </div>
+
+      <h1 class="case-title">Job Application Tracker — Ingestion, Matching &amp; Analytics Engine</h1>
+      <p class="case-subtitle">A React/Vite + Express + PostgreSQL job tracker extended into a full ingestion, matching and analytics pipeline, powered by a BullMQ/Redis worker fleet running as its own process.</p>
+
+      <div class="case-tags">
+            <span class="tag">React 19 + Vite</span>
+            <span class="tag">Express 5</span>
+            <span class="tag">PostgreSQL + Prisma</span>
+            <span class="tag">BullMQ + Redis</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">JWT</span>
+      </div>
+
+      <div class="case-links">
+        <a class="btn btn-primary" href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline" target="_blank" rel="noopener" aria-label="View Job Application Tracker source code on GitHub"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false"><path d="M12 .5C5.73.5.98 5.24.98 11.52c0 5.02 3.26 9.28 7.77 10.78.57.1.78-.25.78-.55v-2.16c-3.16.69-3.83-1.36-3.83-1.36-.52-1.31-1.26-1.66-1.26-1.66-1.03-.7.08-.69.08-.69 1.14.08 1.74 1.17 1.74 1.17 1.01 1.74 2.66 1.24 3.31.95.1-.73.4-1.24.72-1.53-2.52-.29-5.17-1.26-5.17-5.62 0-1.24.44-2.26 1.17-3.05-.12-.29-.51-1.45.11-3.01 0 0 .96-.31 3.14 1.16.91-.25 1.89-.38 2.86-.38.97 0 1.95.13 2.86.38 2.18-1.47 3.14-1.16 3.14-1.16.62 1.56.23 2.72.11 3.01.73.79 1.17 1.81 1.17 3.05 0 4.37-2.66 5.33-5.19 5.61.41.35.77 1.04.77 2.1v3.11c0 .3.2.66.79.55A11.53 11.53 0 0 0 23.02 11.52C23.02 5.24 18.27.5 12 .5Z"/></svg> View Source on GitHub</a>
+        <a class="btn btn-outline" href="https://job-application-tracker-portal-ten.vercel.app" target="_blank" rel="noopener" aria-label="Open Job Application Tracker live demo">Live Demo ↗</a>
+      </div>
+
+      <div class="case-hero-img">
+        <img src="../assets/projects/tracker-dashboard.jpg" alt="Job Application Tracker analytics dashboard" loading="eager" />
+      </div>
+
+      <section class="case-section">
+        <h2>Problem</h2>
+        <p>Job seekers applying to dozens of roles lose track of stages fast — spreadsheets don&#x27;t scale. Worse, manually reading every new listing and judging fit against your own profile wastes hours that should go into actual applications.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Solution</h2>
+        <p>A centralized React/Vite + Express + PostgreSQL (Prisma ORM) tracker handles the core CRUD workflow, extended with a second system: a BullMQ/Redis worker fleet that ingests listings from four channels — manual entry, Gmail inbox scanning, a Manifest V3 browser extension, and a live discovery API — deduplicates them, scores them against a stored profile with TF-IDF and optional embeddings, semi-automates the apply flow via Playwright (stopping before the final submit click), and feeds a live per-user analytics dashboard.</p>
+      </section>
+
+      <section class="case-section">
+        <h2>Features</h2>
+        <ul>
+              <li>Full CRUD job tracker: company, role, status, interview date &amp; notes</li>
+              <li>JWT authentication (bcryptjs) with per-user data isolation</li>
+              <li>Unified ingestion: manual entry, Gmail inbox scanning (Google OAuth2, read-only), a Manifest V3 browser extension, and the Remotive discovery API</li>
+              <li>Ingestion pipeline: normalize → dedup → insert → enqueue match</li>
+              <li>TF-IDF + keyword matcher, plus a provider-agnostic embeddings scorer</li>
+              <li>Learning service nudges per-skill weights from interview/offer/rejection outcomes</li>
+              <li>Human-in-the-loop apply engine via Playwright (stops before final submit)</li>
+              <li>Per-user analytics dashboard (Recharts): response-rate and stage-conversion funnel, computed live from each user's own tracked jobs</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Architecture</h2>
+        <ul>
+              <li>API process (Express 5) stays thin — all heavy work (ingestion, scraping, matching, applying, analytics) runs across five dedicated BullMQ workers in a separate Node process, so a Playwright crash never takes the API down</li>
+              <li>Data access is Prisma-first; a thin <code>$queryRawUnsafe</code> wrapper (<code>lib/prisma.js</code>) covers the SQL-heavy analytics, dedup and learning-loop queries</li>
+              <li>Single hosted PostgreSQL instance shared by both the original tracker (<code>users</code>, <code>tracked_jobs</code>) and the new engine (<code>jobs</code>, <code>companies</code>, <code>applications</code>, <code>match_scores</code>, <code>user_profile</code>, <code>job_sources</code>, <code>analytics_daily</code>, <code>scrape_runs</code>)</li>
+              <li>Matching is provider-agnostic: <code>scoreEmbedding()</code> takes an injected <code>embedFn</code> so it isn't locked to one AI vendor</li>
+              <li>Deduplication runs exact-hash first, then fuzzy (Jaro-Winkler title + TF-IDF description) before insert</li>
+              <li>Job discovery is adapter-based: Remotive's public API is genuinely wired up, while LinkedIn/Indeed adapters honestly report 'unavailable' — no partner API access, and the project deliberately avoids scraping or anti-bot bypasses to fake results</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Technology Stack</h2>
+        <div class="tags">
+            <span class="tag">React 19 + Vite</span>
+            <span class="tag">Express 5</span>
+            <span class="tag">PostgreSQL + Prisma</span>
+            <span class="tag">BullMQ + Redis</span>
+            <span class="tag">Playwright</span>
+            <span class="tag">JWT</span>
+        </div>
+      </section>
+
+      <section class="case-section">
+        <h2>Challenges</h2>
+        <ul>
+              <li>Redis-backed token-bucket rate limiter, capped per target domain, with randomized human-like delays to avoid hammering source sites</li>
+              <li>Workers run as their own process (<code>npm run worker</code>) so ingestion/apply load never blocks user-facing API requests</li>
+              <li>ATS field selectors are adapter-based (<code>adapters/</code>) — extending to a new job board means adding an adapter, not rewriting the engine</li>
+              <li>Next steps called out directly in the repo: add a stage-history table so analytics can measure 'ever reached Interview/Offer' instead of only current status, and move matching to pgvector-backed embeddings once the corpus outgrows TF-IDF</li>
+        </ul>
+      </section>
+
+      <section class="case-section">
+        <h2>Results / Impact</h2>
+        <div class="metrics-grid">
+            <div class="metric-box"><span class="metric-num">8</span><div class="metric-label">New DB Tables</div></div>
+            <div class="metric-box"><span class="metric-num">5</span><div class="metric-label">Background Workers</div></div>
+            <div class="metric-box"><span class="metric-num">2</span><div class="metric-label">Matching Algorithms</div></div>
+            <div class="metric-box"><span class="metric-num">9</span><div class="metric-label">New REST Route Groups</div></div>
+        </div>
+      </section>
+
+          <div class="case-gallery">
+            <img src="../assets/projects/tracker-add-jobs.jpg" alt="Job Application Tracker — add jobs screen" loading="lazy" />
+            <img src="../assets/projects/tracker-email-integration.jpg" alt="Job Application Tracker — Gmail ingestion integration" loading="lazy" />
+            <img src="../assets/projects/tracker-analytics.jpg" alt="Job Application Tracker — analytics dashboard" loading="lazy" />
+            <img src="../assets/projects/tracker-matched-job.jpg" alt="Job Application Tracker — matched job scoring view" loading="lazy" />
+          </div>
+
+      <section class="case-section">
+        <h2>Links</h2>
+        <ul>
+          <li><a href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline" target="_blank" rel="noopener">View Job Application Tracker source code on GitHub</a></li>
+          <li><a href="https://job-application-tracker-portal-ten.vercel.app" target="_blank" rel="noopener">Open the Job Application Tracker live demo</a></li>
+        </ul>
+      </section>
+
+      <div class="case-back">
+        <a class="btn btn-outline" href="../index.html#projects">← Back to all projects</a>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-left">
+      Crafted with intent by <strong>Amiya Krishna Chaurasiya</strong> · Software Engineer · © 2026
+    </div>
+    <div class="footer-right">
+      <a class="footer-link" href="https://github.com/Amiya-Krishna" target="_blank" rel="noopener" aria-label="Amiya Krishna Chaurasiya on GitHub">GITHUB</a>
+      <a class="footer-link" href="https://www.linkedin.com/in/amiya-krishna" target="_blank" rel="noopener" aria-label="Amiya Krishna Chaurasiya on LinkedIn">LINKEDIN</a>
+      <a class="footer-link" href="../index.html">HOME</a>
+    </div>
+  </footer>
+
+  <script>
+    // Minimal theme toggle so the control isn't dead on this page
+    (function () {
+      const btn = document.getElementById("theme-toggle");
+      let isDark = true;
+      btn.addEventListener("click", function () {
+        isDark = !isDark;
+        document.body.setAttribute("data-theme", isDark ? "dark" : "light");
+        btn.textContent = isDark ? "☀️" : "🌙";
+      });
+    })();
+  </script>
+</body>
+</html>

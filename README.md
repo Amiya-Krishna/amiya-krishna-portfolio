@@ -1,8 +1,8 @@
 # Amiya Krishna Chaurasiya — Backend-Leaning Full Stack Developer Portfolio
 
-Personal portfolio website of **Amiya Krishna**, a B.Tech CSE student building backend-heavy full-stack systems (queues, workers, relational + NoSQL data modeling, real-time architecture), targeting Backend/Full Stack Software Engineering internships.
+Personal portfolio website of **Amiya Krishna Chaurasiya**, a B.Tech CSE student building backend-heavy full-stack systems (queues, workers, relational + NoSQL data modeling, real-time architecture), targeting Backend/Full Stack Software Engineering internships.
 
-🔗 **Live site:** _add your deployed portfolio URL here once hosted (e.g. Vercel/Netlify/GitHub Pages)_
+🔗 **Live site:** [amiya-krishna-portfolio.vercel.app](https://amiya-krishna-portfolio.vercel.app/)
 📄 **Resume:** [`resume/Amiya_Krishna_Resume.pdf`](resume/Amiya_Krishna_Resume.pdf)
 
 ---
@@ -44,9 +44,18 @@ My Portfolio/
 ├── index.html                 # All page sections (hero, about, projects, featured, engineering, dsa, blogs, github, skills, contact)
 ├── style.css                  # Design system + component styles
 ├── script.js                  # Project case-study data, modal logic, WhatsApp wiring, animations
-├── assets/projects/           # Screenshots & diagrams used in project cards/modals
+├── projects/                  # Crawlable static case-study pages, one per featured project
+│   ├── job-application-tracker.html
+│   ├── collexa.html
+│   └── community-discussion-forum.html
+├── assets/
+│   ├── favicon.svg
+│   ├── apple-touch-icon.png   # 180×180 PNG for iOS home-screen icon
+│   └── projects/              # Screenshots & diagrams used in project cards/modals/case studies
 ├── resume/
 │   └── Amiya_Krishna_Resume.pdf
+├── sitemap.xml
+├── robots.txt
 └── README.md
 ```
 
@@ -57,7 +66,7 @@ My Portfolio/
 No build tools required — it's static HTML/CSS/JS.
 
 ```bash
-git clone https://github.com/Amiya-Krishna/<this-repo>.git
+git clone https://github.com/Amiya-Krishna/amiya-krishna-portfolio.git
 cd "My Portfolio"
 
 # open directly
@@ -74,12 +83,12 @@ python3 -m http.server 8000
 ## 💼 Featured Projects
 
 | Project                                              | Description                                                                                                                                                               | Stack                                                        | Links                                                                                                                                                                                                       |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Job Application Tracker + Matching Engine** ⭐     | React/Vite + Express + PostgreSQL tracker extended with a BullMQ/Redis worker fleet doing ingestion, TF-IDF/embedding matching, fuzzy dedup, and semi-automated applying. | React · Express 5 · PostgreSQL · BullMQ · Redis · Playwright | [Live](https://Job Application Tracker — Ingestion, Matching & Analytics Engine-ten.vercel.app) · [Code](https://github.com/Amiya-Krishna/Job Application Tracker — Ingestion, Matching & Analytics Engine) |
-| **Collexa — College Decision Intelligence Platform** | Search, filter, compare and get an AI-assisted, rank-based college recommendation. Live in production.                                                                    | Next.js 16 · TypeScript · Prisma · PostgreSQL · Zod          | [Live](https://Collexa — College Decision Intelligence Platform-vert.vercel.app) · [Code](https://github.com/Amiya-Krishna/Collexa — College Decision Intelligence Platform)                                |
-| **Real-Time Discussion Platform**                    | Threaded discussions with real-time chat, notifications, and JWT auth via Socket.IO.                                                                                      | React · Node.js · Express · MongoDB · Socket.IO              | [Code](https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat)                                                                                                                     |
+| ----------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Job Application Tracker + Matching Engine** ⭐     | React/Vite + Express + PostgreSQL tracker extended with a BullMQ/Redis worker fleet doing ingestion, TF-IDF/embedding matching, fuzzy dedup, and semi-automated applying. | React · Express 5 · PostgreSQL · BullMQ · Redis · Playwright | [Case Study](https://amiya-krishna-portfolio.vercel.app/projects/job-application-tracker.html) · [Live](https://job-application-tracker-portal-ten.vercel.app) · [Code](https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline) |
+| **Collexa — College Decision Intelligence Platform** | Search, filter, compare and get an AI-assisted, rank-based college recommendation. Live in production.                                                                    | Next.js 16 · TypeScript · Prisma · PostgreSQL · Zod          | [Case Study](https://amiya-krishna-portfolio.vercel.app/projects/collexa.html) · [Live](https://college-discovery-vert.vercel.app) · [Code](https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform)                                |
+| **Real-Time Discussion Platform**                    | Threaded discussions with real-time chat, notifications, and JWT auth via Socket.IO.                                                                                      | React · Node.js · Express · MongoDB · Socket.IO              | [Case Study](https://amiya-krishna-portfolio.vercel.app/projects/community-discussion-forum.html) · [Live](https://community-discussion-forum-with-rea-roan.vercel.app) · [Code](https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat)                                                                                                                     |
 
-Full case studies (problem, solution, architecture, scaling, metrics, screenshots) are available on the [live site](#) under the Projects section — data is grounded in the actual repo READMEs, not invented.
+Full case studies (problem, solution, architecture, scaling, metrics, screenshots) are available on the [live site](https://amiya-krishna-portfolio.vercel.app/#projects) under the Projects section — data is grounded in the actual repo READMEs, not invented.
 
 ---
 
@@ -89,6 +98,7 @@ Full case studies (problem, solution, architecture, scaling, metrics, screenshot
 - **WhatsApp:** [wa.me/919305559247](https://wa.me/919305559247)
 - **GitHub:** [github.com/Amiya-Krishna](https://github.com/Amiya-Krishna)
 - **LinkedIn:** [linkedin.com/in/amiya-krishna](https://www.linkedin.com/in/amiya-krishna)
+- **Instagram:** [instagram.com/er.amiyakrishna](https://www.instagram.com/er.amiyakrishna)
 - **Location:** Lucknow, Uttar Pradesh, India — open to Remote / Hybrid / On-site internships
 
 ---
