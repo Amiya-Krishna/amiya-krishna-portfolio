@@ -1044,6 +1044,20 @@ body::after {
 
   .contact-icon, .theme-btn { width:44px; height:44px; }
   .proj-link { width:40px; height:40px; }
+
+  .case-main { padding:100px 5% 56px; }
+  .case-section { margin-bottom:32px; }
+  .case-section h2 { margin-bottom:12px; padding-bottom:10px; }
+  .case-section p { font-size:.92rem; line-height:1.7; }
+  .case-section ul { font-size:.9rem; line-height:1.75; padding-left:18px; }
+  .case-links { gap:10px; }
+  .case-back { margin-top:44px; padding-top:22px; }
+  .case-links .btn {
+    width:100%;
+    justify-content:center;
+    text-align:center;
+    white-space:normal;
+  }
 }
 
 /* ── SMALL PHONE (640px, original tag/tech breakpoint) ── */
@@ -1262,6 +1276,7 @@ body::after {
 .case-tags { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:28px; }
 
 .case-links { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:44px; }
+.case-links.case-links-section { margin-bottom:0; }
 
 .case-hero-img {
   width:100%; border-radius:16px; border:1px solid var(--border);
@@ -1269,13 +1284,15 @@ body::after {
 }
 .case-hero-img img { width:100%; display:block; }
 
-.case-section { margin-bottom:52px; }
+.case-main .case-section { padding:0; }
+.case-section { margin-bottom:40px; }
 .case-section h2 {
   font-family:var(--font-head); font-size:1.3rem; font-weight:700;
   color:var(--text); margin-bottom:16px; padding-bottom:12px;
   border-bottom:1px solid var(--border);
 }
 .case-section p { color:var(--text2); line-height:1.8; font-size:.95rem; }
+.case-section p + p { margin-top:14px; }
 .case-section ul { padding-left:20px; color:var(--text2); line-height:1.9; font-size:.92rem; }
 .case-section li { margin-bottom:8px; }
 .case-section li strong,

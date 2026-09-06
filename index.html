@@ -488,7 +488,7 @@
                 class="proj-cta"
                 href="/projects/job-application-tracker.html"
                 onclick="event.stopPropagation()"
-                >View full Job Application Tracker case study →</a
+                >View full Job Application Tracker case study <span class="proj-cta-arrow" aria-hidden="true">→</span></a
               >
             </div>
           </div>
@@ -554,7 +554,7 @@
                 class="proj-cta"
                 href="/projects/collexa.html"
                 onclick="event.stopPropagation()"
-                >View full Collexa case study →</a
+                >View full Collexa case study <span class="proj-cta-arrow" aria-hidden="true">→</span></a
               >
             </div>
           </div>
@@ -620,7 +620,7 @@
                 class="proj-cta"
                 href="/projects/community-discussion-forum.html"
                 onclick="event.stopPropagation()"
-                >View full Discussion Platform case study →</a
+                >View full Discussion Platform case study <span class="proj-cta-arrow" aria-hidden="true">→</span></a
               >
             </div>
           </div>
@@ -647,76 +647,28 @@
           <div class="featured-card reveal">
             <h3>Why this one</h3>
             <p>
-              The original app was a straightforward MERN-style CRUD tracker. I
-              extended it into a full pipeline: jobs now arrive through manual
-              entry, Gmail inbox scanning, a Manifest V3 browser extension, or a
-              live discovery API, get deduplicated and scored against a stored
-              profile, and feed a per-user analytics dashboard — all sharing the
-              same PostgreSQL database (via Prisma) and Express app as the
-              original tracker.
+              The original app was a straightforward MERN-style CRUD tracker.
+              I extended it — rather than rebuilding from scratch — into the
+              ingestion → matching → analytics pipeline described in the
+              Projects section above.
             </p>
           </div>
           <div class="featured-card reveal">
             <h3>Architecture</h3>
             <p>
-              <strong>API process</strong> (Express 5) stays thin and fast.
-              <strong>Worker process</strong> (<code>npm run worker</code>) runs
-              five separate BullMQ workers — ingest, match, apply, analytics,
-              and scrape — as their own Node process, so a Playwright crash can
-              never take the REST API down. Data access is Prisma-first, with a
-              thin <code>$queryRawUnsafe</code> wrapper for the SQL-heavy
-              analytics and dedup queries. Redis backs the queues and a
-              per-domain token-bucket rate limiter with randomized human-like
-              delays.
+              A thin <strong>Express 5 API</strong> and a five-worker
+              <strong>BullMQ fleet</strong> (ingest, match, apply, analytics,
+              scrape) run as separate Node processes on one shared PostgreSQL
+              database via Prisma. Full breakdown in the case study →
             </p>
           </div>
           <div class="featured-card reveal">
             <h3>Matching logic</h3>
             <p>
-              Two scorers: a free-tier
-              <strong>TF-IDF + keyword matcher</strong>
-              (<code>scoreTfIdf</code>) that needs no external API, and an
-              <strong>embeddings-based scorer</strong>
-              (<code>scoreEmbedding</code>) that takes an injected
-              <code>embedFn</code> so it isn't locked to one provider. A
-              learning service nudges per-skill weights up or down based on real
-              interview/offer/rejection outcomes.
-            </p>
-          </div>
-          <div class="featured-card reveal">
-            <h3>Deduplication</h3>
-            <p>
-              Incoming listings are deduplicated with exact hashing first, then
-              fuzzy matching — Jaro-Winkler similarity on the title plus TF-IDF
-              similarity on the description — before they're inserted and
-              enqueued for scoring.
-            </p>
-          </div>
-          <div class="featured-card reveal">
-            <h3>Data model</h3>
-            <p>
-              A single hosted PostgreSQL instance, accessed through Prisma,
-              backs both systems: <code>jobs</code>, <code>companies</code>,
-              <code>applications</code>, <code>match_scores</code>,
-              <code>user_profile</code>, <code>job_sources</code>,
-              <code>analytics_daily</code>, and <code>scrape_runs</code>,
-              alongside the original tracker's <code>users</code>/<code
-                >tracked_jobs</code
-              >
-              tables — one schema, no data duplication between the two systems.
-            </p>
-          </div>
-          <div class="featured-card reveal">
-            <h3>What I'd improve next</h3>
-            <p>
-              LinkedIn/Indeed discovery is intentionally stubbed as
-              "unavailable" — neither offers a public, credential-free search
-              API, and the project deliberately avoids scraping or anti-bot
-              bypasses to fake it. Real next steps called out in the repo: add a
-              stage-history table so analytics can measure "ever reached
-              Interview/Offer" instead of only current status, and move matching
-              to <code>pgvector</code>-backed embeddings once the corpus
-              outgrows TF-IDF.
+              Two pluggable scorers — a free-tier TF-IDF matcher and an
+              embeddings-based scorer — with per-skill weights that adjust from
+              real interview/offer/rejection outcomes. Full breakdown in the
+              case study →
             </p>
           </div>
         </div>
@@ -724,9 +676,14 @@
         <div class="featured-cta reveal">
           <a
             class="btn btn-primary"
+            href="/projects/job-application-tracker.html"
+            >Read the Full Case Study →</a
+          >
+          <a
+            class="btn btn-outline"
             href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
             target="_blank"
-            >Read the Code ↗</a
+            >View Source ↗</a
           >
           <a
             class="btn btn-outline"
@@ -956,9 +913,8 @@
                 relations
               </li>
               <li>
-                Single shared Postgres instance in the Job Tracker, accessed
-                through Prisma, serving both the CRUD tracker and the matching
-                engine's 8-table schema
+                Job Tracker: one Postgres instance, via Prisma, shared by the
+                original tracker schema and the new matching-engine tables
               </li>
             </ul>
           </div>
@@ -967,15 +923,16 @@
             <ul>
               <li>
                 API and background-worker processes fully decoupled (BullMQ +
-                Redis) so a scraper crash can't take down the REST API
+                Redis) in the Job Tracker for fault isolation — full
+                reasoning in its case study
               </li>
               <li>
                 WebSocket layer (Socket.IO) running alongside a REST API for
                 hybrid real-time + persistent state
               </li>
               <li>
-                Middleware-centralized access control (Next.js middleware checks
-                the JWT cookie before requests reach route handlers)
+                Middleware-centralized access control in Collexa — detail in
+                its case study
               </li>
             </ul>
           </div>
@@ -983,20 +940,14 @@
             <h3>⚡ Performance & Reliability</h3>
             <ul>
               <li>
-                Redis token-bucket rate limiting per target domain plus
-                randomized delays to avoid hammering third-party sites
+                Job Tracker: Redis token-bucket rate limiting plus
+                exact-hash + fuzzy (Jaro-Winkler/TF-IDF) deduplication —
+                detail in its case study
               </li>
               <li>
-                Exact-hash + fuzzy (Jaro-Winkler / TF-IDF) deduplication to
-                avoid reprocessing duplicate listings
-              </li>
-              <li>
-                Global Prisma Client reuse in development to prevent connection
-                churn on hot reload
-              </li>
-              <li>
-                Single-use, expiring password-reset tokens instead of long-lived
-                links
+                Collexa: single-use expiring password-reset tokens and global
+                Prisma Client reuse in dev to avoid connection churn —
+                detail in its case study
               </li>
             </ul>
           </div>
@@ -1108,10 +1059,13 @@
         </p>
 
         <div class="gh-grid">
-          <a
+          <div
             class="gh-card reveal"
-            href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
-            target="_blank"
+            role="link"
+            tabindex="0"
+            onclick="window.open('https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline','_blank','noopener')"
+            onkeydown="if(event.key==='Enter'){window.open('https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline','_blank','noopener')}"
+            aria-label="View Job Application Tracker source code on GitHub"
           >
             <div class="gh-card-head">
               <h3>
@@ -1123,10 +1077,12 @@
               >
             </div>
             <p>
-              Full-stack job tracker extended with Gmail ingestion, a browser
-              extension, a BullMQ/Redis worker fleet for deduplication and
-              TF-IDF/embedding matching, a semi-automated apply engine, and a
-              per-user analytics dashboard.
+              The most complex repo in my profile — a job tracker extended
+              with a dedicated BullMQ/Redis worker fleet. See the
+              <a href="#projects" class="text-link" onclick="event.stopPropagation()"
+                >Projects section</a
+              >
+              above for the full breakdown.
             </p>
             <div class="tags">
               <span class="tag">React</span>
@@ -1134,11 +1090,14 @@
               <span class="tag">PostgreSQL + Prisma</span>
               <span class="tag">BullMQ</span>
             </div>
-          </a>
-          <a
+          </div>
+          <div
             class="gh-card reveal"
-            href="https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform"
-            target="_blank"
+            role="link"
+            tabindex="0"
+            onclick="window.open('https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform','_blank','noopener')"
+            onkeydown="if(event.key==='Enter'){window.open('https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform','_blank','noopener')}"
+            aria-label="View Collexa source code on GitHub"
           >
             <div class="gh-card-head">
               <h3>Collexa — College Decision Intelligence Platform</h3>
@@ -1148,9 +1107,12 @@
               >
             </div>
             <p>
-              Full-stack Collexa — College Decision Intelligence Platform with
-              search, comparison, a weighted recommendation engine, and
-              Groq-backed AI guidance behind validated APIs.
+              College decision platform with a weighted rank predictor and
+              Groq-backed AI guidance chat. See the
+              <a href="#projects" class="text-link" onclick="event.stopPropagation()"
+                >Projects section</a
+              >
+              above for the full breakdown.
             </p>
             <div class="tags">
               <span class="tag">Next.js 16</span>
@@ -1158,11 +1120,14 @@
               <span class="tag">PostgreSQL</span>
               <span class="tag">Zod</span>
             </div>
-          </a>
-          <a
+          </div>
+          <div
             class="gh-card reveal"
-            href="https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat"
-            target="_blank"
+            role="link"
+            tabindex="0"
+            onclick="window.open('https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat','_blank','noopener')"
+            onkeydown="if(event.key==='Enter'){window.open('https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat','_blank','noopener')}"
+            aria-label="View Real-Time Discussion Platform source code on GitHub"
           >
             <div class="gh-card-head">
               <h3>Community-Discussion-Forum</h3>
@@ -1172,9 +1137,12 @@
               >
             </div>
             <p>
-              MERN + Socket.IO discussion platform merging async threads with
-              real-time chat — presence, typing indicators, mentions, and
-              persisted notifications.
+              MERN + Socket.IO platform merging threaded discussions with
+              real-time chat. See the
+              <a href="#projects" class="text-link" onclick="event.stopPropagation()"
+                >Projects section</a
+              >
+              above for the full breakdown.
             </p>
             <div class="tags">
               <span class="tag">React 18</span>
@@ -1182,7 +1150,7 @@
               <span class="tag">MongoDB</span>
               <span class="tag">Socket.IO</span>
             </div>
-          </a>
+          </div>
         </div>
 
         <div class="gh-cta reveal">
