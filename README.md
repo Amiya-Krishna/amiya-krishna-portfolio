@@ -98,6 +98,7 @@ Full case studies (problem, solution, architecture, scaling, metrics, screenshot
 - **WhatsApp:** [wa.me/919305559247](https://wa.me/919305559247)
 - **GitHub:** [github.com/Amiya-Krishna](https://github.com/Amiya-Krishna)
 - **LinkedIn:** [linkedin.com/in/amiya-krishna](https://www.linkedin.com/in/amiya-krishna)
+- **Instagram:** [instagram.com/er.amiyakrishna](https://www.instagram.com/er.amiyakrishna)
 - **Location:** Lucknow, Uttar Pradesh, India — open to Remote / Hybrid / On-site internships
 
 ---
