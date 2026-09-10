@@ -718,6 +718,159 @@ function copyEmail() {
 })();
 
 /* ──────────────────────────────────────────
+   CONTACT FORM — client validation + submission
+   Submits to the /api/contact serverless function.
+   Mirrors the validation rules enforced server-side in api/contact.js.
+────────────────────────────────────────── */
+(function setupContactForm() {
+  const form = document.getElementById("contact-form");
+  if (!form) return;
+
+  const nameInput = document.getElementById("cf-name");
+  const phoneInput = document.getElementById("cf-phone");
+  const messageInput = document.getElementById("cf-message");
+  const submitBtn = document.getElementById("cf-submit");
+  const statusEl = document.getElementById("cf-status");
+
+  const NAME_REGEX = /^[\p{L}\p{M} .'-]{2,80}$/u;
+  const PHONE_INDIA_REGEX = /^(?:\+91|91|0)?[6-9]\d{9}$/;
+  const PHONE_INTL_REGEX = /^\+[1-9]\d{7,14}$/;
+
+  function fieldWrap(input) {
+    return input.closest(".form-group");
+  }
+
+  function setFieldError(input, message) {
+    const wrap = fieldWrap(input);
+    const errorEl = wrap.querySelector(".field-error");
+    if (errorEl) errorEl.textContent = message || "";
+    wrap.classList.toggle("has-error", Boolean(message));
+    return !message;
+  }
+
+  function validateName() {
+    const value = nameInput.value.trim().replace(/\s+/g, " ");
+    if (!value) return setFieldError(nameInput, "Full name is required.");
+    if (!NAME_REGEX.test(value))
+      return setFieldError(nameInput, "Enter a valid name (2-80 letters).");
+    return setFieldError(nameInput, "");
+  }
+
+  function validatePhone() {
+    const raw = phoneInput.value.trim();
+    const digitsOnly = raw.replace(/[\s\-()]/g, "");
+    if (!raw) return setFieldError(phoneInput, "Phone number is required.");
+    if (!PHONE_INDIA_REGEX.test(digitsOnly) && !PHONE_INTL_REGEX.test(digitsOnly))
+      return setFieldError(phoneInput, "Enter a valid Indian or international phone number.");
+    return setFieldError(phoneInput, "");
+  }
+
+  function validateMessage() {
+    const value = messageInput.value.trim();
+    if (!value) return setFieldError(messageInput, "Message is required.");
+    if (value.length < 10)
+      return setFieldError(messageInput, "Message should be at least 10 characters.");
+    if (value.length > 2000)
+      return setFieldError(messageInput, "Message should be under 2000 characters.");
+    return setFieldError(messageInput, "");
+  }
+
+  [
+    [nameInput, validateName],
+    [phoneInput, validatePhone],
+    [messageInput, validateMessage],
+  ].forEach(([input, validator]) => {
+    input.addEventListener("blur", () => {
+      input.dataset.touched = "true";
+      validator();
+    });
+    input.addEventListener("input", () => {
+      if (input.dataset.touched === "true") validator();
+    });
+  });
+
+  function showStatus(kind, message) {
+    statusEl.textContent = message;
+    statusEl.classList.remove("success", "error");
+    if (kind) statusEl.classList.add(kind);
+  }
+
+  let isSubmitting = false;
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (isSubmitting) return; // guard against duplicate submissions
+
+    const nameOk = validateName();
+    const phoneOk = validatePhone();
+    const messageOk = validateMessage();
+    [nameInput, phoneInput, messageInput].forEach((i) => (i.dataset.touched = "true"));
+
+    if (!nameOk || !phoneOk || !messageOk) {
+      showStatus("error", "Please fix the highlighted fields above.");
+      return;
+    }
+
+    const payload = {
+      fullName: nameInput.value.trim().replace(/\s+/g, " "),
+      phone: phoneInput.value.trim(),
+      message: messageInput.value.trim(),
+      company: form.elements["company"] ? form.elements["company"].value : "", // honeypot
+    };
+
+    isSubmitting = true;
+    submitBtn.disabled = true;
+    submitBtn.classList.add("is-loading");
+    showStatus("", "");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      let result = {};
+      try {
+        result = await response.json();
+      } catch {
+        // non-JSON response, fall through to generic error below
+      }
+
+      if (response.ok && result.success) {
+        form.reset();
+        [nameInput, phoneInput, messageInput].forEach((i) => {
+          delete i.dataset.touched;
+        });
+        showStatus(
+          "success",
+          "Thanks — your message has been sent. I'll get back to you soon.",
+        );
+      } else {
+        if (result.fieldErrors) {
+          if (result.fieldErrors.fullName) setFieldError(nameInput, result.fieldErrors.fullName);
+          if (result.fieldErrors.phone) setFieldError(phoneInput, result.fieldErrors.phone);
+          if (result.fieldErrors.message) setFieldError(messageInput, result.fieldErrors.message);
+        }
+        showStatus(
+          "error",
+          result.error || "Something went wrong sending your message. Please try again.",
+        );
+      }
+    } catch {
+      showStatus(
+        "error",
+        "Network error — please check your connection and try again.",
+      );
+    } finally {
+      isSubmitting = false;
+      submitBtn.disabled = false;
+      submitBtn.classList.remove("is-loading");
+    }
+  });
+})();
+
+/* ──────────────────────────────────────────
    DSA STATS — live fetch (best effort)
    Codeforces exposes a public, CORS-enabled API,
    so its rating can be fetched directly from the browser.
