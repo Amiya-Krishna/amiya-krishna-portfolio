@@ -310,6 +310,10 @@ section { position:relative; z-index:1; padding:120px 6%; }
 
 @media (max-width:992px){
 
+.hero{
+  padding-inline:5%;
+}
+
 .hero-inner{
     grid-template-columns:1fr;
     grid-template-rows:none;
@@ -366,6 +370,10 @@ section { position:relative; z-index:1; padding:120px 6%; }
 }
 
 @media (max-width:576px){
+
+.hero{
+  padding-inline:5%;
+}
 
 .hero-avatar{
     width:136px;
@@ -454,18 +462,197 @@ section { position:relative; z-index:1; padding:120px 6%; }
 }
 .btn-outline:hover { border-color:var(--cyan); color:var(--cyan); background:rgba(0,212,255,.05); transform:translateY(-3px); }
 
-/* ── SOCIAL ICON BUTTONS ── */
-.hero-social-icons { display:inline-flex; align-items:center; gap:10px; }
+/* ── GLOBAL SOCIAL & CONTACT ICON STYLES ── */
+.hero-social-icons,
+.footer-social-icons {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
 .icon-btn {
-  display:inline-flex; align-items:center; justify-content:center;
-  width:44px; height:44px; border-radius:10px;
-  background:var(--surface); border:1px solid var(--border); color:var(--text2);
-  backdrop-filter:blur(10px); transition:.3s ease; flex-shrink:0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--text);
+  backdrop-filter: blur(10px);
+  transition: all .3s ease;
+  flex-shrink: 0;
+  text-decoration: none;
 }
-.icon-btn:hover, .icon-btn:focus-visible {
-  border-color:var(--cyan); color:var(--cyan); background:rgba(0,212,255,.05); transform:translateY(-3px);
+
+.icon-btn:hover, 
+.icon-btn:focus-visible {
+  transform: translateY(-3px);
 }
-.icon-btn:focus-visible { outline:2px solid var(--cyan); outline-offset:2px; }
+
+.icon-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+/* ══════════════════════════════════════════════════════════
+   BRAND ICON BADGES — WhatsApp, Email, GitHub, LinkedIn, Instagram
+   Single source of truth. Applies to hero social icons AND the
+   contact-card icons (.contact-icon.brand-*) via shared selectors.
+   Colors are fixed, real brand colors with a white glyph on top —
+   this keeps every logo fully legible in both light and dark mode,
+   since none of it depends on --text/--surface theme variables.
+   ══════════════════════════════════════════════════════════ */
+
+/* 🟢 WhatsApp — official green (#25D366), white glyph */
+.hero-social-whatsapp,
+.contact-icon.brand-whatsapp {
+  background: #25D366 !important;
+  border-color: #25D366 !important;
+  color: #ffffff !important;
+}
+.hero-social-whatsapp:hover,
+.contact-card:hover .contact-icon.brand-whatsapp {
+  background: #1fb85a !important;
+  border-color: #1fb85a !important;
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.45);
+}
+
+/* ✉️ Email — Gmail red (#EA4335), white glyph */
+.hero-social-email,
+.contact-icon.brand-email {
+  background: #EA4335 !important;
+  border-color: #EA4335 !important;
+  color: #ffffff !important;
+}
+.hero-social-email:hover,
+.contact-card:hover .contact-icon.brand-email {
+  background: #d33426 !important;
+  border-color: #d33426 !important;
+  box-shadow: 0 8px 20px rgba(234, 67, 53, 0.45);
+}
+
+/* 🔵 LinkedIn — official blue (#0A66C2), white glyph */
+.hero-social-linkedin,
+.contact-icon.brand-linkedin {
+  background: #0A66C2 !important;
+  border-color: #0A66C2 !important;
+  color: #ffffff !important;
+}
+.hero-social-linkedin:hover,
+.contact-card:hover .contact-icon.brand-linkedin {
+  background: #084d94 !important;
+  border-color: #084d94 !important;
+  box-shadow: 0 8px 20px rgba(10, 102, 194, 0.45);
+}
+
+/* ⚫️⚪️ GitHub — official mark, inverted per theme for guaranteed contrast
+   (mirrors how GitHub itself renders its mark on light vs dark chrome).
+   Root/no-attribute + explicit [data-theme="dark"] = dark UI → light badge,
+   slightly dimmed off-white (not pure #fff) so it sits a touch softer
+   against the dark page. [data-theme="light"] = light UI → dark badge. */
+.hero-social-github,
+.contact-icon.brand-github {
+  background: #ececec !important;
+  border-color: #ececec !important;
+  color: #181717 !important;
+}
+.hero-social-github:hover,
+.contact-card:hover .contact-icon.brand-github {
+  background: #e2e2e2 !important;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+}
+[data-theme="light"] .hero-social-github,
+[data-theme="light"] .contact-icon.brand-github {
+  background: #181717 !important;
+  border-color: #181717 !important;
+  color: #ffffff !important;
+}
+[data-theme="light"] .hero-social-github:hover,
+[data-theme="light"] .contact-card:hover .contact-icon.brand-github {
+  background: #000000 !important;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+.hero-social-github svg,
+.hero-social-github svg path,
+.contact-icon.brand-github svg,
+.contact-icon.brand-github svg path {
+  fill: currentColor !important;
+}
+
+/* 📸 Instagram — official gradient badge, white glyph on top
+   (matches the real Instagram app-icon treatment) */
+.hero-social-instagram,
+.contact-icon.brand-instagram {
+  background: linear-gradient(135deg, #feda75 0%, #fa7e1e 30%, #d62976 60%, #962fbf 85%, #4f5bd5 100%) !important;
+  border-color: transparent !important;
+  color: #ffffff !important;
+}
+.hero-social-instagram:hover,
+.contact-card:hover .contact-icon.brand-instagram {
+  filter: brightness(1.08);
+  box-shadow: 0 8px 20px rgba(214, 41, 118, 0.45);
+}
+.hero-social-instagram svg,
+.hero-social-instagram svg path,
+.contact-icon.brand-instagram svg,
+.contact-icon.brand-instagram svg path {
+  fill: currentColor !important;
+}
+
+/* 📍 Location — a clean solid teal badge, kept consistent with the other
+   square brand badges (not an external brand, so a neutral professional
+   accent color is used instead of borrowing another platform's color) */
+.contact-icon.brand-location {
+  background: #14b8a6 !important;
+  border-color: #14b8a6 !important;
+  color: #ffffff !important;
+}
+.contact-card:hover .contact-icon.brand-location {
+  background: #0f9c8f !important;
+  box-shadow: 0 8px 20px rgba(20, 184, 166, 0.45);
+}
+
+/* ── CONTACT CARDS STYLES ── */
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 18px 22px;
+  text-decoration: none;
+  color: var(--text);
+  transition: all .3s ease;
+}
+.contact-card:hover {
+  transform: translateX(6px);
+}
+
+/* Hover border in each card's own brand color — same treatment
+   consistently applied to every card, not just one. */
+.contact-card-whatsapp:hover { border-color: #25D366; }
+.contact-card-email:hover { border-color: #EA4335; }
+.contact-card-linkedin:hover { border-color: #0A66C2; }
+.contact-card-instagram:hover { border-color: #d62976; }
+.contact-card-location:hover { border-color: #14b8a6; }
+/* GitHub border adapts per theme, same logic as its badge */
+.contact-card-github:hover { border-color: #ececec; }
+[data-theme="light"] .contact-card-github:hover { border-color: #181717; }
+
+.contact-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s ease;
+}
 
 /* ── SECTION HEADERS ── */
 .section-kicker {
@@ -934,19 +1121,8 @@ a.proj-cta { display:block; text-decoration:none; }
         grid-template-columns:1fr;
     }
 }
-.contact-card {
-  display:flex; align-items:center; gap:18px;
-  background:var(--surface); border:1px solid var(--border);
-  border-radius:16px; padding:20px 22px;
-  text-decoration:none; transition:.3s;
-}
-.contact-card:hover { border-color:rgba(0,212,255,.35); background:rgba(0,212,255,.04); transform:translateX(6px); }
-.contact-icon {
-  width:48px; height:48px; border-radius:12px; flex-shrink:0;
-  background:rgba(0,212,255,.08); border:1px solid rgba(0,212,255,.2);
-  display:flex; align-items:center; justify-content:center;
-  font-size:1.2rem;
-}
+
+
 .contact-card h3 { font-family:var(--font-head); font-size:.85rem; font-weight:700; color:var(--text); margin-bottom:3px; letter-spacing:.03em; }
 .contact-card p { color:var(--text3); font-size:.8rem; font-family:var(--font-mono); }
 
@@ -1075,7 +1251,25 @@ footer {
   font-family:var(--font-mono); letter-spacing:.08em; transition:.25s;
 }
 .footer-link:hover { color:var(--cyan); }
-.footer-icon-link { display:inline-flex; align-items:center; }
+.footer-icon-link { display:inline-flex; align-items:center; transition:transform .25s, color .25s; }
+.footer-icon-link:hover { transform:translateY(-2px); }
+
+/* GitHub — inverts per theme so the mark is always visible against the
+   footer background (root/dark default = light mark, light theme = dark mark) */
+.footer-icon-link.brand-github { color:#f5f5f5; }
+[data-theme="light"] .footer-icon-link.brand-github { color:#181717; }
+.footer-icon-link.brand-github:hover,
+.footer-icon-link.brand-github:focus-visible { color:var(--cyan); }
+
+/* LinkedIn — fixed official blue, readable on both backgrounds */
+.footer-icon-link.brand-linkedin { color:#0A66C2; }
+.footer-icon-link.brand-linkedin:hover,
+.footer-icon-link.brand-linkedin:focus-visible { color:#0A66C2; opacity:.8; }
+
+/* Instagram — uses its own gradient fill (see SVG), icon color is inherited as fallback only */
+.footer-icon-link.brand-instagram { color:#E4405F; }
+.footer-icon-link.brand-instagram:hover,
+.footer-icon-link.brand-instagram:focus-visible { opacity:.85; }
 
 /* ── REVEAL ── */
 .reveal { opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease; }
@@ -1092,11 +1286,16 @@ body::after {
 }
 
 /* ── RESPONSIVE ── */
-@media(max-width:1050px) {
-  .hero-inner { grid-template-columns:1fr; gap:48px; }
-  .about-grid,.skills-layout,.timeline-wrap,.contact-layout { grid-template-columns:1fr; gap:40px; }
-  .proj-grid { grid-template-columns:1fr 1fr; }
-  .achievements-grid { grid-template-columns:1fr 1fr; }
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns:1fr; }
+  .hero-left { grid-column:1; grid-row:1; }
+  .hero-avatar { grid-column:1; grid-row:2; justify-self:center; max-width:280px; }
+  .hero-terminal { grid-column:1; grid-row:3; }
+  .about-grid, .timeline-wrap, .contact-layout { grid-template-columns:1fr; }
+  .proj-card { grid-template-columns:1fr; }
+  .nav-links { display:none; }
+  .nav-toggle { display:flex; }
+  .contact-cards { grid-template-columns:1fr; }
 }
 
 /* ── TABLET / LARGE PHONE (768px) ── */
@@ -1139,9 +1338,9 @@ body::after {
   .lightbox-overlay { padding:16px; }
   .lightbox-close { top:12px; right:12px; width:36px; height:36px; }
 
-  .hero-cta { flex-direction:column; align-items:stretch; }
-  .hero-cta .btn { justify-content:center; width:100%; }
-  .hero-social-icons { justify-content:center; width:100%; }
+.hero-cta { flex-direction:row; flex-wrap:wrap; justify-content:center; align-items:center; }
+.hero-cta .btn { justify-content:center; width:auto; }
+.hero-social-icons { justify-content:center; width:100%; }
 
   .contact-icon, .theme-btn { width:44px; height:44px; }
   .proj-link { width:40px; height:40px; }
@@ -1174,7 +1373,7 @@ body::after {
 /* ── SMALL PHONE (480px) ── */
 @media (max-width:480px) {
   section { padding:64px 5%; }
-  .hero { padding:80px 0 60px; min-height:auto; }
+  .hero { padding:80px 0 60px; padding-inline:5%; min-height:auto; }
 
   .hero-name { font-size:38px; }
   .hero-tag { font-size:.62rem; padding:5px 12px; }
@@ -1191,6 +1390,7 @@ body::after {
   .proj-thumb { aspect-ratio:4/3; }
 
   .btn { width:100%; justify-content:center; padding:14px 20px; }
+  .hero-cta .btn { width:auto; }
   .resume-card { padding:18px; }
 
   footer { text-align:center; justify-content:center; }
@@ -1312,7 +1512,8 @@ body::after {
 }
 .btn-whatsapp:hover { transform:translateY(-3px); box-shadow:0 12px 32px rgba(37,211,102,.35); }
 
-.contact-card-whatsapp:hover { border-color:#25D366; background:rgba(37,211,102,.06); }
+/* contact-card-whatsapp's hover border color lives with the other
+   per-card brand hover borders, right after .contact-card:hover. */
 
 .whatsapp-float {
   position:fixed; right:24px; bottom:24px; z-index:150;
@@ -1415,4 +1616,66 @@ body::after {
 @media (max-width:640px) {
   .case-gallery { grid-template-columns:1fr; }
   .case-main { padding-top:100px; }
+}
+
+/* ── SCROLL TO TOP BUTTON ── */
+.scroll-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--primary, #0070f3);
+  color: #ffffff;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 999;
+}
+
+.scroll-to-top.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scroll-to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+}
+
+.scroll-to-top svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── FOOTER STYLING ── */
+.footer {
+  padding: 40px 0 20px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  background: var(--bg-surface, transparent);
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-text {
+  font-size: 0.95rem;
+  color: var(--text-muted);
 }
