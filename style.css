@@ -1293,16 +1293,13 @@ body::after {
   .hero-terminal { grid-column:1; grid-row:3; }
   .about-grid, .timeline-wrap, .contact-layout { grid-template-columns:1fr; }
   .proj-card { grid-template-columns:1fr; }
-  .nav-links { display:none; }
-  .nav-toggle { display:flex; }
-  .contact-cards { grid-template-columns:1fr; }
-}
-
-/* ── TABLET / LARGE PHONE (768px) ── */
-@media (max-width:768px) {
-  .nav-toggle { display:flex; }
-
+  /* Mobile/tablet nav dropdown: kept in this same breakpoint as the
+     hamburger's display:flex switch above (was previously split across
+     this 900px block and the 768px block below, which left .nav-links
+     stuck at display:none — and therefore unclickable/invisible when
+     opened — for any width between 768px and 900px). */
   .nav-links {
+    display:none;
     position:fixed; top:64px; left:0; right:0;
     flex-direction:column; gap:0;
     background:rgba(5,7,9,0.97);
@@ -1314,14 +1311,19 @@ body::after {
   }
   [data-theme="light"] .nav-links { background:rgba(240,242,248,0.97); }
 
-  .nav-links.open { max-height:400px; }
+  .nav-links.open { display:flex; max-height:400px; }
 
   .nav-links li { width:100%; text-align:center; }
   .nav-links a {
     display:block; padding:16px 0;
     border-bottom:1px solid var(--border);
   }
+  .nav-toggle { display:flex; }
+  .contact-cards { grid-template-columns:1fr; }
+}
 
+/* ── TABLET / LARGE PHONE (768px) ── */
+@media (max-width:768px) {
   .nav-right { gap:1rem; }
 
   section { padding:80px 5%; }
