@@ -11,7 +11,7 @@
 
     <meta
       name="description"
-      content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Gmail ingestion, TF-IDF and embedding-based matching, fuzzy deduplication, and a semi-automated Playwright apply flow."
+      content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Remotive-based job discovery, deterministic TF-IDF matching, fuzzy deduplication, and a semi-automated Playwright apply flow."
     />
 
     <link
@@ -26,7 +26,7 @@
     />
     <meta
       property="og:description"
-      content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Gmail ingestion, TF-IDF and embedding-based matching, fuzzy deduplication, and a semi-automated Playwright apply flow."
+      content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Remotive-based job discovery, deterministic TF-IDF matching, fuzzy deduplication, and a semi-automated Playwright apply flow."
     />
     <meta
       property="og:url"
@@ -47,7 +47,7 @@
     />
     <meta
       name="twitter:description"
-      content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Gmail ingestion, TF-IDF and embedding-based matching, fuzzy deduplication, and a semi-automated Playwright apply flow."
+      content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Remotive-based job discovery, deterministic TF-IDF matching, fuzzy deduplication, and a semi-automated Playwright apply flow."
     />
     <meta
       name="twitter:image"
@@ -69,7 +69,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Job Application Tracker — Ingestion, Matching & Analytics Engine",
-        "description": "Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Gmail ingestion, TF-IDF and embedding-based matching, fuzzy deduplication, and a semi-automated Playwright apply flow.",
+        "description": "Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Remotive-based job discovery, deterministic TF-IDF matching, fuzzy deduplication, and a semi-automated Playwright apply flow.",
         "url": "https://www.amiyakrishna.dev/projects/job-application-tracker.html",
         "image": "https://www.amiyakrishna.dev/assets/projects/tracker-dashboard.jpg",
         "applicationCategory": "WebApplication",
@@ -202,12 +202,16 @@
           <p>
             A centralized React/Vite + Express + PostgreSQL (Prisma ORM) tracker
             handles the core CRUD workflow, extended with a second system: a
-            BullMQ/Redis worker fleet that ingests listings from four channels —
-            manual entry, Gmail inbox scanning, a Manifest V3 browser extension,
-            and a live discovery API — deduplicates them, scores them against a
-            stored profile with TF-IDF and optional embeddings, semi-automates
-            the apply flow via Playwright (stopping before the final submit
-            click), and feeds a live per-user analytics dashboard.
+            BullMQ/Redis worker fleet that ingests listings from manual entry, a
+            Manifest V3 browser extension, and Remotive's public discovery API
+            (LinkedIn/Indeed adapters exist but honestly report "unavailable" —
+            no scraping or anti-bot workarounds) — deduplicates them via hash +
+            bounded fuzzy matching, scores them deterministically with TF-IDF
+            and weighted skill overlap, semi-automates the apply flow via
+            Playwright (stopping before the final submit click), and feeds a
+            live per-user analytics dashboard. A separate read-only Gmail scan
+            surfaces interview/offer/rejection signals for the learning loop —
+            an outcome signal, not a job source.
           </p>
         </section>
 
@@ -220,16 +224,23 @@
             </li>
             <li>JWT authentication (bcryptjs) with per-user data isolation</li>
             <li>
-              Unified ingestion: manual entry, Gmail inbox scanning (Google
-              OAuth2, read-only), a Manifest V3 browser extension, and the
-              Remotive discovery API
+              Unified ingestion: manual entry, a Manifest V3 browser
+              extension, and the Remotive discovery API — LinkedIn/Indeed
+              adapters exist but honestly report "unavailable" rather than
+              scraping
             </li>
             <li>
               Ingestion pipeline: normalize → dedup → insert → enqueue match
             </li>
             <li>
-              TF-IDF + keyword matcher, plus a provider-agnostic embeddings
-              scorer
+              Deterministic TF-IDF + curated skill-vocabulary scorer — not a
+              trained ML model; a provider-agnostic embeddings scorer is
+              defined behind the same interface as a future upgrade path
+            </li>
+            <li>
+              Read-only Gmail scan (Google OAuth2) surfaces
+              interview/offer/rejection signals for manual confirmation —
+              advisory only, never a write authority
             </li>
             <li>
               Learning service nudges per-skill weights from
@@ -251,10 +262,11 @@
           <h2>Architecture</h2>
           <ul>
             <li>
-              API process (Express 5) stays thin — all heavy work (ingestion,
-              scraping, matching, applying, analytics) runs across five
-              dedicated BullMQ workers in a separate Node process, so a
-              Playwright crash never takes the API down
+              API process (Express 5) stays thin — it validates input and does
+              minimal synchronous writes (auth, inline dedup check), then
+              enqueues everything expensive; four dedicated BullMQ workers
+              (match, apply, analytics, scrape) run in a separate Node
+              process, so a Playwright crash never takes the API down
             </li>
             <li>
               Data access is Prisma-first; a thin
@@ -332,16 +344,16 @@
               <div class="metric-label">New DB Tables</div>
             </div>
             <div class="metric-box">
-              <span class="metric-num">5</span>
+              <span class="metric-num">4</span>
               <div class="metric-label">Background Workers</div>
             </div>
             <div class="metric-box">
-              <span class="metric-num">2</span>
-              <div class="metric-label">Matching Algorithms</div>
+              <span class="metric-num">~65%</span>
+              <div class="metric-label">Duplicate Listings Suppressed</div>
             </div>
             <div class="metric-box">
-              <span class="metric-num">9</span>
-              <div class="metric-label">New REST Route Groups</div>
+              <span class="metric-num">~70%</span>
+              <div class="metric-label">Apply Fields Pre-Filled</div>
             </div>
           </div>
         </section>
@@ -354,7 +366,7 @@
           />
           <img
             src="../assets/projects/tracker-email-integration.jpg"
-            alt="Job Application Tracker — Gmail ingestion integration"
+            alt="Job Application Tracker — Gmail outcome-tracking integration"
             loading="lazy"
           />
           <img

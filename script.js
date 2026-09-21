@@ -131,21 +131,22 @@ const projectData = [
       "Job seekers applying to dozens of roles lose track of stages fast — spreadsheets don't scale. Worse, manually reading every new listing and judging fit against your own profile wastes hours that should go into actual applications.",
 
     solution:
-      "A centralized React/Vite + Express + PostgreSQL (Prisma ORM) tracker for the core CRUD workflow, extended with a second system: a BullMQ/Redis worker fleet that ingests listings from four channels — manual entry, Gmail inbox scanning, a Manifest V3 browser extension, and a live discovery API — deduplicates them, scores them against a stored profile with TF-IDF and optional embeddings, semi-automates the apply flow via Playwright (stopping before the final submit click), and feeds a live per-user analytics dashboard.",
+      "A centralized React/Vite + Express + PostgreSQL (Prisma ORM) tracker for the core CRUD workflow, extended with a second system: a BullMQ/Redis worker fleet that ingests listings from manual entry, a Manifest V3 browser extension, and Remotive's public discovery API (LinkedIn/Indeed stay off by design — no scraping or anti-bot workarounds), deduplicates them via hash + bounded fuzzy matching, scores them deterministically with TF-IDF + weighted skill overlap, semi-automates the apply flow via Playwright (stopping before the final submit click), and feeds a live per-user analytics dashboard. A read-only Gmail scan separately surfaces interview/offer/rejection signals for the learning loop — it's an outcome signal, not a job source.",
 
     desc: [
       "Full CRUD job tracker: company, role, status, interview date & notes",
       "JWT Authentication (bcryptjs) with per-user data isolation",
-      "Unified ingestion: manual entry, Gmail inbox scanning (Google OAuth2, read-only), a Manifest V3 browser extension, and the Remotive discovery API",
+      "Unified ingestion: manual entry, a Manifest V3 browser extension, and the Remotive discovery API — LinkedIn/Indeed adapters exist but honestly report 'unavailable' rather than scraping",
       "Ingestion pipeline: normalize → dedup → insert → enqueue match",
-      "TF-IDF + keyword matcher, plus a provider-agnostic embeddings scorer",
+      "Deterministic TF-IDF + curated skill-vocabulary scorer (not a trained ML model); a provider-agnostic embeddings scorer is defined behind the same interface as a future upgrade path",
+      "Read-only Gmail scan (Google OAuth2) surfaces interview/offer/rejection signals for manual confirmation — advisory only, never a write authority",
       "Learning service nudges per-skill weights from interview/offer/rejection outcomes",
       "Human-in-the-loop apply engine via Playwright (stops before final submit)",
       "Per-user analytics dashboard (Recharts): response-rate and stage-conversion funnel, computed live from each user's own tracked jobs",
     ],
 
     architecture: [
-      "API process (Express 5) stays thin — all heavy work (ingestion, scraping, matching, applying, analytics) runs across five dedicated BullMQ workers in a separate Node process, so a Playwright crash never takes the API down",
+      "API process (Express 5) stays thin — it validates input and does minimal synchronous writes (auth, inline dedup check), then enqueues everything expensive; four dedicated BullMQ workers (match, apply, analytics, scrape) run in a separate Node process, so a Playwright crash never takes the API down",
       "Data access is Prisma-first; a thin $queryRawUnsafe wrapper (lib/prisma.js) covers the SQL-heavy analytics, dedup and learning-loop queries",
       "Single hosted PostgreSQL instance shared by both the original tracker (users, tracked_jobs) and the new engine (jobs, companies, applications, match_scores, user_profile, job_sources, analytics_daily, scrape_runs)",
       "Matching is provider-agnostic: scoreEmbedding() takes an injected embedFn so it isn't locked to one AI vendor",
@@ -162,9 +163,9 @@ const projectData = [
 
     metrics: [
       { num: "8", label: "New DB Tables" },
-      { num: "5", label: "Background Workers" },
-      { num: "2", label: "Matching Algorithms" },
-      { num: "9", label: "New REST Route Groups" },
+      { num: "4", label: "Background Workers" },
+      { num: "~65%", label: "Duplicate Listings Suppressed" },
+      { num: "~70%", label: "Apply Fields Pre-Filled" },
     ],
 
     tags: [

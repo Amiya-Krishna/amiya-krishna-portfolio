@@ -494,7 +494,7 @@
 
         <p class="proj-hint reveal">
           Tap any project for the full case study — problem, solution,
-          architecture, and proof. GitHub data pulled live via the GitHub API.
+          architecture, and proof.
         </p>
 
         <div class="proj-grid">
@@ -546,12 +546,14 @@
                 <p>
                   <span class="pitch-label">Solution</span>React/Vite + Express
                   + PostgreSQL (Prisma ORM) tracker extended with a BullMQ/Redis
-                  worker fleet: jobs arrive via manual entry, Gmail inbox
-                  scanning, a Manifest V3 browser extension, or a live discovery
-                  API, then get deduplicated (TF-IDF + Jaro-Winkler), scored by
-                  two matchers, and semi-automated through Playwright — feeding
-                  a live per-user analytics dashboard, all as a process fully
-                  separate from the API.
+                  worker fleet: listings arrive via manual entry, a Manifest V3
+                  browser extension, or Remotive's public discovery API
+                  (LinkedIn/Indeed intentionally stay off — no scraping), then
+                  get deduplicated (hash + bounded fuzzy match), scored
+                  deterministically with TF-IDF + skill weights, and
+                  semi-automated through Playwright — feeding a live per-user
+                  analytics dashboard, all as a process fully separate from the
+                  API.
                 </p>
               </div>
 
@@ -737,19 +739,21 @@
           <div class="featured-card reveal">
             <h3>Architecture</h3>
             <p>
-              A thin <strong>Express 5 API</strong> and a five-worker
-              <strong>BullMQ fleet</strong> (ingest, match, apply, analytics,
-              scrape) run as separate Node processes on one shared PostgreSQL
-              database via Prisma. Full breakdown in the case study →
+              A thin <strong>Express 5 API</strong> validates and enqueues; a
+              four-worker <strong>BullMQ fleet</strong> (match, apply,
+              analytics, scrape) does the heavy lifting in a separate Node
+              process on one shared PostgreSQL database via Prisma. Full
+              breakdown in the case study →
             </p>
           </div>
           <div class="featured-card reveal">
             <h3>Matching logic</h3>
             <p>
-              Two pluggable scorers — a free-tier TF-IDF matcher and an
-              embeddings-based scorer — with per-skill weights that adjust from
-              real interview/offer/rejection outcomes. Full breakdown in the
-              case study →
+              A deterministic <strong>TF-IDF + skill-vocabulary</strong>
+              scorer — not a trained ML model — with per-skill weights
+              that adjust from real interview/offer/rejection outcomes. An
+              embeddings-based scorer is defined behind the same interface as
+              a future upgrade path. Full breakdown in the case study →
             </p>
           </div>
         </div>
@@ -1160,7 +1164,8 @@
         <div class="section-kicker reveal">Open source footprint</div>
         <div class="section-title reveal">GitHub <em>Highlights</em></div>
         <p class="proj-hint reveal">
-          Live data pulled from the GitHub API for my top repositories.
+          A quick look at my top repositories — full write-ups in the
+          Projects section above.
         </p>
 
         <div class="gh-grid">
