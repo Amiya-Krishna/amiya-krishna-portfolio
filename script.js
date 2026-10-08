@@ -91,7 +91,7 @@ window.addEventListener("scroll", () => {
 /* ──────────────────────────────────────────
    MOBILE NAV TOGGLE
 ────────────────────────────────────────── */
-document.querySelectorAll(".proj-card[role="link"]').forEach((card) => {
+document.querySelectorAll('.proj-card[role="link"]').forEach((card) => {
   card.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
