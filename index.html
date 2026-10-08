@@ -493,12 +493,12 @@
         <div class="section-title reveal">Selected <em>Work</em></div>
 
         <p class="proj-hint reveal">
-          Tap any project for the full case study — problem, solution,
-          architecture, and proof.
+          Each project card opens its dedicated case-study page — the single source of truth for
+          problem, solution, architecture, implementation details, and proof.
         </p>
 
         <div class="proj-grid">
-          <div class="proj-card reveal" onclick="window.location.href='/projects/job-application-tracker.html'" role="link" tabindex="0" aria-label="Open Job Application Tracker case study">
+          <div class="proj-card reveal" onclick="window.location.href='/projects/job-application-tracker.html'">
             <div class="proj-thumb">
               <img
                 src="assets/projects/tracker-dashboard.jpg"
@@ -574,7 +574,7 @@
             </div>
           </div>
 
-          <div class="proj-card reveal" onclick="window.location.href='/projects/collexa.html'" role="link" tabindex="0" aria-label="Open Collexa case study">
+          <div class="proj-card reveal" onclick="window.location.href='/projects/collexa.html'">
             <div class="proj-thumb">
               <img
                 src="assets/projects/college-discovery-list.jpg"
@@ -641,7 +641,7 @@
             </div>
           </div>
 
-          <div class="proj-card reveal" onclick="window.location.href='/projects/community-discussion-forum.html'" role="link" tabindex="0" aria-label="Open Real-Time Discussion Platform case study">
+          <div class="proj-card reveal" onclick="window.location.href='/projects/community-discussion-forum.html'">
             <div class="proj-thumb">
               <img
                 src="assets/projects/forum-dashboard.jpg"
@@ -718,45 +718,52 @@
       <div class="container">
         <div class="section-kicker reveal">Featured project</div>
         <div class="section-title reveal">
-          Job Application Tracker — <em>Ingestion, Matching &amp; Analytics</em>
+          <em>Job Application Tracker</em>
         </div>
         <p class="proj-hint reveal">
-          The most backend-heavy project in the portfolio. The complete technical
-          story — architecture, ingestion, deduplication, matching, workers,
-          Gmail outcome signals, automation, analytics, failure handling, and
-          engineering trade-offs — lives in one dedicated case study.
+          The most technically involved project in the portfolio. The dedicated
+          case study contains the complete, verified implementation details.
         </p>
+
+        <div class="featured-grid">
+          <div class="featured-card reveal">
+            <h3>Why it stands out</h3>
+            <p>
+              A backend-heavy system built around ingestion, de-duplication,
+              explainable matching, human-reviewed automation, and analytics.
+            </p>
+          </div>
+          <div class="featured-card reveal">
+            <h3>Single source of truth</h3>
+            <p>
+              All technical details, architecture, verification evidence,
+              limitations, and implementation notes live on the project page.
+            </p>
+          </div>
+        </div>
+
         <div class="featured-cta reveal">
-          <a class="btn btn-primary" href="/projects/job-application-tracker.html">
-            Read the Full Case Study →
-          </a>
-          <a class="btn btn-outline"
-             href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
-             target="_blank" rel="noopener">View Source ↗</a>
-          <a class="btn btn-outline"
-             href="https://job-application-tracker-portal-ten.vercel.app"
-             target="_blank" rel="noopener">Live Demo ↗</a>
+          <a
+            class="btn btn-primary"
+            href="/projects/job-application-tracker.html"
+            >Read the Full Case Study →</a
+          <a
+            class="btn btn-outline"
+            href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
+            target="_blank"
+            rel="noopener"
+            >View Source ↗</a
+          <a
+            class="btn btn-outline"
+            href="https://job-application-tracker-portal-ten.vercel.app"
+            target="_blank"
+            rel="noopener"
+            >Live Demo ↗</a
         </div>
       </div>
     </section>
 
     <div class="divider"></div>
-
-    <!-- Lightbox: full-size image viewer for gallery/diagram photos -->
-    <div
-      class="lightbox-overlay"
-      id="lightbox-overlay"
-      onclick="closeLightbox(event)"
-    >
-      <button
-        class="lightbox-close"
-        onclick="closeLightbox(event)"
-        aria-label="Close image viewer"
-      >
-        ✕
-      </button>
-      <img id="lightbox-img" src="" alt="" />
-    </div>
 
     <div class="divider"></div>
 
@@ -837,41 +844,82 @@
         <div class="section-kicker reveal">Under the hood</div>
         <div class="section-title reveal">Engineering <em>Depth</em></div>
         <p class="proj-hint reveal">
-          Cross-project engineering capabilities. Project-specific implementation
-          details are intentionally kept on the individual case-study pages.
+          The backend decisions behind the three projects above — APIs, data
+          modeling, and systems, not just UI.
         </p>
 
         <div class="depth-grid">
           <div class="depth-card reveal">
-            <h3>APIs &amp; Backend</h3>
+            <h3>🔌 APIs</h3>
             <ul>
-              <li>REST API design, validation, authentication, authorization, and error handling</li>
-              <li>Node.js / Express and Next.js server-side development</li>
-              <li>JWT, HTTP-only cookies, middleware, and server-side secrets</li>
+              <li>
+                30+ REST endpoints across auth, resource CRUD, search,
+                comparison, recommendation, and analytics
+              </li>
+              <li>
+                Zod-validated request bodies on College Discovery's route
+                handlers
+              </li>
+              <li>
+                Consistent auth pattern: JWT in HTTP-only cookies (College
+                Discovery) vs. bearer-style token header (Forum, Tracker)
+              </li>
+              <li>
+                Server-side AI proxy route (Groq) so API keys never reach the
+                client
+              </li>
             </ul>
           </div>
           <div class="depth-card reveal">
-            <h3>Data &amp; Persistence</h3>
+            <h3>🗄️ Database Design</h3>
             <ul>
-              <li>PostgreSQL and MongoDB schema design with constraints and indexes</li>
-              <li>Prisma and Mongoose for application-level data access</li>
-              <li>Relational integrity, ownership boundaries, and query-focused modeling</li>
+              <li>
+                Relational schema (PostgreSQL + Prisma) with indexed lookup
+                fields, cascade-safe deletes on Course/Review, and a unique
+                <code>(userId, collegeId)</code> constraint on saved colleges
+              </li>
+              <li>
+                NoSQL schema (MongoDB + Mongoose) for the forum's
+                Users/Posts/Comments/Notifications with reference-based
+                relations
+              </li>
+              <li>
+                Job Tracker: one Postgres instance, via Prisma, shared by the
+                original tracker schema and the new matching-engine tables
+              </li>
             </ul>
           </div>
           <div class="depth-card reveal">
-            <h3>Distributed &amp; Async Systems</h3>
+            <h3>🏗️ System Architecture</h3>
             <ul>
-              <li>Redis-backed queues and background workers for expensive workloads</li>
-              <li>Socket.IO for real-time state alongside conventional REST APIs</li>
-              <li>Rate limiting, retries, backoff, failure isolation, and adapter-based integrations</li>
+              <li>
+                API and background-worker processes fully decoupled (BullMQ +
+                Redis) in the Job Tracker for fault isolation — full reasoning
+                in its case study
+              </li>
+              <li>
+                WebSocket layer (Socket.IO) running alongside a REST API for
+                hybrid real-time + persistent state
+              </li>
+              <li>
+                Middleware-centralized access control in Collexa — detail in its
+                case study
+              </li>
             </ul>
           </div>
           <div class="depth-card reveal">
-            <h3>Engineering Practices</h3>
+            <h3>⚡ Performance & Reliability</h3>
             <ul>
-              <li>Single-source case studies based on implemented repository behavior</li>
-              <li>Explicit system constraints instead of overstating unsupported integrations</li>
-              <li>Architecture decisions documented with trade-offs and scaling implications</li>
+              <li>
+                Job Tracker: Redis token-bucket rate limiting plus exact-hash +
+                fuzzy (Jaro-Winkler/TF-IDF) deduplication — detail in its case
+                study
+              </li>
+              <li>
+                Collexa: single-use expiring password-reset tokens and global
+                Prisma Client reuse in dev to avoid connection churn — detail in
+                its case study
+              </li>
             </ul>
           </div>
         </div>
@@ -984,7 +1032,7 @@
 
     <div class="divider"></div>
 
-        <div class="divider"></div>
+
 
     <!-- WHAT I'M LOOKING FOR -->
     <section id="opportunities">

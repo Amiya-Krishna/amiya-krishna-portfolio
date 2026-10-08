@@ -15,7 +15,7 @@ I'm a B.Tech (CSE, 3rd year) student focused on backend engineering — relation
 
 ## ✨ Features
 
-- **Project case studies, not just links** — each project card opens one dedicated case-study page. Project-specific details live only on that page; the homepage uses short teasers and links back to the case study to avoid duplicated content.
+- **Project case studies, not just links** — each project card opens a full case-study modal with Problem → Solution, Key Features, **Architecture & Tech Decisions**, **Scaling Considerations**, and **Metrics & Scope** — all sourced from the actual GitHub READMEs.
 - **Featured Project deep dive** — a dedicated section breaking down the most technically deep project (the Job Tracker's BullMQ/Redis matching engine) beyond what fits in a modal.
 - **Engineering Depth section** — APIs, database design, system architecture, and performance/reliability details pulled from real repo data.
 - **DSA / Problem Solving section** — placeholders for LeetCode/Codeforces/GfG profiles, clearly marked to be filled in.

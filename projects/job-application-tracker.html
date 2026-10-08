@@ -11,7 +11,7 @@
 
     <meta
       name="description"
-      content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Remotive-based job discovery, deterministic TF-IDF matching, fuzzy deduplication, and a semi-automated Playwright apply flow."
+      content="Case study of TrackTrail, a backend-heavy multi-user job-application platform built with Node.js 22, Express 5, PostgreSQL, Prisma, Redis, BullMQ, Playwright, React, Expo/React Native, and a Chrome Manifest V3 extension."
     />
 
     <link
@@ -26,7 +26,7 @@
     />
     <meta
       property="og:description"
-      content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Remotive-based job discovery, deterministic TF-IDF matching, fuzzy deduplication, and a semi-automated Playwright apply flow."
+      content="Case study of TrackTrail, a backend-heavy multi-user job-application platform built with Node.js 22, Express 5, PostgreSQL, Prisma, Redis, BullMQ, Playwright, React, Expo/React Native, and a Chrome Manifest V3 extension."
     />
     <meta
       property="og:url"
@@ -47,7 +47,7 @@
     />
     <meta
       name="twitter:description"
-      content="Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Remotive-based job discovery, deterministic TF-IDF matching, fuzzy deduplication, and a semi-automated Playwright apply flow."
+      content="Case study of TrackTrail, a backend-heavy multi-user job-application platform built with Node.js 22, Express 5, PostgreSQL, Prisma, Redis, BullMQ, Playwright, React, Expo/React Native, and a Chrome Manifest V3 extension."
     />
     <meta
       name="twitter:image"
@@ -69,7 +69,7 @@
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Job Application Tracker — Ingestion, Matching & Analytics Engine",
-        "description": "Case study of the Job Application Tracker built by Amiya Krishna Chaurasiya: a React/Vite + Express + PostgreSQL job tracker extended with a BullMQ/Redis worker fleet for Remotive-based job discovery, deterministic TF-IDF matching, fuzzy deduplication, and a semi-automated Playwright apply flow.",
+        "description": "Case study of TrackTrail, a backend-heavy multi-user job-application platform built with Node.js 22, Express 5, PostgreSQL, Prisma, Redis, BullMQ, Playwright, React, Expo/React Native, and a Chrome Manifest V3 extension.",
         "url": "https://www.amiyakrishna.dev/projects/job-application-tracker.html",
         "image": "https://www.amiyakrishna.dev/assets/projects/tracker-dashboard.jpg",
         "applicationCategory": "WebApplication",
@@ -134,9 +134,11 @@
           Job Application Tracker — Ingestion, Matching &amp; Analytics Engine
         </h1>
         <p class="case-subtitle">
-          A React/Vite + Express + PostgreSQL job tracker extended into a full
-          ingestion, matching and analytics pipeline, powered by a BullMQ/Redis
-          worker fleet running as its own process.
+          A backend-heavy, multi-user job-application platform that combines
+          capture, multi-source discovery, de-duplication, explainable matching,
+          human-reviewed application preparation, analytics, Gmail ingestion,
+          evidence-constrained resume tailoring, a native mobile client, and a
+          Chrome extension behind one REST API.
         </p>
 
         <div class="case-tags">
@@ -190,111 +192,105 @@
         <section class="case-section">
           <h2>Problem</h2>
           <p>
-            Job seekers applying to dozens of roles lose track of stages fast —
-            spreadsheets don&#x27;t scale. Worse, manually reading every new
-            listing and judging fit against your own profile wastes hours that
-            should go into actual applications.
+            Job searching produces noisy, duplicated, and scattered data. The
+            same role can appear across multiple sources, application state can
+            be split across trackers and email, and manually judging every
+            listing against a candidate profile does not scale. The system
+            treats this as an ingestion, identity-resolution, ranking, and
+            feedback problem rather than just a CRUD problem.
           </p>
         </section>
 
         <section class="case-section">
           <h2>Solution</h2>
           <p>
-            A centralized React/Vite + Express + PostgreSQL (Prisma ORM) tracker
-            handles the core CRUD workflow, extended with a second system: a
-            BullMQ/Redis worker fleet that ingests listings from manual entry, a
-            Manifest V3 browser extension, and Remotive's public discovery API
-            (LinkedIn/Indeed adapters exist but honestly report "unavailable" —
-            no scraping or anti-bot workarounds) — deduplicates them via hash +
-            bounded fuzzy matching, scores them deterministically with TF-IDF
-            and weighted skill overlap, semi-automates the apply flow via
-            Playwright (stopping before the final submit click), and feeds a
-            live per-user analytics dashboard. A separate read-only Gmail scan
-            surfaces interview/offer/rejection signals for the learning loop —
-            an outcome signal, not a job source.
+            TrackTrail provides a common pipeline: capture or discover jobs →
+            normalize → exact and bounded fuzzy de-duplication → canonical job
+            record → explainable matching → human-reviewed application
+            preparation → tracked outcome → analytics and learning feedback.
+            Expensive work runs asynchronously through Redis and BullMQ, while
+            the API remains a thin request/validation layer.
           </p>
         </section>
 
         <section class="case-section">
-          <h2>Features</h2>
+          <h2>Core Capabilities</h2>
           <ul>
             <li>
-              Full CRUD job tracker: company, role, status, interview date &amp;
-              notes
-            </li>
-            <li>JWT authentication (bcryptjs) with per-user data isolation</li>
-            <li>
-              Unified ingestion: manual entry, a Manifest V3 browser
-              extension, and the Remotive discovery API — LinkedIn/Indeed
-              adapters exist but honestly report "unavailable" rather than
-              scraping
+              Multi-source job discovery through Remotive plus Playwright-based
+              adapters for LinkedIn, Indeed, Naukri, Internshala, Wellfound,
+              and Unstop; provider failures are surfaced as explicit error,
+              blocked, or unavailable states.
             </li>
             <li>
-              Ingestion pipeline: normalize → dedup → insert → enqueue match
+              Shared ingestion path for manual tracking, Chrome extension
+              capture, Gmail signals, and discovery where applicable.
             </li>
             <li>
-              Deterministic TF-IDF + curated skill-vocabulary scorer — not a
-              trained ML model; a provider-agnostic embeddings scorer is
-              defined behind the same interface as a future upgrade path
+              Two-stage de-duplication: exact hash first, then bounded fuzzy
+              comparison for the same company within a 14-day window.
             </li>
             <li>
-              Read-only Gmail scan (Google OAuth2) surfaces
-              interview/offer/rejection signals for manual confirmation —
-              advisory only, never a write authority
+              Deterministic explainable ranking using 0.6 × TF-IDF cosine
+              similarity + 0.4 × weighted skill overlap; scores include an
+              explanation and a score of 70+ marks a job as matched.
             </li>
             <li>
-              Learning service nudges per-skill weights from
-              interview/offer/rejection outcomes
+              Human-in-the-loop Playwright application preparation that detects
+              supported fields, fills what it can, captures the result, and
+              stops at <code>pending_review</code> before final submission.
             </li>
             <li>
-              Human-in-the-loop apply engine via Playwright (stops before final
-              submit)
+              Gmail read-only OAuth integration for job-related outcome
+              signals; email parsing is not treated as authoritative state
+              mutation.
             </li>
             <li>
-              Per-user analytics dashboard (Recharts): response-rate and
-              stage-conversion funnel, computed live from each user's own
-              tracked jobs
+              Evidence-constrained resume tailoring: an optional server-side
+              LLM can reorder or reword existing resume evidence but cannot
+              invent unsupported skills, employers, or metrics.
+            </li>
+            <li>
+              Native Expo/React Native mobile application and Chrome Manifest V3
+              extension sharing the same backend.
             </li>
           </ul>
         </section>
 
         <section class="case-section">
-          <h2>Architecture</h2>
+          <h2>Architecture &amp; Engineering Decisions</h2>
           <ul>
             <li>
-              API process (Express 5) stays thin — it validates input and does
-              minimal synchronous writes (auth, inline dedup check), then
-              enqueues everything expensive; four dedicated BullMQ workers
-              (match, apply, analytics, scrape) run in a separate Node
-              process, so a Playwright crash never takes the API down
+              <strong>API + worker separation:</strong> Node.js 22 / Express 5
+              handles authentication, validation, scoped data access, and queue
+              submission; a separate worker process owns ingestion, discovery,
+              matching, Playwright automation, and analytics.
             </li>
             <li>
-              Data access is Prisma-first; a thin
-              <code>$queryRawUnsafe</code> wrapper (<code>lib/prisma.js</code>)
-              covers the SQL-heavy analytics, dedup and learning-loop queries
+              <strong>Redis + BullMQ:</strong> background work gets retry/backoff
+              behavior and queue history without blocking request/response
+              traffic.
             </li>
             <li>
-              Single hosted PostgreSQL instance shared by both the original
-              tracker (<code>users</code>, <code>tracked_jobs</code>) and the
-              new engine (<code>jobs</code>, <code>companies</code>,
-              <code>applications</code>, <code>match_scores</code>,
-              <code>user_profile</code>, <code>job_sources</code>,
-              <code>analytics_daily</code>, <code>scrape_runs</code>)
+              <strong>Canonical identity:</strong> exact de-duplication is
+              followed by bounded fuzzy matching; partial unique indexes and
+              PostgreSQL constraints reinforce scoped job identity.
             </li>
             <li>
-              Matching is provider-agnostic: <code>scoreEmbedding()</code> takes
-              an injected <code>embedFn</code> so it isn't locked to one AI
-              vendor
+              <strong>Explainability over opaque ML:</strong> TF-IDF plus weighted
+              skills is deterministic and produces match explanations. An
+              embedding scorer interface exists as a future upgrade path rather
+              than being presented as an implemented ML model.
             </li>
             <li>
-              Deduplication runs exact-hash first, then fuzzy (Jaro-Winkler
-              title + TF-IDF description) before insert
+              <strong>Human control:</strong> Gmail is a signal, not a write
+              authority, and the apply engine stops before final submission.
             </li>
             <li>
-              Job discovery is adapter-based: Remotive's public API is genuinely
-              wired up, while LinkedIn/Indeed adapters honestly report
-              'unavailable' — no partner API access, and the project
-              deliberately avoids scraping or anti-bot bypasses to fake results
+              <strong>Multi-user isolation:</strong> global catalog data and
+              private user data use explicit ownership rules enforced through
+              application checks, PostgreSQL triggers, scoped indexes, and
+              HTTP-level isolation tests.
             </li>
           </ul>
         </section>
@@ -302,103 +298,76 @@
         <section class="case-section">
           <h2>Technology Stack</h2>
           <div class="tags">
-            <span class="tag">React 19 + Vite</span>
+            <span class="tag">Node.js 22</span>
             <span class="tag">Express 5</span>
-            <span class="tag">PostgreSQL + Prisma</span>
-            <span class="tag">BullMQ + Redis</span>
+            <span class="tag">PostgreSQL + Prisma 5</span>
+            <span class="tag">Redis + BullMQ</span>
+            <span class="tag">React 19 + Vite + Tailwind</span>
+            <span class="tag">Expo 57 / React Native 0.86</span>
+            <span class="tag">Chrome Manifest V3</span>
             <span class="tag">Playwright</span>
-            <span class="tag">JWT</span>
+            <span class="tag">TF-IDF</span>
+            <span class="tag">JWT / OAuth</span>
           </div>
         </section>
 
         <section class="case-section">
-          <h2>Challenges</h2>
+          <h2>Security &amp; Data Model</h2>
           <ul>
+            <li>bcrypt password hashing with 15-minute access JWTs.</li>
             <li>
-              Redis-backed token-bucket rate limiter, capped per target domain,
-              with randomized human-like delays to avoid hammering source sites
+              Opaque 256-bit refresh tokens stored only as SHA-256 hashes, with
+              rotation and reuse detection.
             </li>
             <li>
-              Workers run as their own process (<code>npm run worker</code>) so
-              ingestion/apply load never blocks user-facing API requests
+              User/admin RBAC with database-backed account-state checks, token
+              revocation, blocking, deletion, and role safeguards.
             </li>
             <li>
-              ATS field selectors are adapter-based (<code>adapters/</code>) —
-              extending to a new job board means adding an adapter, not
-              rewriting the engine
-            </li>
-            <li>
-              Next steps called out directly in the repo: add a stage-history
-              table so analytics can measure 'ever reached Interview/Offer'
-              instead of only current status, and move matching to
-              pgvector-backed embeddings once the corpus outgrows TF-IDF
+              22 Prisma models, 9 SQL migrations, foreign-key/cascade rules,
+              partial unique indexes, and PostgreSQL ownership triggers.
             </li>
           </ul>
         </section>
 
         <section class="case-section">
-          <h2>Production Characteristics</h2>
-          <ul>
-            <li>Separate API and worker processes keep expensive scraping, matching, analytics, and browser automation off the request path.</li>
-            <li>Playwright sessions execute real browser flows and store screenshots; the apply pipeline stops at <code>pending_review</code> instead of blindly submitting.</li>
-            <li>Redis + BullMQ provides retries and backoff for worker failures, while PostgreSQL remains the source of truth.</li>
-            <li>The system has been exercised with more than 1,000 ingested job records without an observed API-latency degradation from the asynchronous pipeline design.</li>
-            <li>Analytics on the dashboard are computed live and scoped to the authenticated user's own tracked jobs rather than using a global aggregate.</li>
-          </ul>
+          <h2>Verification</h2>
+          <p>
+            The repository documents <strong>532 automated tests</strong>: 311
+            server tests, 54 web-client tests, 92 browser-extension tests, and
+            75 mobile tests. Verification covers authentication and
+            authorization, multi-user isolation, account lifecycle behavior,
+            PostgreSQL migrations and constraints, extension extraction, resume
+            tailoring, Gmail behavior, client builds/type checks, and queue
+            reliability.
+          </p>
+          <p>
+            The repository does not claim load-test throughput or latency at
+            scale. External job-board behavior remains subject to markup changes,
+            browser availability, rate limits, authentication walls, and
+            provider blocking; the system reports these conditions rather than
+            attempting to bypass them.
+          </p>
         </section>
 
         <section class="case-section">
-          <h2>Key Engineering Decisions</h2>
-          <ul>
-            <li><strong>Synchronous deduplication:</strong> the bounded fuzzy candidate set is checked before insert to close the race window where two near-simultaneous ingests could both become canonical.</li>
-            <li><strong>Two-stage identity resolution:</strong> an indexed content hash handles exact duplicates first; only misses enter the company- and date-bounded fuzzy pass using Jaro-Winkler title similarity and TF-IDF description similarity.</li>
-            <li><strong>Canonical job identity:</strong> each job settles on a canonical ID at insertion time so downstream applications, scores, and analytics do not repeatedly reconcile duplicates.</li>
-            <li><strong>Gmail as advisory signal:</strong> Gmail uses read-only OAuth access and never writes application state automatically; a user confirms detected outcomes before they affect the learning loop.</li>
-            <li><strong>Human-in-the-loop automation:</strong> the apply engine optimizes field-fill coverage while preserving a human decision at final submission to reduce incorrect automated applications.</li>
-          </ul>
-        </section>
-
-        <section class="case-section">
-          <h2>Matching &amp; Learning Loop</h2>
-          <ul>
-            <li>Match score = <code>0.6 × TF-IDF similarity + 0.4 × weighted skill overlap</code>, clamped to 0–100.</li>
-            <li>The score stores an explanation containing matched skills, missing skills, and raw similarity rather than returning an opaque number.</li>
-            <li>Interview outcomes increase matched-skill weights; rejection outcomes decrease them. Adjustments are bounded and clamped so one event cannot dominate future rankings.</li>
-            <li>The system has an explicit cold-start limitation: early rankings rely mainly on TF-IDF and uniform skill weights until enough outcomes exist.</li>
-            <li>A provider-agnostic embedding scorer is defined behind the same interface as a future semantic-matching upgrade, without claiming that an embedding model is currently driving production scores.</li>
-          </ul>
-        </section>
-
-        <section class="case-section">
-          <h2>Failure Handling &amp; Known Constraints</h2>
-          <ul>
-            <li>Discovery adapters distinguish <code>ok</code>, <code>error</code>, and <code>unavailable</code> states instead of silently treating unavailable providers as zero results.</li>
-            <li>LinkedIn and Indeed are intentionally not scraped or anti-bot-bypassed; their adapters remain unavailable until legitimate partner access exists. Remotive is the currently wired public provider.</li>
-            <li>Concurrent company creation uses atomic PostgreSQL conflict handling so duplicate company inserts do not drop a job during ingestion races.</li>
-            <li>Deleted scrape-run records are treated safely by workers instead of turning a missing reporting row into a worker crash.</li>
-            <li>ATS field detection selects a genuinely visible matching element, avoiding hidden desktop/mobile form duplicates.</li>
-            <li>Known limitations include Remotive's remote-only coverage, fuzzy-match false negatives, Playwright failures on dynamic multi-step forms, learning-loop cold start, queue growth under heavy ingestion, and current-status rather than full stage-history analytics.</li>
-          </ul>
-        </section>
-
-        <section class="case-section">
-          <h2>Results / Impact</h2>
+          <h2>Current Scope</h2>
           <div class="metrics-grid">
             <div class="metric-box">
-              <span class="metric-num">8</span>
-              <div class="metric-label">New DB Tables</div>
+              <span class="metric-num">22</span>
+              <div class="metric-label">Prisma Models</div>
+            </div>
+            <div class="metric-box">
+              <span class="metric-num">9</span>
+              <div class="metric-label">SQL Migrations</div>
             </div>
             <div class="metric-box">
               <span class="metric-num">4</span>
-              <div class="metric-label">Background Workers</div>
+              <div class="metric-label">Worker Responsibilities</div>
             </div>
             <div class="metric-box">
-              <span class="metric-num">~65%</span>
-              <div class="metric-label">Duplicate Listings Suppressed</div>
-            </div>
-            <div class="metric-box">
-              <span class="metric-num">~70%</span>
-              <div class="metric-label">Apply Fields Pre-Filled</div>
+              <span class="metric-num">532</span>
+              <div class="metric-label">Automated Tests</div>
             </div>
           </div>
         </section>

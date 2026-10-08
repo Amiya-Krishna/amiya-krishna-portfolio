@@ -312,6 +312,7 @@ section { position:relative; z-index:1; padding:120px 6%; }
 
 .hero{
   padding-inline:5%;
+  padding-top:40px;
 }
 
 .hero-inner{
@@ -328,6 +329,18 @@ section { position:relative; z-index:1; padding:120px 6%; }
     grid-column:auto;
     grid-row:auto;
     align-self:auto;
+}
+
+.hero-avatar{
+    order:1;
+}
+
+.hero-left{
+    order:2;
+}
+
+.hero-terminal{
+    order:3;
 }
 
 .hero{
