@@ -498,7 +498,7 @@
         </p>
 
         <div class="proj-grid">
-          <div class="proj-card reveal" onclick="openModal(0)">
+          <div class="proj-card reveal" onclick="window.location.href='/projects/job-application-tracker.html'" role="link" tabindex="0" aria-label="Open Job Application Tracker case study">
             <div class="proj-thumb">
               <img
                 src="assets/projects/tracker-dashboard.jpg"
@@ -574,7 +574,7 @@
             </div>
           </div>
 
-          <div class="proj-card reveal" onclick="openModal(1)">
+          <div class="proj-card reveal" onclick="window.location.href='/projects/collexa.html'" role="link" tabindex="0" aria-label="Open Collexa case study">
             <div class="proj-thumb">
               <img
                 src="assets/projects/college-discovery-list.jpg"
@@ -641,7 +641,7 @@
             </div>
           </div>
 
-          <div class="proj-card reveal" onclick="openModal(2)">
+          <div class="proj-card reveal" onclick="window.location.href='/projects/community-discussion-forum.html'" role="link" tabindex="0" aria-label="Open Real-Time Discussion Platform case study">
             <div class="proj-thumb">
               <img
                 src="assets/projects/forum-dashboard.jpg"
@@ -713,167 +713,34 @@
 
     <div class="divider"></div>
 
-    <!-- ── FEATURED PROJECT DEEP DIVE ── -->
+    <!-- ── FEATURED PROJECT ── -->
     <section id="featured">
       <div class="container">
-        <div class="section-kicker reveal">Deepest technical build</div>
+        <div class="section-kicker reveal">Featured project</div>
         <div class="section-title reveal">
-          Featured:
-          <em>Job Application Tracker — Ingestion, Matching &amp; Analytics</em>
+          Job Application Tracker — <em>Ingestion, Matching &amp; Analytics</em>
         </div>
         <p class="proj-hint reveal">
-          This is the project I'd walk an interviewer through first — it's the
-          one where the backend does real decision-making, not just CRUD.
+          The most backend-heavy project in the portfolio. The complete technical
+          story — architecture, ingestion, deduplication, matching, workers,
+          Gmail outcome signals, automation, analytics, failure handling, and
+          engineering trade-offs — lives in one dedicated case study.
         </p>
-
-        <div class="featured-grid">
-          <div class="featured-card reveal">
-            <h3>Why this one</h3>
-            <p>
-              The original app was a straightforward MERN-style CRUD tracker. I
-              extended it — rather than rebuilding from scratch — into the
-              ingestion → matching → analytics pipeline described in the
-              Projects section above.
-            </p>
-          </div>
-          <div class="featured-card reveal">
-            <h3>Architecture</h3>
-            <p>
-              A thin <strong>Express 5 API</strong> validates and enqueues; a
-              four-worker <strong>BullMQ fleet</strong> (match, apply,
-              analytics, scrape) does the heavy lifting in a separate Node
-              process on one shared PostgreSQL database via Prisma. Full
-              breakdown in the case study →
-            </p>
-          </div>
-          <div class="featured-card reveal">
-            <h3>Matching logic</h3>
-            <p>
-              A deterministic <strong>TF-IDF + skill-vocabulary</strong>
-              scorer — not a trained ML model — with per-skill weights
-              that adjust from real interview/offer/rejection outcomes. An
-              embeddings-based scorer is defined behind the same interface as
-              a future upgrade path. Full breakdown in the case study →
-            </p>
-          </div>
-        </div>
-
         <div class="featured-cta reveal">
-          <a
-            class="btn btn-primary"
-            href="/projects/job-application-tracker.html"
-            >Read the Full Case Study →</a
-          >
-          <a
-            class="btn btn-outline"
-            href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
-            target="_blank"
-            >View Source ↗</a
-          >
-          <a
-            class="btn btn-outline"
-            href="https://job-application-tracker-portal-ten.vercel.app"
-            target="_blank"
-            >Live Demo ↗</a
-          >
+          <a class="btn btn-primary" href="/projects/job-application-tracker.html">
+            Read the Full Case Study →
+          </a>
+          <a class="btn btn-outline"
+             href="https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline"
+             target="_blank" rel="noopener">View Source ↗</a>
+          <a class="btn btn-outline"
+             href="https://job-application-tracker-portal-ten.vercel.app"
+             target="_blank" rel="noopener">Live Demo ↗</a>
         </div>
       </div>
     </section>
 
     <div class="divider"></div>
-
-    <!-- Modal -->
-    <div class="modal-overlay" id="modal-overlay" onclick="closeModal(event)">
-      <div class="modal" id="modal-box">
-        <button
-          class="modal-close"
-          onclick="closeModal()"
-          aria-label="Close project details"
-        >
-          ✕
-        </button>
-        <h2 id="modal-title"></h2>
-        <span class="modal-status" id="modal-status"></span>
-
-        <div class="modal-section">
-          <div class="modal-section-label">Problem</div>
-          <p id="modal-problem"></p>
-        </div>
-
-        <div class="modal-section">
-          <div class="modal-section-label">Solution</div>
-          <p id="modal-solution"></p>
-        </div>
-
-        <div class="modal-section">
-          <div class="modal-section-label">Key Features</div>
-          <ul id="modal-desc" class="project-features"></ul>
-        </div>
-
-        <div class="modal-section">
-          <div class="modal-section-label">Architecture & Tech Decisions</div>
-          <ul id="modal-architecture" class="project-features"></ul>
-        </div>
-
-        <div class="modal-section">
-          <div class="modal-section-label">Scaling Considerations</div>
-          <ul id="modal-scaling" class="project-features"></ul>
-        </div>
-
-        <div class="modal-section" id="modal-metrics-wrap">
-          <div class="modal-section-label">Metrics & Scope</div>
-          <div class="metrics-grid" id="modal-metrics"></div>
-        </div>
-
-        <div class="tags" id="modal-tags"></div>
-
-        <div class="modal-gallery" id="modal-gallery"></div>
-
-        <div
-          class="modal-diagram-wrap"
-          id="modal-diagram-wrap"
-          style="display: none"
-        >
-          <div class="modal-section-label">System Architecture</div>
-          <div
-            class="modal-gallery modal-gallery-single"
-            id="modal-diagram"
-          ></div>
-          <div class="modal-diagram-hint">
-            Click the diagram to view it full size
-          </div>
-        </div>
-
-        <div class="modal-video-wrap">
-          <div class="modal-section-label">Demo Video</div>
-          <div class="modal-video-box" id="modal-video-box"></div>
-        </div>
-
-        <div
-          style="margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap"
-        >
-          <a
-            id="modal-live"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-primary"
-            style="font-size: 0.8rem; padding: 11px 20px"
-          >
-            Live Demo ↗
-          </a>
-
-          <a
-            id="modal-link"
-            target="_blank"
-            rel="noopener"
-            class="btn btn-outline"
-            style="font-size: 0.8rem; padding: 11px 20px"
-          >
-            View Code ↗
-          </a>
-        </div>
-      </div>
-    </div>
 
     <!-- Lightbox: full-size image viewer for gallery/diagram photos -->
     <div
@@ -970,82 +837,41 @@
         <div class="section-kicker reveal">Under the hood</div>
         <div class="section-title reveal">Engineering <em>Depth</em></div>
         <p class="proj-hint reveal">
-          The backend decisions behind the three projects above — APIs, data
-          modeling, and systems, not just UI.
+          Cross-project engineering capabilities. Project-specific implementation
+          details are intentionally kept on the individual case-study pages.
         </p>
 
         <div class="depth-grid">
           <div class="depth-card reveal">
-            <h3>🔌 APIs</h3>
+            <h3>APIs &amp; Backend</h3>
             <ul>
-              <li>
-                30+ REST endpoints across auth, resource CRUD, search,
-                comparison, recommendation, and analytics
-              </li>
-              <li>
-                Zod-validated request bodies on College Discovery's route
-                handlers
-              </li>
-              <li>
-                Consistent auth pattern: JWT in HTTP-only cookies (College
-                Discovery) vs. bearer-style token header (Forum, Tracker)
-              </li>
-              <li>
-                Server-side AI proxy route (Groq) so API keys never reach the
-                client
-              </li>
+              <li>REST API design, validation, authentication, authorization, and error handling</li>
+              <li>Node.js / Express and Next.js server-side development</li>
+              <li>JWT, HTTP-only cookies, middleware, and server-side secrets</li>
             </ul>
           </div>
           <div class="depth-card reveal">
-            <h3>🗄️ Database Design</h3>
+            <h3>Data &amp; Persistence</h3>
             <ul>
-              <li>
-                Relational schema (PostgreSQL + Prisma) with indexed lookup
-                fields, cascade-safe deletes on Course/Review, and a unique
-                <code>(userId, collegeId)</code> constraint on saved colleges
-              </li>
-              <li>
-                NoSQL schema (MongoDB + Mongoose) for the forum's
-                Users/Posts/Comments/Notifications with reference-based
-                relations
-              </li>
-              <li>
-                Job Tracker: one Postgres instance, via Prisma, shared by the
-                original tracker schema and the new matching-engine tables
-              </li>
+              <li>PostgreSQL and MongoDB schema design with constraints and indexes</li>
+              <li>Prisma and Mongoose for application-level data access</li>
+              <li>Relational integrity, ownership boundaries, and query-focused modeling</li>
             </ul>
           </div>
           <div class="depth-card reveal">
-            <h3>🏗️ System Architecture</h3>
+            <h3>Distributed &amp; Async Systems</h3>
             <ul>
-              <li>
-                API and background-worker processes fully decoupled (BullMQ +
-                Redis) in the Job Tracker for fault isolation — full reasoning
-                in its case study
-              </li>
-              <li>
-                WebSocket layer (Socket.IO) running alongside a REST API for
-                hybrid real-time + persistent state
-              </li>
-              <li>
-                Middleware-centralized access control in Collexa — detail in its
-                case study
-              </li>
+              <li>Redis-backed queues and background workers for expensive workloads</li>
+              <li>Socket.IO for real-time state alongside conventional REST APIs</li>
+              <li>Rate limiting, retries, backoff, failure isolation, and adapter-based integrations</li>
             </ul>
           </div>
           <div class="depth-card reveal">
-            <h3>⚡ Performance & Reliability</h3>
+            <h3>Engineering Practices</h3>
             <ul>
-              <li>
-                Job Tracker: Redis token-bucket rate limiting plus exact-hash +
-                fuzzy (Jaro-Winkler/TF-IDF) deduplication — detail in its case
-                study
-              </li>
-              <li>
-                Collexa: single-use expiring password-reset tokens and global
-                Prisma Client reuse in dev to avoid connection churn — detail in
-                its case study
-              </li>
+              <li>Single-source case studies based on implemented repository behavior</li>
+              <li>Explicit system constraints instead of overstating unsupported integrations</li>
+              <li>Architecture decisions documented with trade-offs and scaling implications</li>
             </ul>
           </div>
         </div>
@@ -1158,174 +984,7 @@
 
     <div class="divider"></div>
 
-    <!-- ── GITHUB HIGHLIGHTS ── -->
-    <section id="github-highlights">
-      <div class="container">
-        <div class="section-kicker reveal">Open source footprint</div>
-        <div class="section-title reveal">GitHub <em>Highlights</em></div>
-        <p class="proj-hint reveal">
-          A quick look at my top repositories — full write-ups in the
-          Projects section above.
-        </p>
-
-        <div class="gh-grid">
-          <div
-            class="gh-card reveal"
-            role="link"
-            tabindex="0"
-            onclick="
-              window.open(
-                'https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline',
-                '_blank',
-                'noopener',
-              )
-            "
-            onkeydown="
-              if (event.key === 'Enter') {
-                window.open(
-                  'https://github.com/Amiya-Krishna/Automated-Job-Application-Tracking-System-with-Email-Ingestion-and-Analytics-Pipeline',
-                  '_blank',
-                  'noopener',
-                );
-              }
-            "
-            aria-label="View Job Application Tracker source code on GitHub"
-          >
-            <div class="gh-card-head">
-              <h3>
-                Job Application Tracker — Ingestion, Matching & Analytics Engine
-              </h3>
-              <span class="gh-lang"
-                ><span class="gh-dot" style="background: #f1e05a"></span
-                >JavaScript</span
-              >
-            </div>
-            <p>
-              The most complex repo in my profile — a job tracker extended with
-              a dedicated BullMQ/Redis worker fleet. See the
-              <a
-                href="#projects"
-                class="text-link"
-                onclick="event.stopPropagation()"
-                >Projects section</a
-              >
-              above for the full breakdown.
-            </p>
-            <div class="tags">
-              <span class="tag">React</span>
-              <span class="tag">Express 5</span>
-              <span class="tag">PostgreSQL + Prisma</span>
-              <span class="tag">BullMQ</span>
-            </div>
-          </div>
-          <div
-            class="gh-card reveal"
-            role="link"
-            tabindex="0"
-            onclick="
-              window.open(
-                'https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform',
-                '_blank',
-                'noopener',
-              )
-            "
-            onkeydown="
-              if (event.key === 'Enter') {
-                window.open(
-                  'https://github.com/Amiya-Krishna/Collexa-College-Decision-Intelligence-Platform',
-                  '_blank',
-                  'noopener',
-                );
-              }
-            "
-            aria-label="View Collexa source code on GitHub"
-          >
-            <div class="gh-card-head">
-              <h3>Collexa — College Decision Intelligence Platform</h3>
-              <span class="gh-lang"
-                ><span class="gh-dot" style="background: #3178c6"></span
-                >TypeScript</span
-              >
-            </div>
-            <p>
-              College decision platform with a weighted rank predictor and
-              Groq-backed AI guidance chat. See the
-              <a
-                href="#projects"
-                class="text-link"
-                onclick="event.stopPropagation()"
-                >Projects section</a
-              >
-              above for the full breakdown.
-            </p>
-            <div class="tags">
-              <span class="tag">Next.js 16</span>
-              <span class="tag">Prisma</span>
-              <span class="tag">PostgreSQL</span>
-              <span class="tag">Zod</span>
-            </div>
-          </div>
-          <div
-            class="gh-card reveal"
-            role="link"
-            tabindex="0"
-            onclick="
-              window.open(
-                'https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat',
-                '_blank',
-                'noopener',
-              )
-            "
-            onkeydown="
-              if (event.key === 'Enter') {
-                window.open(
-                  'https://github.com/Amiya-Krishna/Community-Discussion-Forum-with-Real-Time-Chat',
-                  '_blank',
-                  'noopener',
-                );
-              }
-            "
-            aria-label="View Real-Time Discussion Platform source code on GitHub"
-          >
-            <div class="gh-card-head">
-              <h3>Community-Discussion-Forum</h3>
-              <span class="gh-lang"
-                ><span class="gh-dot" style="background: #f1e05a"></span
-                >JavaScript</span
-              >
-            </div>
-            <p>
-              MERN + Socket.IO platform merging threaded discussions with
-              real-time chat. See the
-              <a
-                href="#projects"
-                class="text-link"
-                onclick="event.stopPropagation()"
-                >Projects section</a
-              >
-              above for the full breakdown.
-            </p>
-            <div class="tags">
-              <span class="tag">React 18</span>
-              <span class="tag">Express</span>
-              <span class="tag">MongoDB</span>
-              <span class="tag">Socket.IO</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="gh-cta reveal">
-          <a
-            class="btn btn-outline"
-            href="https://github.com/Amiya-Krishna"
-            target="_blank"
-            >See all repositories on GitHub ↗</a
-          >
-        </div>
-      </div>
-    </section>
-
-    <div class="divider"></div>
+        <div class="divider"></div>
 
     <!-- WHAT I'M LOOKING FOR -->
     <section id="opportunities">

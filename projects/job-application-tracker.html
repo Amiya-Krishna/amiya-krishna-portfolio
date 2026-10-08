@@ -337,6 +337,51 @@
         </section>
 
         <section class="case-section">
+          <h2>Production Characteristics</h2>
+          <ul>
+            <li>Separate API and worker processes keep expensive scraping, matching, analytics, and browser automation off the request path.</li>
+            <li>Playwright sessions execute real browser flows and store screenshots; the apply pipeline stops at <code>pending_review</code> instead of blindly submitting.</li>
+            <li>Redis + BullMQ provides retries and backoff for worker failures, while PostgreSQL remains the source of truth.</li>
+            <li>The system has been exercised with more than 1,000 ingested job records without an observed API-latency degradation from the asynchronous pipeline design.</li>
+            <li>Analytics on the dashboard are computed live and scoped to the authenticated user's own tracked jobs rather than using a global aggregate.</li>
+          </ul>
+        </section>
+
+        <section class="case-section">
+          <h2>Key Engineering Decisions</h2>
+          <ul>
+            <li><strong>Synchronous deduplication:</strong> the bounded fuzzy candidate set is checked before insert to close the race window where two near-simultaneous ingests could both become canonical.</li>
+            <li><strong>Two-stage identity resolution:</strong> an indexed content hash handles exact duplicates first; only misses enter the company- and date-bounded fuzzy pass using Jaro-Winkler title similarity and TF-IDF description similarity.</li>
+            <li><strong>Canonical job identity:</strong> each job settles on a canonical ID at insertion time so downstream applications, scores, and analytics do not repeatedly reconcile duplicates.</li>
+            <li><strong>Gmail as advisory signal:</strong> Gmail uses read-only OAuth access and never writes application state automatically; a user confirms detected outcomes before they affect the learning loop.</li>
+            <li><strong>Human-in-the-loop automation:</strong> the apply engine optimizes field-fill coverage while preserving a human decision at final submission to reduce incorrect automated applications.</li>
+          </ul>
+        </section>
+
+        <section class="case-section">
+          <h2>Matching &amp; Learning Loop</h2>
+          <ul>
+            <li>Match score = <code>0.6 × TF-IDF similarity + 0.4 × weighted skill overlap</code>, clamped to 0–100.</li>
+            <li>The score stores an explanation containing matched skills, missing skills, and raw similarity rather than returning an opaque number.</li>
+            <li>Interview outcomes increase matched-skill weights; rejection outcomes decrease them. Adjustments are bounded and clamped so one event cannot dominate future rankings.</li>
+            <li>The system has an explicit cold-start limitation: early rankings rely mainly on TF-IDF and uniform skill weights until enough outcomes exist.</li>
+            <li>A provider-agnostic embedding scorer is defined behind the same interface as a future semantic-matching upgrade, without claiming that an embedding model is currently driving production scores.</li>
+          </ul>
+        </section>
+
+        <section class="case-section">
+          <h2>Failure Handling &amp; Known Constraints</h2>
+          <ul>
+            <li>Discovery adapters distinguish <code>ok</code>, <code>error</code>, and <code>unavailable</code> states instead of silently treating unavailable providers as zero results.</li>
+            <li>LinkedIn and Indeed are intentionally not scraped or anti-bot-bypassed; their adapters remain unavailable until legitimate partner access exists. Remotive is the currently wired public provider.</li>
+            <li>Concurrent company creation uses atomic PostgreSQL conflict handling so duplicate company inserts do not drop a job during ingestion races.</li>
+            <li>Deleted scrape-run records are treated safely by workers instead of turning a missing reporting row into a worker crash.</li>
+            <li>ATS field detection selects a genuinely visible matching element, avoiding hidden desktop/mobile form duplicates.</li>
+            <li>Known limitations include Remotive's remote-only coverage, fuzzy-match false negatives, Playwright failures on dynamic multi-step forms, learning-loop cold start, queue growth under heavy ingestion, and current-status rather than full stage-history analytics.</li>
+          </ul>
+        </section>
+
+        <section class="case-section">
           <h2>Results / Impact</h2>
           <div class="metrics-grid">
             <div class="metric-box">
